@@ -1,12 +1,13 @@
 import searchIcon from '../img/searchIcon.svg'
+import searchStyles from '../css/search.module.css'
 
 function search() {
   return (
-    <div className={styles.search}>
-        <button className={styles.search__container}>
-            <p></p>
+    <div className={searchStyles.search}>
+        <div className={searchStyles.search__container}>
+            <p className={searchStyles.text}>Поиск</p>
             <img src={searchIcon} alt="" />
-        </button>
+        </div>
     </div>
   )
 }
