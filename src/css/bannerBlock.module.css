@@ -1,0 +1,59 @@
+@font-face {
+    font-family: League, sans-serif;
+    src: url(../fonts/League_Spartan.zip);
+}
+
+.bannerBlock {
+    width: 1200px;
+    height: 470px;
+    background-color: #3A3E4A;
+    color: #FFFFFF;
+    display: flex;
+}
+.bannerBlock__info {
+    width: 50%;
+    height: 470px;
+    padding:  0 0 0 60px;
+    position: relative;
+}
+
+.btnBlock {
+    margin-top: 30px;
+    width: 82px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    height: auto;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: 750;
+    letter-spacing: -0.2px;
+} 
+
+.description {
+    height: auto;
+    width: 500px;
+    margin-top: 50px;
+    font-size: 19px;
+    font-weight: 300;
+
+}
+
+.link {
+    position: absolute;
+    left: 60px;
+    bottom: 30px;
+    font-size: 24px;
+    color: #1787D8;
+    text-decoration: none;
+}
+.bannerBlock__photo {
+    width: 50%;
+    height: 470px;
+}
+.bannerBlock__photo img {
+    width: 100%;
+    height: 100%;
+}
