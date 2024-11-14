@@ -1,0 +1,24 @@
+.block {
+    width: 430px;
+    height: 255px;
+    position: relative;
+}
+
+.block img {
+    height: 100%;
+    width: 100%;
+}
+
+.btnBlock {
+    position: absolute;
+    width: 82px;
+    display: flex;
+    justify-content: space-between;
+    bottom: 20px;
+    right: 30px;
+}
+
+.btnBlock img {
+    width: 13px;
+    height: 13px;
+}
