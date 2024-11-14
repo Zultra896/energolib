@@ -1,0 +1,10 @@
+.btnBanner {
+    background-color: #BFBFBF;
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
