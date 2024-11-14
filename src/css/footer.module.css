@@ -1,0 +1,124 @@
+@font-face {
+    font-family: League, sans-serif;
+    src: url(../fonts/League_Spartan.zip);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League", sans-serif;
+}
+
+.footer {
+    width: 100%;
+    height: 467px;
+    background-color: #2C3035;
+    position: absolute;
+    bottom: 0;
+    margin-top: 100px;
+    padding: 96px 115px 30px 115px;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom: 64px;
+    border-bottom: 1px solid #E4E4E7;
+}
+
+.footer__item {
+
+}
+
+.footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 27px;
+}
+
+.footer__logoTitle {
+    color: #BFBFBF;
+    font-size: 16px;
+}
+
+.footer__description {
+    width: 359px;
+}
+
+.socialNetworks {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 41px;
+}
+
+.socialNetworks__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 28px;
+    background-color: #27272A;
+    border-radius: 100%;
+}
+
+.footer__item {
+
+}
+
+.footer__list {
+    padding-top: 18px;
+}
+
+.footer__link {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-top: 16px;
+}
+.footer__link:nth-child(2) {
+    margin-top: 0;
+}
+
+.footer__title {
+    color: #A1A1AA;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.footer__question {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer__inp {
+    color: #71717A;
+    font-size: 16px;
+    text-align: start;
+    padding: 21px 17px;
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+}
+
+.footer__btn {
+    width: 134px;
+    background-color: #2563EB;
+    border-radius: 6px;
+    border: none;
+    padding: 20px 24px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.footer__rights {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    color: #52525B;
+    font-size: 14px;
+}

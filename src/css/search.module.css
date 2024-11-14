@@ -27,8 +27,11 @@
     padding: 16px 22px;
 }
 
-.text {
+.search__inp {
     font-size: 14px;
     font-weight: 500;
     color: #BFBFBF;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }

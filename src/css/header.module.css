@@ -1,0 +1,42 @@
+@font-face {
+    font-family: League, sans-serif;
+    src: url(../fonts/League_Spartan.zip);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League", sans-serif;
+}
+
+
+.header {
+    background-color: #3A3E4A;
+    padding: 14px 120px;
+    width: 100%;
+    position: fixed;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header__logoTitle {
+    color: #BFBFBF;
+    font-size: 40px;
+}
+
+.header__items {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}

@@ -4,9 +4,9 @@ import singIcon from '../img/singIcon.svg'
 function BtnSing() {
   return (
     <div className={btnSingStyles.btnSing}>
-        <div className={searchStyles.btnSing__container}>
+        <div className={btnSingStyles.btnSing__container}>
             <img src={singIcon} alt="" />
-            <p className={searchStyles.text}>Поиск</p>
+            <p className={btnSingStyles.text}>Вход | Регистрация</p>
         </div>
     </div>
   )
