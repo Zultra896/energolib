@@ -3,7 +3,7 @@ import Search from '../components/Search.jsx'
 import BtnSing from '../components/BtnSing.jsx'
 import logoIcon from '../img/logo.svg'
 import burgerIcon1 from '../img/burgerIcon1.svg'
-import Search from './Search.jsx'
+
 
 function header() {
   return (
