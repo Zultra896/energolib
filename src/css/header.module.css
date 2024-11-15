@@ -12,10 +12,11 @@
 
 
 .header {
+    position: fixed;
     background-color: #3A3E4A;
     padding: 14px 120px;
     width: 100%;
-    position: fixed;
+    z-index: 100;
 }
 
 .header__container {

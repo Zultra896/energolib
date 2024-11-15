@@ -5,5 +5,7 @@
 
   .app__content {
     padding-top: 100px;
+    display: flex;
+    justify-content: center;
   }
   
