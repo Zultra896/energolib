@@ -2,7 +2,7 @@ import headerStyles from '../css/header.module.css'
 import Search from '../components/Search.jsx'
 import BtnSing from '../components/BtnSing.jsx'
 import logoIcon from '../img/logo.svg'
-import burgerIcon1 from '../img/burgerIcon1.svg'
+import BurgerMenu from './BurgerMenu.jsx'
 
 
 function header() {
@@ -16,7 +16,7 @@ function header() {
            <Search />
            <div className={headerStyles.header__items}>
             <BtnSing />
-            <img src={burgerIcon1} alt="" />
+            <BurgerMenu />
            </div>
             </div>
      </header>
