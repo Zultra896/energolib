@@ -1,12 +1,14 @@
 import { useRoutes } from 'react-router';
 import { useEffect } from'react';
 import Layout from './components/Layout.jsx';
-import Main from './pages/Main.jsx'
-
-
-
+import Main from './pages/Main.jsx';
+import Auth from './pages/Auth.jsx';
 
 const routes = [
+  {
+  path: '/Auth/*',
+  element: <Auth />
+  },
   {  
   path: '/',
   element: <Layout />,
