@@ -1,34 +1,42 @@
 import React, { useState } from "react";
 import styles from '../css/burgerMenu.module.css';
+import { Link } from "react-router-dom";
 
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Функция переключения состояния меню
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div className={styles.burgerMenuContainer}>
-      {/* Иконка бургер-меню */}
+ 
       <div
         className={`${styles.burgerIcon} ${isOpen ? styles.open : ""}`}
-        onClick={toggleMenu} // Клик по иконке переключает состояние
+        onClick={toggleMenu} 
       >
         <div className={styles.line}></div>
         <div className={styles.line}></div>
         <div className={styles.line}></div>
       </div>
 
-      {/* Меню */}
-      {isOpen && ( // Меню отображается только если isOpen равно true
+      {isOpen && ( 
         <div className={styles.menu}>
           <ul className={styles.menuList}>
-            <li className={styles.menuItem}><a href="#catalog">Каталог</a></li>
-            <li className={styles.menuItem}><a href="#about">О нас</a></li>
-            <li className={styles.menuItem}><a href="#news">Новости</a></li>
-            <li className={styles.menuItem}><a href="#contact">Обратная связь</a></li>
+            <Link className={styles.menuLink} to="">
+            <li className={styles.menuItem}>Каталог</li>
+            </Link>
+            <Link className={styles.menuLink} to="About">
+            <li className={styles.menuItem}>О нас</li>
+            </Link>
+            <Link className={styles.menuLink} to="NewsContainer">
+            <li className={styles.menuItem}>Новости</li>
+            </Link>
+            <Link className={styles.menuLink} to="">
+            <li className={styles.menuItem}>Обратная связь</li>
+            </Link>
           </ul>
         </div>
       )}

@@ -1,0 +1,89 @@
+.newsContainer {
+    width: 720px;
+    height: 915px;
+    margin: 0 auto;
+    background-color: #3a3e4a;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .newsTitle {
+    font-size: 24px;
+    color: #bfbfbf;
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: bold;
+    padding-left: 10px;
+  }
+  
+  .logo {
+    width: 35px;
+    height: 33px;
+    padding-top: 15px;
+  }
+  
+  .headerBlock {
+    display: flex;
+    align-items: center;
+  }
+  
+  .newsList {
+    background-color: #24262c;
+    border-radius: 8px;
+    padding: 15px;
+    height: 75%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .newsContent {
+    background-color: #2d2d3a;
+    border: 1px solid #444456;
+    width: 600px;
+    height: 160px;
+    border-radius: 12px;
+    padding: 15px;
+    color: #bfbfbf;
+    font-size: 16px;
+  }
+  
+  .pageList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .pageBtn {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3e3e4f;
+    color: #bfbfbf;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .pageBtn.active {
+    background-color: #444456;
+    color: #bfbfbf;
+  }
+  
+  .pageBtn:hover:not(.active):not(:disabled) {
+    background-color: #444456;
+    color: #bfbfbf;
+  }
+  
+  .pageBtn:disabled {
+    background-color: #3e3e4f;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  

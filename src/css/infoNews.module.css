@@ -1,0 +1,50 @@
+.mainSection {
+    width: 720px;
+    background-color: #3A3E4A;
+    height: 960px;
+
+}
+
+.secondChildSection {
+    width: 636px;
+    height: 900px;
+    background-color: #24262C;
+}
+
+.usernameBlock {
+    display: flex;
+    padding-top: 34px;
+
+}
+
+
+
+.userName {
+    color: #BFBFBF;
+    padding-left: 15px;
+    font-size: 16px;
+
+
+}
+
+.contentBlock {
+    padding-top: 34px;
+    
+}
+
+.titleClass {
+    width: 540px;
+    height: 30px;
+    font-size: 44px;
+
+    color: #BFBFBF;
+
+}
+
+.contentClass {
+    width: 530px;
+    height: 300px;
+    color: #BFBFBF;
+    font-size: 18px;
+    padding-top: 34px;
+}

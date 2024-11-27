@@ -59,7 +59,11 @@
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+
+  .menuLink {
     color: #fff;
+    text-decoration: none !important;
   }
   
   .menuItem {

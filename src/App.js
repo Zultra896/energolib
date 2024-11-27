@@ -3,6 +3,9 @@ import { useEffect } from'react';
 import Layout from './components/Layout.jsx';
 import Main from './pages/Main.jsx';
 import Auth from './pages/Auth.jsx';
+import About from './pages/About.jsx'
+import NewsContainer from './pages/NewsContainer.jsx'
+import InfoNews from './pages/InfoNews.jsx'
 
 const routes = [
   {
@@ -17,6 +20,20 @@ const routes = [
       index: true,
       element: <Main />,
     },
+    {
+      path: 'About',
+      element: <About />,
+    },
+    {
+      path: 'NewsContainer',
+      element: <NewsContainer />,
+      children: [
+        {
+          path: 'InfoNews',
+          element: <InfoNews />,
+        }
+      ]
+    }
   ]
   }
 ]
