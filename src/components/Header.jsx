@@ -1,11 +1,16 @@
+import React, { useContext } from 'react';
 import headerStyles from '../css/header.module.css'
 import Search from '../components/Search.jsx'
 import BtnSing from '../components/BtnSing.jsx'
 import logoIcon from '../img/logo.svg'
 import BurgerMenu from './BurgerMenu.jsx'
+import { AuthContext } from './AuthContext.jsx'
+import avatar from '../img/avatar.jpg'
 
 
-function header() {
+function Header() {
+  const { isAuthenticated, user } = useContext(AuthContext);
+
   return (
      <header className={headerStyles.header}>
             <div className={headerStyles.header__container}>
@@ -15,7 +20,17 @@ function header() {
             </div>
            <Search />
            <div className={headerStyles.header__items}>
-            <BtnSing />
+           {isAuthenticated && user ? (
+              <div className={headerStyles.user}>
+                  <h1 className={headerStyles.user_name}>{user.first_name + " " + user.last_name}</h1>
+                  <div className={headerStyles.avatar}>
+                    <img src={avatar} alt="Avatar" className={headerStyles.avatarImg} />
+                  </div>
+              </div>
+            ) : (
+                <BtnSing />
+            )}
+
             <BurgerMenu />
            </div>
             </div>
@@ -23,4 +38,4 @@ function header() {
   )
 }
 
-export default header
+export default Header

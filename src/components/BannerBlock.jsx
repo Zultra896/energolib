@@ -19,7 +19,7 @@ function bannerBlock() {
             </div>
             <h2 className={bannerBlockStyles.title}>Книжные памятники</h2>
             <p className={bannerBlockStyles.description}>Возможность познакомиться с историческим, культурным и художественным наследием России</p>
-            <a className={bannerBlockStyles.link} href="">Подробнее</a>
+            <a className={bannerBlockStyles.link} href="#3">Подробнее</a>
         </div>
         <div className={bannerBlockStyles.bannerBlock__photo}>
             <img className={bannerBlockStyles.bannerBlock__photoBack} src={banner} alt="" />

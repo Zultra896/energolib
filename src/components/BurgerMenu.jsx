@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import styles from '../css/burgerMenu.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const ClickCatalog = () => {
+    navigate('/catalog');
+};
 
   // Функция переключения состояния меню
   const toggleMenu = () => {
@@ -25,7 +32,7 @@ const BurgerMenu = () => {
       {isOpen && ( // Меню отображается только если isOpen равно true
         <div className={styles.menu}>
           <ul className={styles.menuList}>
-            <li className={styles.menuItem}><a href="#catalog">Каталог</a></li>
+            <li className={styles.menuItem}><a href="#catalog" onClick={ClickCatalog}>Каталог</a></li>
             <li className={styles.menuItem}><a href="#about">О нас</a></li>
             <li className={styles.menuItem}><a href="#news">Новости</a></li>
             <li className={styles.menuItem}><a href="#contact">Обратная связь</a></li>
