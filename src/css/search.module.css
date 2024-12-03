@@ -10,9 +10,8 @@
     font-family: "League", sans-serif;
 }
 
-
 .search {
-    
+    position: relative; 
 }
 
 .search__container {
@@ -28,10 +27,49 @@
 }
 
 .search__inp {
+    width: 100%;
     font-size: 14px;
     font-weight: 500;
     color: #BFBFBF;
     background-color: transparent;
     border: none;
     outline: none;
+}
+
+.search__suggestions {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%; 
+    background-color: #2C3139; 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-height: 200px; 
+  
+    overflow: auto; 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+
+    z-index: 10; 
+}
+
+.search__suggestions::-webkit-scrollbar {
+    display: none; 
+  }
+
+.search__suggestionItem {
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #BFBFBF;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search__suggestionItem:hover {
+    background-color: #3E4652; 
+    color: #FFFFFF; 
 }

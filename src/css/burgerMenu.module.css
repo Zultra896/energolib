@@ -1,0 +1,83 @@
+@font-face {
+    font-family: League, sans-serif;
+    src: url(../fonts/League_Spartan.zip);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League", sans-serif;
+}
+
+.burgerMenuContainer {
+    position: relative;
+  }
+  
+  .burgerIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .line {
+    width: 100%;
+    height: 3px;
+    background-color: #BFBFBF;
+    transition: all 0.3s ease;
+  }
+  
+  .open .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .open .line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .open .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .menu {
+    position: absolute;
+    top: 50px; 
+    right: 0;
+    width: 253px;
+    padding: 20px;
+    background-color: #3A3E4A;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  
+  .menuList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuLink {
+    color: #fff;
+    text-decoration: none !important;
+  }
+  
+  .menuItem {
+    margin: 15px 0;
+  }
+  
+  .menuItem a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .menuItem a:hover {
+    color: #1787D8;
+  }
+  
