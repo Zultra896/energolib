@@ -49,10 +49,12 @@
     color: #1787D8;
     text-decoration: none;
 }
-.bannerBlock__photo {
-    width: 50%;
-    height: 470px;
-}
+.bannerBlock__photo img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
 .bannerBlock__photo img {
     width: 100%;
     height: 100%;
