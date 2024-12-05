@@ -6,6 +6,7 @@ import logoIcon from '../img/logo.svg'
 import BurgerMenu from './BurgerMenu.jsx'
 import { AuthContext } from './AuthContext.jsx'
 import avatar from '../img/avatar.jpg'
+import { Link } from 'react-router-dom'
 
 
 function Header() {
@@ -14,10 +15,10 @@ function Header() {
   return (
      <header className={headerStyles.header}>
             <div className={headerStyles.header__container}>
-            <div className={headerStyles.header__logo}>
+            <Link className={headerStyles.header__logo} to="/">
               <img src={logoIcon} alt="" />
               <p className={headerStyles.header__logoTitle}>EnergoLib</p>
-            </div>
+            </Link>
            <Search />
            <div className={headerStyles.header__items}>
            {isAuthenticated && user ? (

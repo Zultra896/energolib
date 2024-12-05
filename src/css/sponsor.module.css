@@ -1,0 +1,28 @@
+.sponsor {
+    background-color: #2c2f34;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .sponsorTitle {
+    font-size: 50px;
+    color: white;
+  }
+  
+  .sponsors {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70px;
+  }
+  
+  .sponsorCard {
+    text-align: center;
+  }
+  
+  .sponsorDescription {
+    margin-top: 25px;
+  }
+  

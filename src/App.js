@@ -5,6 +5,12 @@ import Main from './pages/Main.jsx';
 import Auth from './pages/auth.jsx';
 import Catalog from './pages/Catalog.jsx';
 // import axios from 'axios';
+import About from './pages/About.jsx'
+import NewsContainer from './pages/NewsContainer.jsx'
+import InfoNews from './pages/InfoNews.jsx'
+
+import Book from './pages/Book.jsx'
+
 
 const routes = [
   {
@@ -21,6 +27,11 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/book/:id',
+    element: <Book />,
+  }
+  ,
   {  
   path: '/',
   element: <Layout />,
@@ -29,6 +40,20 @@ const routes = [
       index: true,
       element: <Main />,
     },
+    {
+      path: 'About',
+      element: <About />,
+    },
+    {
+      path: 'NewsContainer',
+      element: <NewsContainer />,
+      children: [
+        {
+          path: 'InfoNews',
+          element: <InfoNews />,
+        }
+      ]
+    }
   ]
   }
 ]

@@ -1,0 +1,34 @@
+.container {
+  margin-top: 80px;
+  width: 100%;
+  position: relative;
+  height: 350px;
+}
+
+.sliderContainer {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+  
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .slideImage {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .slideImage img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  

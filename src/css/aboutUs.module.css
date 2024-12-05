@@ -1,0 +1,30 @@
+.containerPhoto {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    margin-top: 85px;
+  }
+  
+  .photoCard {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  
+  .photoInfo {
+    display: flex;
+    flex-direction: column;
+    padding-left: 23px;
+  }
+  
+  .name {
+    font-size: 30px;
+    color: white;
+  }
+  
+  .email {
+    font-size: 26px;
+    color: white;
+  }
+  

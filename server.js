@@ -59,6 +59,60 @@ app.post('/Auth/login', (req, res) => {
 
 
 
+
+
+
+// Эндпоинт для фильтрации книг
+app.get('/books', (req, res) => {
+  const { specialty, title } = req.query;
+
+  let sql = 'SELECT id, img_url, title, specialty FROM booklib WHERE 1=1';
+  const params = [];
+
+  if (specialty) {
+    const specialties = specialty.split(',');
+    sql += ` AND specialty IN (${specialties.map(() => '?').join(',')})`;
+    params.push(...specialties);
+  }
+
+  if (title) {
+    sql += ' AND title LIKE ?';
+    params.push(`%${title}%`);
+  }
+
+  db.query(sql, params, (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+
+    res.json(results);
+  });
+});
+
+// Эндпоинт для получения информации о конкретной книге
+app.get('/book/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.query('SELECT * FROM booklib WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ success: false, message: 'Книга не найдена' });
+    }
+
+    res.json(results[0]);
+  });
+});
+
+
+
+
+
+
   
 
 app.listen(port, () => {
