@@ -6,6 +6,7 @@ import Auth from './pages/Auth.jsx';
 import About from './pages/About.jsx'
 import NewsContainer from './pages/NewsContainer.jsx'
 import InfoNews from './pages/InfoNews.jsx'
+import Feedback from './pages/Feedback.jsx';
 
 const routes = [
   {
@@ -23,6 +24,10 @@ const routes = [
     {
       path: 'About',
       element: <About />,
+    },
+    {
+      path: 'Feedback',
+      element: <Feedback />,
     },
     {
       path: 'NewsContainer',

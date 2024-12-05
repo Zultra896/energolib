@@ -34,7 +34,7 @@ const BurgerMenu = () => {
             <Link className={styles.menuLink} to="NewsContainer">
             <li className={styles.menuItem}>Новости</li>
             </Link>
-            <Link className={styles.menuLink} to="">
+            <Link className={styles.menuLink} to="Feedback">
             <li className={styles.menuItem}>Обратная связь</li>
             </Link>
           </ul>
