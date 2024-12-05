@@ -37,7 +37,7 @@ function BannerSlider() {
         </div>
         <h2 className={bannerBlockStyles.title}>{banners[currentSlide].title}</h2>
         <p className={bannerBlockStyles.description}>{banners[currentSlide].description}</p>
-        <a className={bannerBlockStyles.link} href="#">
+        <a className={bannerBlockStyles.link} href="#1">
           Подробнее
         </a>
       </div>

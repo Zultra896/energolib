@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Функция переключения состояния меню
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,8 +26,8 @@ const BurgerMenu = () => {
       {isOpen && ( 
         <div className={styles.menu}>
           <ul className={styles.menuList}>
-            <Link className={styles.menuLink} to="">
-            <li className={styles.menuItem}>Каталог</li>
+            <Link className={styles.menuLink} to="/catalog">
+            <li className={styles.menuItem} >Каталог</li>
             </Link>
             <Link className={styles.menuLink} to="About">
             <li className={styles.menuItem}>О нас</li>

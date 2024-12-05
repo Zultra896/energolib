@@ -2,17 +2,37 @@ import { useRoutes } from 'react-router';
 import { useEffect } from'react';
 import Layout from './components/Layout.jsx';
 import Main from './pages/Main.jsx';
-import Auth from './pages/Auth.jsx';
+import Auth from './pages/auth.jsx';
+import Catalog from './pages/Catalog.jsx';
+// import axios from 'axios';
 import About from './pages/About.jsx'
 import NewsContainer from './pages/NewsContainer.jsx'
 import InfoNews from './pages/InfoNews.jsx'
 import Feedback from './pages/Feedback.jsx';
+
+import Book from './pages/Book.jsx'
+
 
 const routes = [
   {
   path: '/Auth/*',
   element: <Auth />
   },
+  {
+    path: '/catalog',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Catalog />,
+      }
+    ]
+  },
+  {
+    path: '/book/:id',
+    element: <Book />,
+  }
+  ,
   {  
   path: '/',
   element: <Layout />,
