@@ -1,26 +1,38 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Для навигации
+import axios from "axios"; // Для запросов к серверу
 import searchIcon from "../img/searchIcon.svg";
 import searchStyles from "../css/search.module.css";
 
 function Search() {
-  const [query, setQuery] = useState(""); 
-  const [isFocused, setIsFocused] = useState(false); 
-  const suggestions = [
-    "Человек-бензопила",
-    "Восхождение в тени",
-    "Добро пожаловать в класс превосходства",
-    "Код Гиас",
-    "Ходячий замок",
-    "Нурик & Данчобай",
-    "Оча Поча",
-    "Жампо мампо",
-    "Нурадил квадробер",
-  ]; 
+  const [query, setQuery] = useState(""); // Поле ввода
+  const [suggestions, setSuggestions] = useState([]); // Предложения из базы
+  const [isFocused, setIsFocused] = useState(false); // Для отображения предложений
+  const navigate = useNavigate(); // Хук для навигации
 
+  const fetchSuggestions = async () => {
+    if (query.trim() === "") {
+      setSuggestions([]);
+      return;
+    }
+    try {
+      const { data } = await axios.get("http://localhost:5000/books", {
+        params: { title: query }, // Запрос с фильтрацией по названию
+      });
+      setSuggestions(data);
+    } catch (error) {
+      console.error("Ошибка загрузки данных:", error);
+    }
+  };
 
-  const filteredSuggestions = suggestions.filter((item) =>
-    item.toLowerCase().includes(query.toLowerCase())
-  );
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+    fetchSuggestions();
+  };
+
+  const handleSuggestionClick = (bookId) => {
+    navigate(`/book/${bookId}`); // Переход на страницу книги
+  };
 
   return (
     <div className={searchStyles.search}>
@@ -30,22 +42,22 @@ function Search() {
           type="text"
           placeholder="Поиск"
           value={query}
-          onChange={(e) => setQuery(e.target.value)} 
-          onFocus={() => setIsFocused(true)} 
-          onBlur={() => setIsFocused(false)} 
+          onChange={handleInputChange} // Обновляем ввод и запрашиваем предложения
+          onFocus={() => setIsFocused(true)} // Показываем предложения
+          onBlur={() => setTimeout(() => setIsFocused(false), 200)} // Прячем предложения с задержкой
         />
         <img src={searchIcon} alt="Search Icon" />
       </div>
 
-      {isFocused && filteredSuggestions.length > 0 && (
+      {isFocused && suggestions.length > 0 && (
         <ul className={searchStyles.search__suggestions}>
-          {filteredSuggestions.map((suggestion, index) => (
+          {suggestions.map((suggestion) => (
             <li
-              key={index}
+              key={suggestion.id}
               className={searchStyles.search__suggestionItem}
-              onMouseDown={() => setQuery(suggestion)} 
+              onMouseDown={() => handleSuggestionClick(suggestion.id)} // Переход на страницу книги
             >
-              {suggestion}
+              {suggestion.title}
             </li>
           ))}
         </ul>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Catalog () {
+const Catalog = () => {
   const [books, setBooks] = useState([]);
   const [filters, setFilters] = useState({ specialties: [], title: '' });
 
@@ -34,6 +34,12 @@ function Catalog () {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      fetchBooks(); // Выполняем поиск при нажатии Enter
+    }
   };
 
   const applyFilters = () => {
@@ -74,6 +80,7 @@ function Catalog () {
             name="title"
             value={filters.title}
             onChange={handleInputChange}
+            onKeyDown={handleKeyPress} // Обработчик для клавиши Enter
           />
         </label>
         <button onClick={applyFilters}>Применить</button>
