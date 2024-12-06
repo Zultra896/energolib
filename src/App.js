@@ -9,6 +9,7 @@ import Catalog from './pages/Catalog.jsx';
 import About from './pages/About.jsx'
 import NewsContainer from './pages/NewsContainer.jsx'
 import InfoNews from './pages/InfoNews.jsx'
+import Feedback from './pages/Feedback.jsx';
 
 import Book from './pages/Book.jsx'
 
@@ -50,6 +51,10 @@ const routes = [
     {
       path: 'About',
       element: <About />,
+    },
+    {
+      path: 'Feedback',
+      element: <Feedback />,
     },
     {
       path: 'NewsContainer',

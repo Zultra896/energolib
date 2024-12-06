@@ -1,4 +1,4 @@
-import Sponsor from '../components/Sponsor';
+
 import AboutUs from '../components/AboutUs'
 import styles from '../css/mainAbout.module.css'
 
@@ -7,7 +7,7 @@ const MainAbout = () => {
   return (
     <div className={styles.mainAbout}>
       <div className={styles.container}>
-        <div className={styles.aboutTitle} id="energolib">
+        <div className={styles.aboutTitle}>
           <h1 className={styles.aboutTtl}>ЭнергоЛиб</h1>
         </div>
         <div className={styles.aboutDescription}>
@@ -17,7 +17,7 @@ const MainAbout = () => {
           </p>
         </div>
 
-        <div className={styles.aboutTitle} id="ttl2">
+        <div className={styles.aboutTitle}>
           <h1 className={styles.aboutTtl}>Наша Миссия</h1>
         </div>
         <div className={styles.aboutDescription}>
@@ -28,7 +28,7 @@ const MainAbout = () => {
           </p>
         </div>
 
-        <div className={styles.aboutTitle} id="ttl3">
+        <div className={styles.aboutTitle}>
           <h1 className={styles.aboutTtl}>Наша Команда</h1>
         </div>
         <div className={styles.aboutDescription}>
@@ -38,7 +38,6 @@ const MainAbout = () => {
           </p>
         </div>
         <AboutUs />
-        <Sponsor />
       </div>
     </div>
   );
