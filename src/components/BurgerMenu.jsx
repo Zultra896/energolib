@@ -29,13 +29,13 @@ const BurgerMenu = () => {
             <Link className={styles.menuLink} to="/catalog">
             <li className={styles.menuItem} >Каталог</li>
             </Link>
-            <Link className={styles.menuLink} to="About">
+            <Link className={styles.menuLink} to="/About">
             <li className={styles.menuItem}>О нас</li>
             </Link>
-            <Link className={styles.menuLink} to="NewsContainer">
+            <Link className={styles.menuLink} to="/NewsContainer">
             <li className={styles.menuItem}>Новости</li>
             </Link>
-            <Link className={styles.menuLink} to="Feedback">
+            <Link className={styles.menuLink} to="/Feedback">
             <li className={styles.menuItem}>Обратная связь</li>
             </Link>
           </ul>

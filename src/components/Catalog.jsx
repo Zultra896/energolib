@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import catalogStyles from '../css/catalog.module.css'
+import searchIcon from '../img/searchIcon2.svg'
 
 const Catalog = () => {
   const [books, setBooks] = useState([]);
@@ -50,20 +52,51 @@ const Catalog = () => {
     setFilters({ specialties: [], title: '' });
     fetchBooks();
   };
-
+  
   useEffect(() => {
     fetchBooks();
   }, []);
 
   return (
-    <div>
-      <h1>Каталог книг</h1>
-      <div className="filters">
-        <fieldset>
-          <legend>Специальность:</legend>
+    <section className={catalogStyles.section}>
+      <div className={catalogStyles.section__catalog}>
+      <h1 className={catalogStyles.catalogTitle}>Каталог</h1>
+        <label className={catalogStyles.catalogLabel}>
+          <img src={searchIcon} alt="" />
+          <input
+            className={catalogStyles.searchInput}
+            type="text"
+            name="title"
+            value={filters.title}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyPress} 
+            placeholder='Поиск по названию'
+          />
+        </label>
+        <div className={catalogStyles.books}>
+        {books.map((book) => (
+          <div key={book.id} className={catalogStyles.book}>
+            <img 
+            className={catalogStyles.bookImg} 
+            src={book.img_url} 
+            alt={book.title} />
+            <a className={catalogStyles.bookTitle} href={`/book/${book.id}`}>
+            {book.title}
+            </a>
+          </div>
+        ))}
+        </div>
+      </div>
+      <div className={catalogStyles.filters}>
+        <fieldset className={catalogStyles.fieldset}>
+          <label className={catalogStyles.fieldsetHead}>
+          <legend className={catalogStyles.fieldsetTitle}>Специальность:</legend>
+          <button className={catalogStyles.btn} onClick={resetFilters}>Сбросить</button>
+          </label>
           {specialtiesList.map((specialty) => (
-            <label key={specialty}>
+            <label className={catalogStyles.fieldsetLabel} key={specialty}>
               <input
+                className={catalogStyles.fieldsetInput}
                 type="checkbox"
                 value={specialty}
                 checked={filters.specialties.includes(specialty)}
@@ -73,29 +106,9 @@ const Catalog = () => {
             </label>
           ))}
         </fieldset>
-        <label>
-          Название:
-          <input
-            type="text"
-            name="title"
-            value={filters.title}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyPress} // Обработчик для клавиши Enter
-          />
-        </label>
-        <button onClick={applyFilters}>Применить</button>
-        <button onClick={resetFilters}>Сбросить</button>
+        <button className={`${catalogStyles.btn} ${catalogStyles.btnApply}`} onClick={applyFilters}>Применить</button>
       </div>
-      <div className="catalog">
-        {books.map((book) => (
-          <div key={book.id} className="book-item">
-            <img src={book.img_url} alt={book.title} />
-            <p>{book.title}</p>
-            <a href={`/book/${book.id}`}>Подробнее</a>
-          </div>
-        ))}
-      </div>
-    </div>
+    </section>
   );
 };
 
