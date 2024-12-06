@@ -1,6 +1,7 @@
 import { useRoutes } from 'react-router';
 import { useEffect } from'react';
 import Layout from './components/Layout.jsx';
+import LayoutBook from './components/Layout2.jsx';
 import Main from './pages/Main.jsx';
 import Auth from './pages/auth.jsx';
 import Catalog from './pages/Catalog.jsx';
@@ -29,7 +30,13 @@ const routes = [
   },
   {
     path: '/book/:id',
-    element: <Book />,
+    element: <LayoutBook />,
+    children: [
+      {
+        index: true,
+        element: <Book />,
+      }
+    ]
   }
   ,
   {  
