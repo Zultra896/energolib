@@ -12,12 +12,29 @@ import InfoNews from './pages/InfoNews.jsx'
 import Feedback from './pages/Feedback.jsx';
 
 import Book from './pages/Book.jsx'
+import User from './pages/user.jsx'
+
+import PrivateRoute from './components/PrivateRoute.jsx'
 
 
 const routes = [
   {
   path: '/Auth/*',
   element: <Auth />
+  },
+  {
+    path: '/user',
+    element: (
+      <PrivateRoute>
+        <LayoutBook />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <User />, // Защищённый компонент
+      },
+    ],
   },
   {
     path: '/catalog',
