@@ -44,18 +44,18 @@ const Catalog = () => {
     }
   };
 
-  const applyFilters = () => {
-    fetchBooks();
-  };
+  // const applyFilters = () => {
+  //   fetchBooks();
+  // };
 
-  const resetFilters = () => {
-    setFilters({ specialties: [], title: '' });
-    fetchBooks();
-  };
-  
   useEffect(() => {
     fetchBooks();
-  }, []);
+  }, [filters]); // Вызываем fetchBooks при изменении filters
+  
+  const resetFilters = () => {
+    setFilters({ specialties: [], title: '' });
+  };
+  
 
   return (
     <section className={catalogStyles.section}>
@@ -106,7 +106,7 @@ const Catalog = () => {
             </label>
           ))}
         </fieldset>
-        <button className={`${catalogStyles.btn} ${catalogStyles.btnApply}`} onClick={applyFilters}>Применить</button>
+        {/* <button className={`${catalogStyles.btn} ${catalogStyles.btnApply}`} onClick={applyFilters}>Применить</button> */}
       </div>
     </section>
   );
