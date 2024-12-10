@@ -1,0 +1,112 @@
+.container {
+    width: 1200px;
+    position: relative;
+}
+
+.banner {
+    width: 1200px;
+    height: 280px;
+    background-image: url(../img/image.png);
+}
+
+.block1 {
+    position: absolute;
+    top: 233px;
+    left: 15px;
+    width: 260px;
+}
+.poster {
+    width: 260px;
+    height: 364px;
+    border-radius: 12px;
+}
+.btn {
+    width: 260px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background-color: #363A40;
+    color: #BFBFBF;
+    font-size: 14px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.infoBlock {
+    width: 260px;
+    height: 170px;
+    margin-top: 15px;
+    background-color: #363A40;
+    border-radius: 12px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.infoP {
+    }
+.argument {
+    font-size: 14px;
+    color: #BFBFBF;
+}
+.value {
+    margin-top: 2px;
+    font-size: 18px;
+    color: #FFF;
+}
+.block2 {
+    position: absolute;
+    right: 0;
+    top: 310px;
+    width: 880px;
+    height: 400px;
+    background-color: #363A40;
+    padding-left: 30px;
+    border-radius: 12px;
+}
+
+.title {
+    margin-top: 25px;
+    font-size: 40px;
+    color: #BFBFBF;
+    padding: 0;
+}
+
+.line {
+    position: relative;
+    width: 820px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.lineI {
+    font-size: 24px;
+    color: #FF9800;
+    font-weight: 400;
+    padding-left: 4px;
+}
+.respP {
+    width: 146px;
+    position: absolute;
+    bottom: 1px;
+    left: 4px;
+    height: 2px;
+    background-color: #FF9800;
+    border-radius: 16px 16px 0 0;
+}
+.resp {
+    width: 820px;
+    height: 1px;
+    background-color: #BFBFBF;
+    position: absolute;
+    bottom: 0;
+    border-radius: 5px;
+}
+
+.description {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #FFF;
+
+}

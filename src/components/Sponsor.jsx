@@ -1,7 +1,7 @@
 import styles from '../css/sponsor.module.css'
 
 const sponsors = [
-  { src: 'photos/Rectangle 8.png', description: 'Kairat FC' },
+  { src: {}, description: 'Kairat FC' },
   { src: 'photos/thibault-penin-SwKf1x2_hRo-unsplash.jpg', description: 'Spotify Premium' },
   { src: 'photos/darren-halstead-B_vXFdzvw3g-unsplash.jpg', description: 'D. Trump' },
 ];

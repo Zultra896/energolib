@@ -6,6 +6,31 @@ const photos = [
     name: 'Nursultan Bakytbek',
     email: 'nursultan@bakytbek.kz',
   },
+  {
+    src: 'photos/896-8969558_meme-sticker-jerry-mouse-high-meme.png',
+    name: 'Nursultan Bakytbek',
+    email: 'nursultan@bakytbek.kz',
+  },
+  {
+    src: 'photos/896-8969558_meme-sticker-jerry-mouse-high-meme.png',
+    name: 'Nursultan Bakytbek',
+    email: 'nursultan@bakytbek.kz',
+  },
+  {
+    src: 'photos/896-8969558_meme-sticker-jerry-mouse-high-meme.png',
+    name: 'Nursultan Bakytbek',
+    email: 'nursultan@bakytbek.kz',
+  },
+  {
+    src: 'photos/896-8969558_meme-sticker-jerry-mouse-high-meme.png',
+    name: 'Nursultan Bakytbek',
+    email: 'nursultan@bakytbek.kz',
+  },
+  {
+    src: 'photos/896-8969558_meme-sticker-jerry-mouse-high-meme.png',
+    name: 'Nursultan Bakytbek',
+    email: 'nursultan@bakytbek.kz',
+  },
  
 ];
 

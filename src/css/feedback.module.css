@@ -1,0 +1,44 @@
+@font-face {
+    font-family: League, sans-serif;
+    src: url(../fonts/League_Spartan.zip);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League", sans-serif;
+}
+
+.feedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section {
+    height: max-content;
+    width: 720px;
+    background-color: #3A3E4A;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.section__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section__title {
+    color: #bfbfbf;
+}
+
+.section__description {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+b {
+    color: #526CFE;
+}
