@@ -49,6 +49,7 @@ app.post('/Auth/login', (req, res) => {
           email: user.email,
           first_name: user.first_name || 'Не указано', // Если пусто, возвращаем значение по умолчанию
           last_name: user.last_name || 'Не указано',  // Если пусто, возвращаем значение по умолчанию
+          group_name: user.group_name,
           message: 'Успешная аутентификация',
       });      
     }  else {
@@ -107,6 +108,11 @@ app.get('/book/:id', (req, res) => {
     res.json(results[0]);
   });
 });
+
+
+
+
+
 
 
 

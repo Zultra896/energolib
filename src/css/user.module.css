@@ -1,0 +1,47 @@
+.main {
+    width: 1200px;
+    color: #fff;
+    display: flex;
+}
+
+.avatarContainer {
+    position: relative;
+    width: 250px;
+    height: 250px;
+}
+.avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+}
+.avatarUpdate {
+    position: absolute;
+    bottom: 6px;
+    right: 0;
+    width: 35px;
+    height: 35px;
+}
+.avatarUpdate img {
+    width: 100%;
+    height: 100%;
+}
+.logoutButton {
+    background-color: #f44336; /* Красный цвет */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 40px;
+}
+
+.logoutButton:hover {
+    background-color: #d32f2f; /* Темный красный при наведении */
+}
