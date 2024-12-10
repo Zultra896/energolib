@@ -1,5 +1,6 @@
-.btnBanner {
-    background-color: #BFBFBF;
+/* Общий стиль для кнопок */
+.btnBanner,
+.btnBanner2 {
     border-radius: 50%;
     height: 36px;
     width: 36px;
@@ -7,15 +8,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Стили для серой кнопки */
+.btnBanner {
+    background-color: #BFBFBF;
+}
+
+.btnBanner:hover {
+    background-color: #A6A6A6; /* Темнее при наведении */
+    transform: scale(1.1); /* Увеличение */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+.btnBanner:active {
+    transform: scale(0.95); /* Сжатие при нажатии */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для белой кнопки */
 .btnBanner2 {
     background-color: #FFFFFF;
-    border-radius: 50%;
-    height: 36px;
-    width: 36px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.btnBanner2:hover {
+    background-color: #F0F0F0; /* Легкое затемнение при наведении */
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btnBanner2:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Иконки внутри кнопок */
+.btnBanner img,
+.btnBanner2 img {
+    width: 14px;
+    height: 14px;
+    transition: filter 0.3s ease; /* Плавное изменение яркости */
+}
+
+.btnBanner:hover img,
+.btnBanner2:hover img {
+    filter: brightness(1.2); /* Увеличение яркости */
 }

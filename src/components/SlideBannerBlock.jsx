@@ -2,6 +2,9 @@ import React from 'react';
 import '@splidejs/react-splide/css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import slideBannerBlockStyles from '../css/slideBannerBlock.module.css';
+import img1 from '../img/buzz.jpg';
+import img2 from '../img/mooneye.jpg';
+import img3 from '../img/redforest.jpg'
 
 function SlideBannerBlock() {
     return (
@@ -17,7 +20,7 @@ function SlideBannerBlock() {
                     <SplideSlide>
                         <div className={slideBannerBlockStyles.slide}>
                             <img
-                                src="https://initiate.alphacoders.com/image_requests/243977-final.jpg"
+                                src={img1}
                                 alt="Banner 1"
                                 className={slideBannerBlockStyles.slideImage}
                             />
@@ -27,7 +30,7 @@ function SlideBannerBlock() {
                     <SplideSlide>
                         <div className={slideBannerBlockStyles.slide}>
                             <img
-                                src="https://images.alphacoders.com/666/thumb-1920-666466.jpg"
+                                src={img2}
                                 alt="Banner 2"
                                 className={slideBannerBlockStyles.slideImage}
                             />
@@ -36,7 +39,7 @@ function SlideBannerBlock() {
                     <SplideSlide>
                         <div className={slideBannerBlockStyles.slide}>
                             <img
-                                src="https://wallpapers.com/images/hd/dc-universe-online-bat-family-illustration-3bswhsym7gikmy6f.jpg"
+                                src={img3}
                                 alt="Banner 3"
                                 className={slideBannerBlockStyles.slideImage}
                             />

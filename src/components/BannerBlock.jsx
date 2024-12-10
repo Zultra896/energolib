@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bannerBlockStyles from '../css/bannerBlock.module.css';
 import btnArrowsStyles from '../css/btnArrows.module.css';
 import banner1 from '../img/Bibliya_Piskatora.jpg';
-import banner2 from '../img/photo1694678778-701x500.jpeg'; // Добавьте другие баннеры
+import banner2 from '../img/photo1694678778-701x500.jpeg';
 import banner3 from '../img/Screenshot-2024-08-28-at-6.58.48-AM-701x500.jpg';
 import btnLeft from '../img/arrowsLeft.svg';
 import btnRight from '../img/arrowsRight.svg';
@@ -15,6 +15,14 @@ const banners = [
 
 function BannerSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % banners.length);
+    }, 4000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleNext = () => {
     setCurrentSlide((prev) => (prev + 1) % banners.length);
@@ -43,9 +51,19 @@ function BannerSlider() {
       </div>
       <div className={bannerBlockStyles.bannerBlock__photo}>
         <img
-          className={bannerBlockStyles.bannerBlock__photoBack}
-          src={banners[currentSlide].img}
-          alt={banners[currentSlide].title}
+          className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === 0 ? bannerBlockStyles.visible : ''}`}
+          src={banners[0].img}
+          alt={banners[0].title}
+        />
+        <img
+          className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === 1 ? bannerBlockStyles.visible : ''}`}
+          src={banners[1].img}
+          alt={banners[1].title}
+        />
+        <img
+          className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === 2 ? bannerBlockStyles.visible : ''}`}
+          src={banners[2].img}
+          alt={banners[2].title}
         />
       </div>
     </div>
