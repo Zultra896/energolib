@@ -10,10 +10,11 @@
     color: #FFFFFF;
     display: flex;
 }
+
 .bannerBlock__info {
     width: 50%;
     height: 470px;
-    padding:  0 0 0 60px;
+    padding:  0 60px 0 60px;
     position: relative;
 }
 
@@ -38,7 +39,6 @@
     margin-top: 50px;
     font-size: 19px;
     font-weight: 300;
-
 }
 
 .link {
@@ -49,13 +49,21 @@
     color: #1787D8;
     text-decoration: none;
 }
-.bannerBlock__photo img {
+
+.bannerBlock__photo {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+.bannerBlock__photoBack {
+    position: absolute; /* Теперь изображение будет "приклеено" к контейнеру */
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  }
-  
-.bannerBlock__photo img {
-    width: 100%;
-    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
 }

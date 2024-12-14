@@ -18,7 +18,7 @@ function Footer() {
                 </div>
                 <div className={footerStyles.footer__description}>
                   <p className={footerStyles.footer__link}>
-                  Что то на это что это типа анау мынау Данияр Дарабоз Чорный Тигр Чорный Пантера Чорный Жираф Меган Фокс Уву Фокс  ФОКС                  
+                 Онлайн библиотека для вашего удобства 
                   </p>
                 </div>
                 <div className={footerStyles.socialNetworks}>

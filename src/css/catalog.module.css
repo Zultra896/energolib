@@ -76,9 +76,8 @@
 }
 
 .filters {
-    position: relative;
     width: 405px;
-    height: 600px;
+    height: 400px;
     background-color: #3A3E4A;
     border-radius: 12px;
     padding: 15px;
@@ -113,11 +112,11 @@
     font-size: 14px;
 }
 
-.btnApply {
+/* .btnApply {
     position: absolute;
     bottom: 15px;
     right: 15px;
-}
+} */
 
 .fieldsetLabel {
     color: #BFBFBF;
