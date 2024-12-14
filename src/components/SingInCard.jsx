@@ -39,12 +39,21 @@ function SingInCard() {
             }
     
             if (data.success) {
-                login({
-                    email: data.email,
-                    first_name: data.first_name,  // Добавляем first_name
-                    last_name: data.last_name,    // Добавляем last_name
-                    group_name: data.group_name,
-                });                
+                if (data.role === 'student') {
+                    login({
+                        email: data.email,
+                        role: data.role,
+                        first_name: data.first_name,
+                        last_name: data.last_name,
+                        group_name: data.group_name,
+                    });
+                } else if (data.role === 'admin') {
+                    login({
+                        email: data.email,
+                        role: data.role,
+                        name: data.name,
+                    });
+                }
                 navigate('/'); // Переход на главную страницу
             } else {
                 alert(data.message || 'Неверный email или пароль');
@@ -93,6 +102,8 @@ function SingInCard() {
                         placeholder="Пароль"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        minLength="8"
+                        maxLength="8"
                         required
                     />
                     <button className={singInCardStyles.btn} type="submit">Войти</button>

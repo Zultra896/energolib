@@ -40,7 +40,7 @@ function PasswordResetCard () {
                     <div className={styles.rectangle}>
                     </div>
                 </div>
-                <input className={styles.inp} type="email" placeholder="Email" required />
+                <input className={styles.inp} type="email" placeholder="На данный момент это функция не работает" value={"На данный момент это функция не работает"} required />
                 <p className={styles.textCard}>
                     Пожалуйста, укажите email, который вы использовали для входа на сайт
                 </p>

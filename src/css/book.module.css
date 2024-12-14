@@ -1,6 +1,7 @@
 .container {
     width: 1200px;
     position: relative;
+    margin-bottom: 600px;
 }
 
 .banner {
@@ -30,6 +31,9 @@
     font-size: 14px;
     margin-top: 15px;
     cursor: pointer;
+}
+.btn:hover {
+    color: #FFF;
 }
 .infoBlock {
     width: 260px;

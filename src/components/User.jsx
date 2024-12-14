@@ -23,9 +23,12 @@ function User () {
                     
                 </div>
             </div>
-            <h1>{user.first_name + " " +user.last_name}</h1>
-            <p>{user.email}</p>
-            <p>{user.group_name}</p>
+            <div className={styles.info}>
+                <h1>{user.first_name + " " +user.last_name}</h1>
+                <p>{user.email}</p>
+                <p>{user.group_name}</p>
+            </div>
+            
             <button className={styles.logoutButton} onClick={handleLogout}>
                 Выйти
             </button>
