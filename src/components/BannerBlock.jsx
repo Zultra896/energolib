@@ -6,6 +6,7 @@ import banner2 from '../img/photo1694678778-701x500.jpeg';
 import banner3 from '../img/Screenshot-2024-08-28-at-6.58.48-AM-701x500.jpg';
 import btnLeft from '../img/arrowsLeft.svg';
 import btnRight from '../img/arrowsRight.svg';
+import { useLanguage } from '../components/LanguageContext'
 
 const banners = [
   { img: banner1, title: 'Книжные памятники', description: 'Историческое и художественное наследие России' },
@@ -19,7 +20,7 @@ function BannerSlider() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % banners.length);
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(intervalId);
   }, []);

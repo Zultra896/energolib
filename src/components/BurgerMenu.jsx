@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../css/burgerMenu.module.css";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../components/LanguageContext";
+
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null); // Создаем ссылку на контейнер меню
+  const { language, toggleLanguage } = useLanguage(); // Достаем язык и функцию смены языка
 
   // Функция переключения состояния меню
   const toggleMenu = () => {
@@ -26,32 +29,58 @@ const BurgerMenu = () => {
 
   return (
     <div className={styles.burgerMenuContainer} ref={menuRef}>
- 
       <div
         className={`${styles.burgerIcon} ${isOpen ? styles.open : ""}`}
-        onClick={toggleMenu} 
+        onClick={toggleMenu}
       >
         <div className={styles.line}></div>
         <div className={styles.line}></div>
         <div className={styles.line}></div>
       </div>
 
-      {isOpen && ( 
+      {isOpen && (
         <div className={styles.menu}>
           <ul className={styles.menuList}>
             <Link className={styles.menuLink} to="/catalog">
-            <li className={styles.menuItem} >Каталог</li>
+              <li className={styles.menuItem}>
+                {language === "ru" ? "Каталог" : "Каталог"}
+              </li>
             </Link>
             <Link className={styles.menuLink} to="/About">
-            <li className={styles.menuItem}>О нас</li>
+              <li className={styles.menuItem}>
+                {language === "ru" ? "О нас" : "Біз туралы"}
+              </li>
             </Link>
             <Link className={styles.menuLink} to="/NewsContainer">
-            <li className={styles.menuItem}>Новости</li>
+              <li className={styles.menuItem}>
+                {language === "ru" ? "Новости" : "Жаңалықтар"}
+              </li>
             </Link>
             <Link className={styles.menuLink} to="/Feedback">
-            <li className={styles.menuItem}>Обратная связь</li>
+              <li className={styles.menuItem}>
+                {language === "ru" ? "Обратная связь" : "Кері байланыс"}
+              </li>
             </Link>
           </ul>
+          {/* Блок переключения языков */}
+          <span className={styles.languageSwitcher}>
+            <button
+              onClick={() => toggleLanguage("ru")}
+              className={`${styles.languageButton} ${
+                language === "ru" ? styles.active : ""
+              }`}
+            >
+              РУ
+            </button>
+            <button
+              onClick={() => toggleLanguage("kz")}
+              className={`${styles.languageButton} ${
+                language === "kz" ? styles.active : ""
+              }`}
+            >
+              ҚАЗ
+            </button>
+          </span>
         </div>
       )}
     </div>

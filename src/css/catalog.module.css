@@ -103,7 +103,7 @@
 
 .btn {
     padding: 4px 14px;
-    width: 96px;
+    width: max-content;
     height: 27px;
     background-color: #434653;
     border: none;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/catalogBlock2.module.css";
+import { useLanguage } from '../components/LanguageContext';
 
 function CatalogBlock() {
     const [books, setBooks] = useState([]);
@@ -8,6 +9,7 @@ function CatalogBlock() {
     const [isLoadingBooks, setIsLoadingBooks] = useState(false);
     const [isLoadingSpecialties, setIsLoadingSpecialties] = useState(true);
     const [error, setError] = useState(null);
+    const { language } = useLanguage();
 
     // Загрузка списка специальностей
     useEffect(() => {
@@ -50,9 +52,11 @@ function CatalogBlock() {
         <div className={styles.container}>
             <section className={styles.mainBlock}>
                 <nav className={styles.catalogNav}>
-                    <p className={styles.catalogNavTitle}>Специальность</p>
+                    <p className={styles.catalogNavTitle}>
+                        {language === 'ru' ? 'Специальность' : 'Мамандық'}
+                    </p>
                     <button onClick={resetFilters} className={styles.catalogBtn}>
-                        Сбросить
+                        {language === 'ru'? 'Сбросить' : 'Қалпына келтіру'}
                     </button>
                     {isLoadingSpecialties ? (
                         <p>Загрузка специальностей...</p>

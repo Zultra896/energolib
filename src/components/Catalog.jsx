@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import catalogStyles from '../css/catalog.module.css'
 import searchIcon from '../img/searchIcon2.svg'
+import { useLanguage } from '../components/LanguageContext';
 
 const Catalog = () => {
   const [books, setBooks] = useState([]);
   const [filters, setFilters] = useState({ specialties: [], title: '' });
+  const { language } = useLanguage();
 
   const specialtiesList = ['IT', 'Радиоэлектроника', 'Энергетика']; // Предопределенные специальности
 
@@ -90,8 +92,12 @@ const Catalog = () => {
       <div className={catalogStyles.filters}>
         <fieldset className={catalogStyles.fieldset}>
           <label className={catalogStyles.fieldsetHead}>
-          <legend className={catalogStyles.fieldsetTitle}>Специальность:</legend>
-          <button className={catalogStyles.btn} onClick={resetFilters}>Сбросить</button>
+          <legend className={catalogStyles.fieldsetTitle}>
+          {language === 'ru' ? 'Специальность:' : 'Мамандық:'}
+          </legend>
+          <button className={catalogStyles.btn} onClick={resetFilters}>
+          {language === 'ru'? 'Сбросить' : 'Қалпына келтіру'}
+          </button>
           </label>
           {specialtiesList.map((specialty) => (
             <label className={catalogStyles.fieldsetLabel} key={specialty}>
