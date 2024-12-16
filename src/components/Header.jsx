@@ -28,7 +28,11 @@ function Header() {
            <div className={headerStyles.header__items}>
            {isAuthenticated && user ? (
               <div className={headerStyles.user} onClick={UserClick}>
-                  <h1 className={headerStyles.user_name}>{user.first_name + " " + user.last_name}</h1>
+                {user.role === 'admin' ? (
+                  <h1 className={headerStyles.user_name}>{user.name}</h1>
+                ) : (
+                  <h1 className={headerStyles.user_name}>{user.first_name + " " + user.last_name}</h1>     
+                )}
                   <div className={headerStyles.avatar}>
                     <img src={avatar} alt="Avatar" className={headerStyles.avatarImg} />
                   </div>

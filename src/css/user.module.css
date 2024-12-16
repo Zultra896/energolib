@@ -2,6 +2,10 @@
     width: 1200px;
     color: #fff;
     display: flex;
+    background-color: #3A3E4A;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
 }
 
 .avatarContainer {
@@ -25,11 +29,20 @@
     right: 0;
     width: 35px;
     height: 35px;
+    cursor: pointer;
 }
 .avatarUpdate img {
     width: 100%;
     height: 100%;
 }
+
+.info {
+    margin-left: 25px;
+}
+
+
+
+
 .logoutButton {
     background-color: #f44336; /* Красный цвет */
     color: white;
@@ -38,8 +51,10 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 20px;
     height: 40px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
 }
 
 .logoutButton:hover {

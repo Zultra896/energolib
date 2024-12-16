@@ -48,9 +48,15 @@ function PasswordResetCard () {
                     <div className={styles.rectangle}>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <input className={styles.inp} type="email" placeholder="Email" required />
                 <p className={styles.textCard}>                
                     {language === 'ru'? 'Пожалуйста, укажите email, который вы использовали для входа на сайт' : 'Сайтқа кіру үшін пайдаланған электрондық поштаны көрсетіңіз'}
+=======
+                <input className={styles.inp} type="email" placeholder="На данный момент это функция не работает" value={"На данный момент это функция не работает"} required />
+                <p className={styles.textCard}>
+                    Пожалуйста, укажите email, который вы использовали для входа на сайт
+>>>>>>> b6c58f4c692732eca0ebfb9ba95723f30ea4da23
                 </p>
                 <button className={styles.btn}>
                 {language === 'ru'? 'Вход' : 'Кіру'}
