@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from '../css/book.module.css';
+import { useLanguage } from '../components/LanguageContext';
 
 function Book () {
   const { id } = useParams();
   const [book, setBook] = useState(null);
+  const { language } = useLanguage(); 
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -37,15 +39,19 @@ function Book () {
       <div className={styles.block1}>
         <img className={styles.poster} src={book.img_url} alt={book.title} />
         <button className={styles.btn} onClick={BookLink}>
-          Начать читать
+          {language === 'ru' ? 'Начать читать' : 'Оқып бастау'}
         </button>
         <div className={styles.infoBlock}>
           <div className={styles.infoP}>
-            <p className={styles.argument}>Тип</p>
+            <p className={styles.argument}>
+              {language === 'ru' ? 'Тип' : 'Типі'}
+            </p>
             <p className={styles.value}>{book.type}</p>
           </div>
           <div className={styles.infoP}>
-            <p className={styles.argument}>Год</p>
+            <p className={styles.argument}>
+              {language === 'ru'? 'Год' : 'Жыл'}
+            </p>
             <p className={styles.value}>{book.year}</p>
           </div>
           <div className={styles.infoP}>
@@ -57,7 +63,9 @@ function Book () {
       <div className={styles.block2}>
         <h1 className={styles.title}>{book.title}</h1>
         <div className={styles.line}>
-          <h2 className={styles.lineI}>Информация</h2>
+          <h2 className={styles.lineI}>
+            {language === 'ru'? 'Информация' : 'Мәлімет'}
+          </h2>
           <div className={styles.resp}></div>
           <div className={styles.respP}></div>
         </div>

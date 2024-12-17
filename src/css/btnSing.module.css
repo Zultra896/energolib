@@ -13,17 +13,20 @@
 .btnSing:hover .text {
     color: #FFF;
 }
+   
+.btnSing {
+    cursor: pointer;
+}
 
 .btnSing__container {
-    cursor: pointer;
-    width: 190px;
+    width: 100px;
     height: 40px;
     background-color: #3E4652;
     border-radius: 12px;
     border: none; 
     display: flex;
     align-items: center; 
-    justify-content: space-between; 
+    justify-content: center; 
     gap: 7px;
     padding: 9px 13px;
 }

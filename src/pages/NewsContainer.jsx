@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/newsContainer.module.css";
 import bookIcon from "../img/bookIcon.svg";
+import { useLanguage } from "../components/LanguageContext";
 
 const NewsContainer = () => {
   const [news, setNews] = useState([]); // Состояние для новостей
@@ -34,11 +35,15 @@ const NewsContainer = () => {
     setCurrentPage(page);
   };
 
+  const { language } = useLanguage();
+
   return (
     <div className={styles.newsContainer}>
       <div className={styles.headerBlock}>
         <img src={bookIcon} alt="" className={styles.bookIcon} />
-        <h1 className={styles.newsTitle}>Новости</h1>
+        <h1 className={styles.newsTitle}>
+          {language === "ru"? "Новости" : "Жаңалыктар"}
+        </h1>
       </div>
       <div className={styles.newsList}>
         {currentNews.map((newsItem) => (

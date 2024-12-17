@@ -1,15 +1,25 @@
 import { useNavigate } from 'react-router-dom';
 import styles from '../css/passwordResetCard.module.css';
+import { useLanguage } from './LanguageContext';
 
-function PasswordResetCard () {
+function PasswordResetCard() {
     const navigate = useNavigate();
+    const { language } = useLanguage();
 
-    const ClickLodin = () => {
+    const handleLoginClick = () => {
         navigate('/Auth/login');
     };
-    const ClickRegister = () => {
+
+    const handleRegisterClick = () => {
         navigate('/Auth/register');
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Логика отправки email на сервер
+        console.log('Email submitted');
+    };
+
     return (
         <div className={styles.dev}>
             <h1 className={styles.title}>EnergoLib</h1>
@@ -17,41 +27,57 @@ function PasswordResetCard () {
                 <div className={styles.blockSing}>
                     <div 
                         className={styles.sing}
-                        onClick={ClickLodin}
+                        onClick={handleLoginClick}
                         style={{ cursor: 'pointer' }}
                     >
-                        <h3 className={styles.h3}>Вход</h3>
+                        <h3 className={styles.h3}>
+                            {language === 'ru' ? 'Вход' : 'Кіру'}
+                        </h3>
                     </div>
                     <div 
                         className={styles.sing}
-                        onClick={ClickRegister}
+                        onClick={handleRegisterClick}
                         style={{ cursor: 'pointer' }}
                     >
-                        <h3 className={styles.h3}>Регистрация</h3>
+                        <h3 className={styles.h3}>
+                            {language === 'ru' ? 'Регистрация' : 'Тіркелу'}
+                        </h3>
                     </div>
                     <div 
                         className={styles.sing}
                         style={{ cursor: 'pointer' }}
                     >
-                        <h3 className={styles.active}>Сброс пароля</h3>
+                        <h3 className={styles.active}>
+                            {language === 'ru' ? 'Сброс пароля' : 'Қалпына келтіру'}
+                        </h3>
                         <div className={styles.rectangleSing}></div>
                     </div>
-
-                    <div className={styles.rectangle}>
-                    </div>
+                    <div className={styles.rectangle}></div>
                 </div>
-                <input className={styles.inp} type="email" placeholder="На данный момент это функция не работает" value={"На данный момент это функция не работает"} required />
-                <p className={styles.textCard}>
-                    Пожалуйста, укажите email, который вы использовали для входа на сайт
-                </p>
-                <button className={styles.btn}>Войти</button>
+                <input 
+                    className={styles.inp} 
+                    type="email" 
+                    placeholder={
+                        language === 'ru' 
+                            ? 'Пожалуйста, укажите email, который вы использовали для входа на сайт' 
+                            : 'Сайтқа кіру үшін пайдаланған электрондық поштаны көрсетіңіз'
+                    } 
+                    required 
+                />
+                <button className={styles.btn} onClick={handleSubmit}>
+                    {language === 'ru' ? 'Отправить' : 'Жіберу'}
+                </button>
                 <p className={styles.text}>
-                    Не можете вспомнить почту?
-                    <a className={styles.link} href="#2">Подсказать</a>
+                    {language === 'ru' 
+                        ? 'Не можете вспомнить почту?' 
+                        : 'Поштаны еске түсіре алмайсыз ба?'}
+                    <a className={styles.link} href="#2">
+                        {language === 'ru' ? 'Подсказать' : 'Кеңес беру'}
+                    </a>
                 </p>
             </div>
         </div>
-    )
+    );
 }
 
 export default PasswordResetCard;

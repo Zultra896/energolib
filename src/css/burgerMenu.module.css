@@ -80,4 +80,21 @@
   .menuItem a:hover {
     color: #1787D8;
   }
-  
+
+.languageSwitcher {
+  display: flex;
+  gap: 10px;
+}
+
+.languageButton {
+  background-color: #434653;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #ffffff;
+}
+
+.languageButton:hover {
+  background-color: #595b67;
+  cursor: pointer;
+}

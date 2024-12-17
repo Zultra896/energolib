@@ -2,12 +2,15 @@ import React, { useState, useContext } from 'react';
 import singInCardStyles from '../css/singInCard.module.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
+import { useLanguage } from './LanguageContext';
 
 function SingInCard() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const { login } = useContext(AuthContext); // Получаем функцию login из контекста
+    const { language } = useLanguage(); 
+    const passwordLanguage = language === 'ru' ? 'Пороль' : 'Құпиясөз';
 
     const ClickRedister = () => {
         navigate('/Auth/register');
@@ -74,16 +77,22 @@ function SingInCard() {
                     <div 
                         className={singInCardStyles.sing} 
                         style={{ cursor: 'pointer' }}>
-                        <h3 className={singInCardStyles.active}>Вход</h3>
+                        <h3 className={singInCardStyles.active}>
+                        {language === 'ru'? 'Вход' : 'Кіру'}
+                        </h3>
                         <div className={singInCardStyles.rectangleSing}></div>
                     </div>
                     <div className={singInCardStyles.sing} style={{ cursor: 'pointer' }}
                     onClick={ClickRedister}>
-                        <h3 className={singInCardStyles.h3}>Регистрация</h3>
+                        <h3 className={singInCardStyles.h3}>
+                        {language === 'ru'? 'Регистрация' : 'Тіркелу'}
+                        </h3>
                     </div>
                     <div className={singInCardStyles.sing} style={{ cursor: 'pointer' }}
                     onClick={ClickReset}>
-                        <h3 className={singInCardStyles.h3}>Сброс пароля</h3>
+                        <h3 className={singInCardStyles.h3}>
+                        {language === 'ru'? 'Сброс пароля' : 'Қалпына келтіру'}
+                        </h3>
                     </div>
                     <div className={singInCardStyles.rectangle}></div>
                 </div>
@@ -99,18 +108,22 @@ function SingInCard() {
                     <input
                         className={singInCardStyles.inp}
                         type="password"
-                        placeholder="Пароль"
+                        placeholder={passwordLanguage}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         // minLength="8"
                         // maxLength="8"
                         required
                     />
-                    <button className={singInCardStyles.btn} type="submit">Войти</button>
+                    <button className={singInCardStyles.btn} type="submit">
+                    {language === 'ru'? 'Вход' : 'Кіру'}
+                    </button>
                 </form>
                 <p className={singInCardStyles.text}>
-                    Вы забыли пароль? 
-                    <a className={singInCardStyles.link} href="#2">Восстановить</a>
+                    {language === 'ru'? 'Вы забыли пароль? ' : 'Сіз парольді ұмытып қалдыңыз ба?'}
+                    <a className={singInCardStyles.link} href="#2">
+                        {language === 'ru'? 'Восстановить' : 'Қалпына келтіру'}
+                    </a>
                 </p>
             </div>
         </div>
