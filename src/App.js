@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router';
 import { useEffect } from'react';
 import Layout from './components/Layout.jsx';
-import LayoutBook from './components/Layout2.jsx';
+import Layout2 from './components/Layout2.jsx';
 import Main from './pages/Main.jsx';
 import Auth from './pages/auth.jsx';
 import Catalog from './pages/Catalog.jsx';
@@ -12,9 +12,12 @@ import InfoNews from './pages/InfoNews.jsx'
 import Feedback from './pages/Feedback.jsx';
 
 import Book from './pages/Book.jsx'
+
 import User from './pages/user.jsx'
+import Admin from './pages/admin.jsx'
 
 import PrivateRoute from './components/PrivateRoute.jsx'
+import PrivateAdminRoute from './components/PrivateAdminRoute.jsx';
 
 
 const routes = [
@@ -26,7 +29,7 @@ const routes = [
     path: '/user',
     element: (
       <PrivateRoute>
-        <LayoutBook />
+        <Layout2 />
       </PrivateRoute>
     ),
     children: [
@@ -35,6 +38,14 @@ const routes = [
         element: <User />, // Защищённый компонент
       },
     ],
+  },
+  {
+    path: '/admin',
+    element: (
+      <PrivateAdminRoute>
+        <Admin /> {/* Компонент админки */}
+      </PrivateAdminRoute>
+    ),
   },
   {
     path: '/catalog',
@@ -48,7 +59,7 @@ const routes = [
   },
   {
     path: '/book/:id',
-    element: <LayoutBook />,
+    element: <Layout2 />,
     children: [
       {
         index: true,
@@ -76,13 +87,11 @@ const routes = [
     {
       path: 'NewsContainer',
       element: <NewsContainer />,
-      children: [
-        {
-          path: 'InfoNews',
-          element: <InfoNews />,
-        }
-      ]
-    }
+    },
+    {
+      path: '/InfoNews/:id',
+      element: <InfoNews/>,
+    },
   ]
   }
 ]

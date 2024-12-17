@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../css/newsContainer.module.css";
 import bookIcon from "../img/bookIcon.svg";
 import { useLanguage } from "../components/LanguageContext";
 
 const NewsContainer = () => {
+  const [news, setNews] = useState([]); // Состояние для новостей
+  const [currentPage, setCurrentPage] = useState(1); // Состояние для текущей страницы
+  const newsPerPage = 4; // Количество новостей на странице
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch('http://localhost:5000/news') // Адрес вашего API
+      .then((response) => response.json())
+      .then((data) => {
+        setNews(data); // Сохраняем новости в состоянии
+      })
+      .catch((error) => {
+        console.error('Ошибка при получении новостей:', error);
+      });
+  }, []);
+
+  const handleNewsClick = (id) => {
+    navigate(`/NewsContainer/InfoNews/${id}`);
+  };
+
+  // Вычисляем индексы новостей для текущей страницы
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+
+  // Обработчик клика по кнопке страницы
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
 
   const { language } = useLanguage();
 
@@ -16,26 +46,52 @@ const NewsContainer = () => {
         </h1>
       </div>
       <div className={styles.newsList}>
-        {[...Array(5)].map((_, index) => (
-          <div key={index} className={styles.newsContent}>
-            YYYY-MM-DD
+        {currentNews.map((newsItem) => (
+          <div
+            key={newsItem.id}
+            className={styles.newsContent}
+            onClick={() => handleNewsClick(newsItem.id)}
+          >
+            <h2>{newsItem.title}</h2>
+            <p>{newsItem.text}</p>
+            <p>{new Date(newsItem.date).toLocaleString('ru-RU', {
+              day: '2-digit',
+              month: '2-digit',
+              year: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            }).replace(',', '')}</p>
           </div>
         ))}
       </div>
-      <div className={styles.pageList}>
-        <button className={styles.pageBtn} disabled>
-          &lt;
-        </button>
-        {[...Array(6)].map((_, index) => (
+      {news.length > newsPerPage && (
+        <div className={styles.pageList}>
           <button
-            key={index}
-            className={`${styles.pageBtn} ${index === 0 ? styles.active : ""}`}
+            className={styles.pageBtn}
+            disabled={currentPage === 1}
+            onClick={() => handlePageClick(currentPage - 1)}
           >
-            {index + 1}
+            &lt;
           </button>
-        ))}
-        <button className={styles.pageBtn}>&gt;</button>
-      </div>
+          {[...Array(Math.ceil(news.length / newsPerPage))].map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.pageBtn} ${currentPage === index + 1 ? styles.active : ""}`}
+              onClick={() => handlePageClick(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className={styles.pageBtn}
+            disabled={currentPage === Math.ceil(news.length / newsPerPage)}
+            onClick={() => handlePageClick(currentPage + 1)}
+          >
+            &gt;
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -172,6 +172,44 @@ app.get('/book/:id', (req, res) => {
 
 
 
+// Эндпоинт для получения новостей
+app.get('/news', (req, res) => {
+  db.query('SELECT id, title, text, date, author_id FROM news ORDER BY date DESC', (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+
+    res.json(results); // Отправляем новости на клиент
+  });
+});
+
+
+// Эндпоинт для получения новости по ID
+app.get('/news/:id', (req, res) => {
+  const { id } = req.params;
+
+  // Запрос к базе данных для получения новости по ID
+  db.query('SELECT * FROM news WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса к базе данных:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ success: false, message: 'Новость не найдена' });
+    }
+
+    res.json(results[0]); // Отправляем первую (и единственную) новость
+  });
+});
+
+
+
+
+
+
+
 
 
 

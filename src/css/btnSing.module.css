@@ -10,6 +10,10 @@
     font-family: "League", sans-serif;
 }
 
+.btnSing:hover .text {
+    color: #FFF;
+}
+   
 .btnSing {
     cursor: pointer;
 }
@@ -31,4 +35,5 @@
     color: #bfbfbf;
     font-size: 14px;
     font-weight: 700;
+    transition: color 0.25s ease;
 }
