@@ -2,10 +2,11 @@ import { useRoutes } from 'react-router';
 import { useEffect } from'react';
 import Layout from './components/Layout.jsx';
 import Layout2 from './components/Layout2.jsx';
+import Layout3 from './components/Layout3.jsx';
+
 import Main from './pages/Main.jsx';
 import Auth from './pages/auth.jsx';
 import Catalog from './pages/Catalog.jsx';
-// import axios from 'axios';
 import About from './pages/About.jsx'
 import NewsContainer from './pages/NewsContainer.jsx'
 import InfoNews from './pages/InfoNews.jsx'
@@ -66,8 +67,27 @@ const routes = [
         element: <Book />,
       }
     ]
-  }
-  ,
+  },
+  {
+    path: 'Feedback',
+    element: <Layout3 />,
+    children: [
+      {
+        index: true,
+        element: <Feedback />,
+      }
+    ]
+  },
+  {
+    path: '/InfoNews/:id',
+    element: <Layout2 />,
+    children: [
+      {
+        index: true,
+        element: <InfoNews />,
+      }
+    ]
+  } ,
   {  
   path: '/',
   element: <Layout />,
@@ -81,16 +101,8 @@ const routes = [
       element: <About />,
     },
     {
-      path: 'Feedback',
-      element: <Feedback />,
-    },
-    {
       path: 'NewsContainer',
       element: <NewsContainer />,
-    },
-    {
-      path: '/InfoNews/:id',
-      element: <InfoNews/>,
     },
   ]
   }
