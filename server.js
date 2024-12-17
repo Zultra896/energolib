@@ -168,13 +168,24 @@ app.get('/book/:id', (req, res) => {
   });
 });
 
+app.delete('/books/:id', (req, res) => {
+  const { id } = req.params;
+  db.query('DELETE FROM booklib WHERE id = ?', [id], (err, result) => {
+      if (err) {
+          console.error('Ошибка удаления книги:', err);
+          return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+      }
+      res.json({ success: true, message: 'Книга успешно удалена' });
+  });
+});
+
 
 
 
 
 // Эндпоинт для получения новостей
 app.get('/news', (req, res) => {
-  db.query('SELECT id, title, text, date, author_id FROM news ORDER BY date DESC', (err, results) => {
+  db.query('SELECT id, title, text, date, author_name FROM news ORDER BY date DESC', (err, results) => {
     if (err) {
       console.error('Ошибка запроса:', err);
       return res.status(500).json({ success: false, message: 'Ошибка сервера' });
@@ -204,6 +215,16 @@ app.get('/news/:id', (req, res) => {
   });
 });
 
+app.delete('/news/:id', (req, res) => {
+  const { id } = req.params;
+  db.query('DELETE FROM news WHERE id = ?', [id], (err, result) => {
+      if (err) {
+          console.error('Ошибка удаления новости:', err);
+          return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+      }
+      res.json({ success: true, message: 'Новость успешно удалена' });
+  });
+});
 
 
 

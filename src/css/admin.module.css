@@ -2,3 +2,25 @@
     width: 1200px;
     color: #FFF;
 }
+
+.item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item p {
+    margin: 5px 0;
+}
+
+.item .image {
+    max-width: 100px;
+    margin: 10px 0;
+}
+
+button {
+    margin: 5px;
+}
