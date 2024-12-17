@@ -62,6 +62,7 @@ const NewsContainer = () => {
               minute: '2-digit',
               hour12: false,
             }).replace(',', '')}</p>
+            <p>{newsItem.author_name}</p>
           </div>
         ))}
       </div>
