@@ -60,3 +60,21 @@
 .logoutButton:hover {
     background-color: #d32f2f; /* Темный красный при наведении */
 }
+
+.adminButton {
+    background-color: #3636f4; /* Красный цвет */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 40px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.adminButton:hover {
+    background-color: #2f34d3; /* Темный красный при наведении */
+}

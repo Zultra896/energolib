@@ -2,14 +2,20 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../components/AuthContext';
 import styles from '../css/user.module.css'
 import avatar1 from '../img/user.png'
-import avatar2 from '../img/avatar.jpg'
 import img from '../img/update.png'
+import { useNavigate } from 'react-router-dom';
 function User () {
     const { user, logout } = useContext(AuthContext); // Получаем данные пользователя из контекста
+
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         logout(); // Вызываем функцию logout для выхода
     };
+
+    const ClickAdmin = () => {
+        navigate('/admin');
+    }
 
     return (
         <div className={styles.main}>
@@ -28,6 +34,14 @@ function User () {
                 <p>{user.email}</p>
                 <p>{user.group_name}</p>
             </div>
+
+            {user.role === 'admin' &&
+                <button className={styles.adminButton} onClick={ClickAdmin}>
+                    Админка
+                </button>
+            }
+
+            
             
             <button className={styles.logoutButton} onClick={handleLogout}>
                 Выйти

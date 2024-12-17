@@ -10,11 +10,12 @@
     font-family: "League", sans-serif;
 }
 
-.btnSing {
-
+.btnSing:hover .text {
+    color: #FFF;
 }
 
 .btnSing__container {
+    cursor: pointer;
     width: 190px;
     height: 40px;
     background-color: #3E4652;
@@ -31,4 +32,5 @@
     color: #bfbfbf;
     font-size: 14px;
     font-weight: 700;
+    transition: color 0.25s ease;
 }
