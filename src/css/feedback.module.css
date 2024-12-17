@@ -11,9 +11,11 @@
 }
 
 .feedback {
+    flex: 1; /* Занимает оставшуюся высоту в .app__content */
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%; /* Чтобы занять всю ширину родителя */
 }
 
 .section {

@@ -22,7 +22,7 @@ const NewsContainer = () => {
   }, []);
 
   const handleNewsClick = (id) => {
-    navigate(`/NewsContainer/InfoNews/${id}`);
+    navigate(`/InfoNews/${id}`);
   };
 
   // Вычисляем индексы новостей для текущей страницы
