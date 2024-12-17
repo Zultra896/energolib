@@ -7,7 +7,7 @@ import { useLanguage } from "../components/LanguageContext";
 const NewsContainer = () => {
   const [news, setNews] = useState([]); // Состояние для новостей
   const [currentPage, setCurrentPage] = useState(1); // Состояние для текущей страницы
-  const newsPerPage = 4; // Количество новостей на странице
+  const newsPerPage = 5; // Количество новостей на странице
   const navigate = useNavigate();
 
   useEffect(() => {
