@@ -30,7 +30,13 @@ function User () {
                 </div>
             </div>
             <div className={styles.info}>
-                <h1>{user.first_name + " " +user.last_name}</h1>
+                {user.role === 'admin' ? (
+                    <h1>Админ: {user.name || 'Администратор'}</h1>
+                ) : (
+                    <h1>
+                        {(user.first_name || '') + " " + (user.last_name || '')}
+                    </h1>
+                )}
                 <p>{user.email}</p>
                 <p>{user.group_name}</p>
             </div>
