@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from './AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import styles from '../css/createNews.module.css'
 
 function CreateNews() {
   const { user } = useContext(AuthContext);
@@ -52,31 +53,47 @@ function CreateNews() {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <div>
-        <label htmlFor="title">Заголовок</label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          autoComplete="off" // Отключаем автозаполнение
-        />
-      </div>
-      <div>
-        <label htmlFor="text">Текст новости</label>
-        <textarea
-          id="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-          autoComplete="off" // Отключаем автозаполнение
-        />
-      </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <button type="submit">Создать новость</button>
-    </form>
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <button className={styles.logoutButton} onClick={() => navigate("/admin")}>
+            Назад
+        </button>
+
+        <form onSubmit={handleSubmit} autoComplete="off" 
+        className={styles.form}>
+           <h2>Создание новость</h2>
+        
+            <label htmlFor="title">Заголовок
+            <input
+              id="title"
+              type="text"
+              value={title}
+              className={styles["input-field"]}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              autoComplete="off" // Отключаем автозаполнение
+            />
+            </label>
+            
+          
+        
+            <label htmlFor="text">Текст новости
+            <textarea
+              id="text"
+              value={text}
+              className={styles["textarea-field"]}
+              onChange={(e) => setText(e.target.value)}
+              required
+              autoComplete="off" // Отключаем автозаполнение
+            />
+            </label>
+            
+          
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <button type="submit" className={styles.button}>Создать новость</button>
+        </form>
+      </div>      
+    </div>
   );
 }
 

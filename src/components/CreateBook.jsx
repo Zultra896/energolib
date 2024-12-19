@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import styles from "../css/createBook.module.css";
 
 function CreateBook() {
     const navigate = useNavigate();
@@ -75,120 +76,137 @@ function CreateBook() {
     };
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            autoComplete="off"
-            style={{ maxWidth: "500px", margin: "0 auto", display: "flex", flexDirection: "column" }}
-        >
-            <h2>Создание книги</h2>
-
-            <label>
-                Название:
-                <input
-                    type="text"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
-
-            <label>
-                Тип:
-                <select
-                    name="type"
-                    value={formData.type}
-                    onChange={handleChange}
-                    required
+        <div className={styles.container}>
+            <div className={styles.main}>
+                <button 
+                    className={styles.logoutButton}
+                    onClick={() => navigate("/admin")}>
+                    Назад
+                </button>
+                <form
+                    onSubmit={handleSubmit}
+                    autoComplete="off"
+                    className={styles.form}
                 >
-                    {types.map((type) => (
-                        <option key={type} value={type}>
-                            {type}
-                        </option>
-                    ))}
-                </select>
-            </label>
+                    <h2>Создание книги</h2>
 
-            <label>
-                Год:
-                <select
-                    name="year"
-                    value={formData.year}
-                    onChange={handleChange}
-                    required
-                >
-                    {years.map((year) => (
-                        <option key={year} value={year}>
-                            {year}
-                        </option>
-                    ))}
-                </select>
-            </label>
+                    <label>
+                        Название:
+                        <input
+                            type="text"
+                            name="title"
+                            value={formData.title}
+                            onChange={handleChange}
+                            className={styles["input-field"]}
+                            required
+                        />
+                    </label>
 
-            <label>
-                Автор:
-                <input
-                    type="text"
-                    name="author"
-                    value={formData.author}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
+                    <label>
+                        Тип:
+                        <select
+                            name="type"
+                            value={formData.type}
+                            onChange={handleChange}
+                            className={styles["select-field"]}
+                            required
+                        >
+                            {types.map((type) => (
+                                <option key={type} value={type}>
+                                    {type}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
 
-            <label>
-                Ссылка на изображение (img_url):
-                <input
-                    type="url"
-                    name="img_url"
-                    value={formData.img_url}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
+                    <label>
+                        Год:
+                        <select
+                            name="year"
+                            value={formData.year}
+                            onChange={handleChange}
+                            className={styles["select-field"]}
+                            required
+                        >
+                            {years.map((year) => (
+                                <option key={year} value={year}>
+                                    {year}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
 
-            <label>
-                Описание:
-                <textarea
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    rows="4"
-                    required
-                />
-            </label>
+                    <label>
+                        Автор:
+                        <input
+                            type="text"
+                            name="author"
+                            value={formData.author}
+                            onChange={handleChange}
+                            className={styles["input-field"]}
+                            required
+                        />
+                    </label>
 
-            <label>
-                Ссылка (Google Drive):
-                <input
-                    type="url"
-                    name="link"
-                    value={formData.link}
-                    onChange={handleChange}
-                    required
-                />
-            </label>
+                    <label>
+                        Ссылка на изображение:
+                        <input
+                            type="url"
+                            name="img_url"
+                            value={formData.img_url}
+                            onChange={handleChange}
+                            className={styles["input-field"]}
+                            required
+                        />
+                    </label>
 
-            <label>
-                Специальность:
-                <select
-                    name="specialty"
-                    value={formData.specialty}
-                    onChange={handleChange}
-                    required
-                >
-                    {specialties.map((specialty) => (
-                        <option key={specialty} value={specialty}>
-                            {specialty}
-                        </option>
-                    ))}
-                </select>
-            </label>
+                    <label>
+                        Описание:
+                        <textarea
+                            name="description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            className={styles["textarea-field"]}
+                            rows="4"
+                            required
+                        />
+                    </label>
 
-            <button type="submit" style={{ marginTop: "20px" }}>
-                Создать книгу
-            </button>
-        </form>
+                    <label>
+                        Ссылка (Google Drive):
+                        <input
+                            type="url"
+                            name="link"
+                            value={formData.link}
+                            onChange={handleChange}
+                            className={styles["input-field"]}
+                            required
+                        />
+                    </label>
+
+                    <label>
+                        Специальность:
+                        <select
+                            name="specialty"
+                            value={formData.specialty}
+                            onChange={handleChange}
+                            className={styles["select-field"]}
+                            required
+                        >
+                            {specialties.map((specialty) => (
+                                <option key={specialty} value={specialty}>
+                                    {specialty}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <button type="submit" className={styles.button}>
+                        Создать книгу
+                    </button>
+                </form>
+            </div>
+        </div>
     );
 }
 
