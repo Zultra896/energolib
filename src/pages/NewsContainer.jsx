@@ -53,7 +53,7 @@ const NewsContainer = () => {
             onClick={() => handleNewsClick(newsItem.id)}
           >
             <h2>{newsItem.title}</h2>
-            <p>{newsItem.text}</p>
+            <div className={styles.newsBlock}>
             <p>{new Date(newsItem.date).toLocaleString('ru-RU', {
               day: '2-digit',
               month: '2-digit',
@@ -61,8 +61,10 @@ const NewsContainer = () => {
               hour: '2-digit',
               minute: '2-digit',
               hour12: false,
-            }).replace(',', '')}</p>
-            <p>{newsItem.author_name}</p>
+            }).replace(',', '')}
+            </p>
+            <p className={styles.author}>{newsItem.author_name}</p>
+            </div>
           </div>
         ))}
       </div>

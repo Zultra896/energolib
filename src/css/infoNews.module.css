@@ -1,48 +1,62 @@
-.mainSection {
+@font-face {
+    font-family: League, sans-serif;
+    src: url(../fonts/League_Spartan.zip);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League", sans-serif;
+}
+
+
+.container {
     width: 720px;
-    background-color: #3A3E4A;
-    height: 960px;
-
+    height: max-content;
+    background-color: #3a3e4a;
+    border-radius: 8px;
+    padding: 15px;
 }
 
-.secondChildSection {
-    width: 636px;
-    height: 900px;
-    background-color: #24262C;
-}
-
-.usernameBlock {
+.containerHead {
     display: flex;
-    padding-top: 34px;
-
+    justify-content: space-between;
+    align-items: center;
 }
 
-.userName {
-    color: #BFBFBF;
-    padding-left: 15px;
-    font-size: 16px;
-
-
+.containerAuthor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.contentBlock {
-    padding-top: 34px;
-    
+.authorIcon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #f9f9f9;
 }
 
-.titleClass {
-    width: 540px;
-    height: 30px;
-    font-size: 44px;
-
-    color: #BFBFBF;
-
+.author {
+    color: #ffffff;
+    font-weight: 500;
 }
 
-.contentClass {
-    width: 530px;
-    height: 300px;
-    color: #BFBFBF;
-    font-size: 18px;
-    padding-top: 34px;
+.content {
+    width: 100%;
+    height: max-content;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    color: #bfbfbf;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.newDescription {}
+
+.newsDate {
+    text-align: end;
 }
