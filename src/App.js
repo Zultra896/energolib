@@ -17,6 +17,9 @@ import Book from './pages/Book.jsx'
 import User from './pages/user.jsx'
 import Admin from './pages/admin.jsx'
 
+import CreateNews from './components/CreateNews.jsx';
+import CreateBook from './components/CreateBook.jsx';
+
 import PrivateRoute from './components/PrivateRoute.jsx'
 import PrivateAdminRoute from './components/PrivateAdminRoute.jsx';
 
@@ -45,6 +48,22 @@ const routes = [
     element: (
       <PrivateAdminRoute>
         <Admin /> {/* Компонент админки */}
+      </PrivateAdminRoute>
+    ),
+  },
+  {
+    path: '/admin/news',
+    element: (
+      <PrivateAdminRoute>
+        <CreateNews />
+      </PrivateAdminRoute>
+    ),
+  },
+  {
+    path: '/admin/book',
+    element: (
+      <PrivateAdminRoute>
+        <CreateBook />
       </PrivateAdminRoute>
     ),
   },

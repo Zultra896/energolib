@@ -1,26 +1,181 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 .main {
     width: 1200px;
     color: #FFF;
+    background-color: #3A3E4A;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.btn {
+    background-color: #3636f4;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    color: #FFF;
+    cursor: pointer;
+    padding: 5px 10px;
+} 
+.btn:hover {
+    background-color: #2f34d3;
+}
+
+.btnBlock {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+
+.itemNews {
+    height: 50px;
+    border: none;
+    margin: 10px 0;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 8px;
+    background-color: #2d2d3a;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+} 
+
+.itemNews p {
+    flex: 1;
 }
 
 .item {
-    border: 1px solid #ddd;
-    padding: 10px;
+    height: 140px;
+    border: none;
     margin: 10px 0;
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
+    border-radius: 8px;
+    background-color: #2d2d3a;
+    display: flex;
+    align-items: center;
 }
 
 .item p {
-    margin: 5px 0;
+    flex: 1;
 }
 
 .item .image {
-    max-width: 100px;
+    max-height: 140px;
+    border-radius: 8px 0 0 8px;
+    margin-right: 20px;
+}
+
+
+
+.btnDelnews {
+    background-color: #f44336;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: #FFF;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btnDelnews:hover {
+    background-color: #d32f2f;
+}
+
+
+.btnDel {
+    background-color: #f44336;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: #FFF;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.btnDel:hover {
+    background-color: #d32f2f;
+}
+
+
+
+
+
+
+
+.h {
     margin: 10px 0;
 }
 
-button {
-    margin: 5px;
+
+
+
+
+
+
+
+
+
+.logoutButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
 }
+
+.logoutButton:hover {
+    background-color: #d32f2f;
+}
+
+
+
+.pageList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .pageBtn {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3e3e4f;
+    color: #bfbfbf;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .pageBtn.active {
+    background-color: #444456;
+    color: #bfbfbf;
+  }
+  
+  .pageBtn:hover:not(.active):not(:disabled) {
+    background-color: #444456;
+    color: #bfbfbf;
+  }
+  
+  .pageBtn:disabled {
+    background-color: #3e3e4f;
+    color: #666666;
+    cursor: not-allowed;
+  }

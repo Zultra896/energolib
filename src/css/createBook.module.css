@@ -1,0 +1,72 @@
+.container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    width: 340px;
+    padding: 10px 20px;
+    background-color: #3A3E4A;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #FFF;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Метки выровнены по левому краю */
+    width: 100%; /* Поля занимают всю ширину контейнера */
+    margin-bottom: 10px; /* Отступ между полями */
+}
+
+.input-field,
+.select-field,
+.textarea-field {
+    width: 300px; /* Ширина для всех полей */
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.textarea-field {
+    height: 150px; /* Высота для textarea */
+    resize: none; /* Запретить изменение размера */
+}
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+
+.logoutButton {
+    background-color: #f44336; /* Красный цвет */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.logoutButton:hover {
+    background-color: #d32f2f; /* Темный красный при наведении */
+}

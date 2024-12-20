@@ -8,6 +8,10 @@ function Admin() {
     const [books, setBooks] = useState([]);
     const [news, setNews] = useState([]);
     const [activeTab, setActiveTab] = useState(''); // 'books' или 'news'
+    const [currentNewsPage, setCurrentNewsPage] = useState(1); // Текущая страница для новостей
+    const [currentBooksPage, setCurrentBooksPage] = useState(1); // Текущая страница для книг
+    const newsPerPage = 6; // Количество новостей на странице
+    const booksPerPage = 4; // Количество книг на странице
 
     // Функции для загрузки данных
     const fetchBooks = async () => {
@@ -50,46 +54,136 @@ function Admin() {
     // Обработчик для переключения вкладок
     const handleTabChange = (tab) => {
         setActiveTab(tab);
+        setCurrentNewsPage(1); // Сбрасываем страницу новостей
+        setCurrentBooksPage(1); // Сбрасываем страницу книг
         if (tab === 'books') fetchBooks();
         if (tab === 'news') fetchNews();
     };
 
+    // Пагинация новостей
+    const indexOfLastNews = currentNewsPage * newsPerPage;
+    const indexOfFirstNews = indexOfLastNews - newsPerPage;
+    const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+
+    // Пагинация книг
+    const indexOfLastBook = currentBooksPage * booksPerPage;
+    const indexOfFirstBook = indexOfLastBook - booksPerPage;
+    const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
+
+    const handleNewsPageClick = (page) => {
+        setCurrentNewsPage(page);
+    };
+
+    const handleBooksPageClick = (page) => {
+        setCurrentBooksPage(page);
+    };
+
     return (
-        <div className={styles.main}>
-            <h1>Административная панель</h1>
-            <p>Здесь вы можете управлять содержимым сайта</p>
-            <div>
-                <button onClick={() => handleTabChange('news')}>Новости</button>
-                <button onClick={() => handleTabChange('books')}>Книги</button>
-                <button onClick={() => navigate('/admin/news')}>Создать новость</button>
-                <button onClick={() => navigate('/admin/book')}>Создать книгу</button>
-            </div>
-            <div>
-                {activeTab === 'news' && (
-                    <div>
-                        <h2>Список новостей</h2>
-                        {news.map((item) => (
-                            <div key={item.id} className={styles.item}>
-                                <p><strong>{item.title}</strong></p>
-                                <p>{item.text}</p>
-                                <button onClick={() => deleteNews(item.id)}>Удалить</button>
-                            </div>
-                        ))}
+        <div className={styles.container}>
+            <div className={styles.main}>
+                <button onClick={() => navigate("/user")} className={styles.logoutButton}>
+                    Выйти
+                </button>
+                <h1 className={styles.h}>Административная панель</h1>
+                <div>
+                    <div className={styles.btnBlock}>
+                        <button className={styles.btn} onClick={() => handleTabChange('news')}>Новости</button>
+                        <button className={styles.btn} onClick={() => navigate('/admin/news')}>Создать новость</button>
                     </div>
-                )}
-                {activeTab === 'books' && (
-                    <div>
-                        <h2>Список книг</h2>
-                        {books.map((book) => (
-                            <div key={book.id} className={styles.item}>
-                                <p><strong>{book.title}</strong></p>
-                                <img src={book.img_url} alt={book.title} className={styles.image} />
-                                <p>Специальность: {book.specialty}</p>
-                                <button onClick={() => deleteBook(book.id)}>Удалить</button>
-                            </div>
-                        ))}
+                    <div className={styles.btnBlock}>
+                        <button className={styles.btn} onClick={() => handleTabChange('books')}>Книги</button>
+                        <button className={styles.btn} onClick={() => navigate('/admin/book')}>Создать книгу</button>
                     </div>
-                )}
+                </div>
+                <div>
+                    {activeTab === 'news' && (
+                        <div>
+                            <h2 className={styles.h}>Список новостей</h2>
+                            {currentNews.map((item) => (
+                                <div key={item.id} className={styles.itemNews}>
+                                    <p>{item.title}</p>
+                                    <p>{new Date(item.date).toLocaleString('ru-RU', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: '2-digit',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: false,
+                                    }).replace(',', '')}</p>
+                                    <p>{item.author_name}</p>
+                                    <button className={styles.btnDelnews} onClick={() => deleteNews(item.id)}>Удалить</button>
+                                </div>
+                            ))}
+                            {news.length > newsPerPage && (
+                                <div className={styles.pageList}>
+                                    <button
+                                        className={styles.pageBtn}
+                                        disabled={currentNewsPage === 1}
+                                        onClick={() => handleNewsPageClick(currentNewsPage - 1)}
+                                    >
+                                        &lt;
+                                    </button>
+                                    {[...Array(Math.ceil(news.length / newsPerPage))].map((_, index) => (
+                                        <button
+                                            key={index}
+                                            className={`${styles.pageBtn} ${currentNewsPage === index + 1 ? styles.active : ''}`}
+                                            onClick={() => handleNewsPageClick(index + 1)}
+                                        >
+                                            {index + 1}
+                                        </button>
+                                    ))}
+                                    <button
+                                        className={styles.pageBtn}
+                                        disabled={currentNewsPage === Math.ceil(news.length / newsPerPage)}
+                                        onClick={() => handleNewsPageClick(currentNewsPage + 1)}
+                                    >
+                                        &gt;
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                    {activeTab === 'books' && (
+                        <div>
+                            <h2>Список книг</h2>
+                            {currentBooks.map((book) => (
+                                <div key={book.id} className={styles.item}>
+                                    <img src={book.img_url} alt={book.title} className={styles.image} />
+                                    <p>{book.title}</p>
+                                    <p>Специальность: {book.specialty}</p>
+                                    <button className={styles.btnDel} onClick={() => deleteBook(book.id)}>Удалить</button>
+                                </div>
+                            ))}
+                            {books.length > booksPerPage && (
+                                <div className={styles.pageList}>
+                                    <button
+                                        className={styles.pageBtn}
+                                        disabled={currentBooksPage === 1}
+                                        onClick={() => handleBooksPageClick(currentBooksPage - 1)}
+                                    >
+                                        &lt;
+                                    </button>
+                                    {[...Array(Math.ceil(books.length / booksPerPage))].map((_, index) => (
+                                        <button
+                                            key={index}
+                                            className={`${styles.pageBtn} ${currentBooksPage === index + 1 ? styles.active : ''}`}
+                                            onClick={() => handleBooksPageClick(index + 1)}
+                                        >
+                                            {index + 1}
+                                        </button>
+                                    ))}
+                                    <button
+                                        className={styles.pageBtn}
+                                        disabled={currentBooksPage === Math.ceil(books.length / booksPerPage)}
+                                        onClick={() => handleBooksPageClick(currentBooksPage + 1)}
+                                    >
+                                        &gt;
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

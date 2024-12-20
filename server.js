@@ -181,6 +181,55 @@ app.delete('/books/:id', (req, res) => {
 
 
 
+// Эндпоинт для создания новой книги
+app.post('/books', (req, res) => {
+  const { title, type, year, author, description, link, specialty, img_url } = req.body;
+
+  // Проверяем, что все обязательные поля заполнены
+  if (!title || !type || !year || !author || !specialty || !img_url) {
+    return res.status(400).json({
+      success: false,
+      message: 'Пожалуйста, заполните все обязательные поля',
+    });
+  }
+
+  // Формируем SQL-запрос для добавления книги
+  const query = `
+    INSERT INTO booklib (title, type, year, author, description, link, specialty, img_url)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  const params = [title, type, year, author, description, link, specialty, img_url];
+
+  // Выполняем запрос к базе данных
+  db.query(query, params, (err, result) => {
+    if (err) {
+      console.error('Ошибка при добавлении книги в базу данных:', err);
+      return res.status(500).json({
+        success: false,
+        message: 'Ошибка сервера при добавлении книги',
+      });
+    }
+
+    res.status(201).json({
+      success: true,
+      message: 'Книга успешно добавлена',
+      bookId: result.insertId, // ID созданной книги
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Эндпоинт для получения новостей
@@ -227,9 +276,49 @@ app.delete('/news/:id', (req, res) => {
 });
 
 
+app.post('/news', (req, res) => {
+  const { title, text, author_name } = req.body;
 
+  if (!title || !text || !author_name) {
+    return res.status(400).json({
+      success: false,
+      message: 'Пожалуйста, заполните все поля',
+    });
+  }
 
+  const currentDateTime = new Date();
+  const formattedDate = currentDateTime
+    .toLocaleString('ru-RU', {
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+    .replace(',', ''); // Приводим к формату DD.MM.YY - hh:mm
 
+  const query = `
+    INSERT INTO news (title, text, date, author_name)
+    VALUES (?, ?, ?, ?)
+  `;
+  const params = [title, text, formattedDate, author_name];
+
+  db.query(query, params, (err, result) => {
+    if (err) {
+      console.error('Ошибка добавления новости в базу данных:', err);
+      return res.status(500).json({
+        success: false,
+        message: 'Ошибка сервера при добавлении новости',
+      });
+    }
+
+    res.status(201).json({
+      success: true,
+      message: 'Новость успешно добавлена',
+      newsId: result.insertId, // ID созданной новости
+    });
+  });
+});
 
 
 
