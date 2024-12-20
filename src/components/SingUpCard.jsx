@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../css/singUpCard.module.css';
+import { useLanguage } from './LanguageContext';
 
 function SingUpCard() {
     const navigate = useNavigate();
@@ -10,6 +11,10 @@ function SingUpCard() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const { language } = useLanguage();
+
+    const passwordLanguage = language === 'ru' ? 'Пороль' : 'Құпиясөз';
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -62,13 +67,17 @@ function SingUpCard() {
                         onClick={ClickLodin}
                         style={{ cursor: 'pointer' }}
                     >
-                        <h3 className={styles.h3}>Вход</h3>
+                        <h3 className={styles.h3}>
+                        {language === 'ru'? 'Вход' : 'Кіру'}
+                        </h3>
                     </div>
                     <div 
                         className={styles.sing}
                         style={{ cursor: 'pointer' }}
                     >
-                        <h3 className={styles.active}>Регистрация</h3>
+                        <h3 className={styles.active}>
+                        {language === 'ru'? 'Регистрация' : 'Тіркелу'}
+                        </h3>
                         <div className={styles.rectangleSing}></div>
                     </div>
                     <div 
@@ -76,7 +85,9 @@ function SingUpCard() {
                         onClick={ClickReset}
                         style={{ cursor: 'pointer' }}
                     >
-                        <h3 className={styles.h3}>Сброс пароля</h3>
+                        <h3 className={styles.h3}>
+                        {language === 'ru'? 'Сброс пароля' : 'Қалпына келтіру'}
+                        </h3>
                     </div>
 
                     <div className={styles.rectangle}></div>
@@ -110,21 +121,26 @@ function SingUpCard() {
                     <input
                         className={styles.inp}
                         type="password"
-                        placeholder="Пароль"
+                        placeholder={passwordLanguage}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         minLength="8"
                         maxLength="8"
                         required
                     />
-                    <button className={styles.btn} type="submit">Зарегистрироваться</button>
+                    <button className={styles.btn} type="submit">
+                    {language === 'ru'? 'Зарегистрироваться' : 'Тіркелу'}
+
+                    </button>
                 </form>
 
                 {errorMessage && <p className={styles.error}>{errorMessage}</p>}  {/* Отображаем ошибку */}
 
                 <p className={styles.text}>
-                    Регистрируясь, вы соглашаетесь
-                    <a className={styles.link} href="#2">с условиями использования и правилами сайта</a>
+                {language === 'ru'? 'Регистрируясь, вы соглашаетесь' : 'Тіркеу арқылы келісесіз'}
+                    <a className={styles.link} href="#2">
+                    {language === 'ru'? 'с условиями использования и правилами сайта' : 'пайдалану шарттарымен және сайт ережелерімен'}
+                    </a>
                 </p>
             </div>
         </div>

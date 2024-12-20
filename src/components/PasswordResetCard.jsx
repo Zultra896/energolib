@@ -59,11 +59,18 @@ function PasswordResetCard() {
                     type="email" 
                     placeholder={
                         language === 'ru' 
-                            ? 'Пожалуйста, укажите email, который вы использовали для входа на сайт' 
-                            : 'Сайтқа кіру үшін пайдаланған электрондық поштаны көрсетіңіз'
+                            ? 'Это функция ещё в разработке' 
+                            : 'Бұл функция әлі жасалуда'
                     } 
                     required 
                 />
+                <p className={styles.textCard}>
+                {
+                        language === 'ru' 
+                            ? 'Пожалуйста, укажите email, который вы использовали для входа на сайт' 
+                            : 'Сайтқа кіру үшін пайдаланған электрондық поштаны көрсетіңіз'
+                    } 
+                </p>
                 <button className={styles.btn} onClick={handleSubmit}>
                     {language === 'ru' ? 'Отправить' : 'Жіберу'}
                 </button>
