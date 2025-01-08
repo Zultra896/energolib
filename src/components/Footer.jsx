@@ -5,9 +5,11 @@ import facebookIcon from '../img/facebookIcon.svg'
 import instagramIcon from '../img/instagramIcon.svg'
 import gitHubIcon from '../img/gitHubIcon.svg'
 import { useLanguage } from './LanguageContext'
+import { useNavigate } from 'react-router-dom';
 
 
 function Footer() {
+  const navigate = useNavigate();
 
   const { language } = useLanguage();
   const placeholderText = language === "ru" ? "Поиск" : "Іздеу";
@@ -42,28 +44,21 @@ function Footer() {
             </div>
             <div className={footerStyles.footer__item}>
                   <div className={footerStyles.footer__list}>
-                    <p className={footerStyles.footer__title}>Каталог</p>
-                    <p className={footerStyles.footer__link}>
+                    <p className={footerStyles.footer__link} onClick={() => navigate('/catalog')}>Каталог</p>
+                    <p className={footerStyles.footer__link} onClick={() => navigate('/About')}>
                       {language === 'ru'? 'О нас' : 'Біз туралы'}
-                    </p>
-                    <p className={footerStyles.footer__link}>
-                      {language === 'ru'? 'Новости' : 'Жаңалықтар'}
-                    </p>
-                    <p className={footerStyles.footer__link}>
-                      {language === 'ru'? 'Обратная связь' : 'Кері байланыс'}
                     </p>
                   </div>
             </div>
             <div className={footerStyles.footer__item}>
-                <div className={footerStyles.footer__list}>
-                    <p className={footerStyles.footer__title}>
-                        {language === 'ru'? 'Помощь' : 'Көмек'}
+                  <div className={footerStyles.footer__list}>
+                    <p className={footerStyles.footer__link} onClick={() => navigate('/NewsContainer')}>
+                      {language === 'ru'? 'Новости' : 'Жаңалықтар'}
                     </p>
-                    <p className={footerStyles.footer__link}>Customer Support</p>
-                    <p className={footerStyles.footer__link}>Delivery Details</p>
-                    <p className={footerStyles.footer__link}>Terms & Conditions</p>
-                    <p className={footerStyles.footer__link}>Privacy Policy</p>
-                </div>
+                    <p className={footerStyles.footer__link} onClick={() => navigate('/Feedback')}>
+                      {language === 'ru'? 'Обратная связь' : 'Кері байланыс'}
+                    </p>
+                  </div>
             </div>
             <div className={footerStyles.footer__item}>
             <div className={footerStyles.footer__title}>

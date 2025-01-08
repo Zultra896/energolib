@@ -7,6 +7,7 @@ import banner3 from '../img/Screenshot-2024-08-28-at-6.58.48-AM-701x500.jpg';
 import btnLeft from '../img/arrowsLeft.svg';
 import btnRight from '../img/arrowsRight.svg';
 import { useLanguage } from '../components/LanguageContext'
+import { useNavigate } from 'react-router-dom';
 
 const banners = [
   { img: banner1, title: 'Книжные памятники', description: 'Историческое и художественное наследие России' },
@@ -16,6 +17,8 @@ const banners = [
 
 function BannerSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -46,7 +49,7 @@ function BannerSlider() {
         </div>
         <h2 className={bannerBlockStyles.title}>{banners[currentSlide].title}</h2>
         <p className={bannerBlockStyles.description}>{banners[currentSlide].description}</p>
-        <a className={bannerBlockStyles.link} href="#1">
+        <a className={bannerBlockStyles.link} onClick={()=>navigate('/catalog')}>
           Подробнее
         </a>
       </div>

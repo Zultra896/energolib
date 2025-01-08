@@ -9,7 +9,7 @@ const Catalog = () => {
   const [filters, setFilters] = useState({ specialties: [], title: '' });
   const { language } = useLanguage();
 
-  const specialtiesList = ['IT', 'Радиоэлектроника', 'Энергетика']; // Предопределенные специальности
+  const specialtiesList = ['IT', 'Радиоэлектроника', 'Энергетика', 'Теплоэнергетика']; // Предопределенные специальности
 
   const fetchBooks = async () => {
     try {
