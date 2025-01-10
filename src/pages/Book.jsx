@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from '../css/book.module.css';
 import { useLanguage } from '../components/LanguageContext';
+import { AuthContext } from '../components/AuthContext.jsx';
+import AuthModal from '../components/AuthModal'; // Импорт вашего модального окна
 
-function Book () {
+function Book() {
+  const { isAuthenticated} = useContext(AuthContext);
   const { id } = useParams();
   const [book, setBook] = useState(null);
-  const { language } = useLanguage(); 
+  const { language } = useLanguage();
+  const [showAuthModal, setShowAuthModal] = useState(false); // Состояние для показа модального окна
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -25,12 +29,22 @@ function Book () {
     return <p>Загрузка...</p>;
   }
 
-  const BookLink = () => {
+  const handleButtonClick = () => {
+    if (!isAuthenticated) {
+      setShowAuthModal(true); // Показываем модальное окно
+      return;
+    }
+
+    // Открываем ссылку книги, если пользователь авторизован
     if (book && book.link) {
-      window.open(book.link,);
+      window.open(book.link);
     } else {
       alert('Ссылка на книгу не найдена!');
     }
+  };
+
+  const closeAuthModal = () => {
+    setShowAuthModal(false);
   };
 
   return (
@@ -38,9 +52,10 @@ function Book () {
       <div className={styles.banner}></div>
       <div className={styles.block1}>
         <img className={styles.poster} src={book.img_url} alt={book.title} />
-        <button className={styles.btn} onClick={BookLink}>
+        <button className={styles.btn} onClick={handleButtonClick}>
           {language === 'ru' ? 'Начать читать' : 'Оқып бастау'}
         </button>
+        {showAuthModal && <AuthModal onClose={closeAuthModal} />}
         <div className={styles.infoBlock}>
           <div className={styles.infoP}>
             <p className={styles.argument}>
@@ -50,7 +65,7 @@ function Book () {
           </div>
           <div className={styles.infoP}>
             <p className={styles.argument}>
-              {language === 'ru'? 'Год' : 'Жыл'}
+              {language === 'ru' ? 'Год' : 'Жыл'}
             </p>
             <p className={styles.value}>{book.year}</p>
           </div>
@@ -64,19 +79,15 @@ function Book () {
         <h1 className={styles.title}>{book.title}</h1>
         <div className={styles.line}>
           <h2 className={styles.lineI}>
-            {language === 'ru'? 'Информация' : 'Мәлімет'}
+            {language === 'ru' ? 'Информация' : 'Мәлімет'}
           </h2>
           <div className={styles.resp}></div>
-          <div className={styles.respP}></div>
+          {/* <div className={styles.respP}></div> */}
         </div>
         <p className={styles.description}>{book.description}</p>
       </div>
-      
-      
-      
-      
     </div>
   );
-};
+}
 
 export default Book;

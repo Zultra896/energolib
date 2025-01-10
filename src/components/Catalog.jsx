@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import catalogStyles from '../css/catalog.module.css'
-import searchIcon from '../img/searchIcon2.svg'
+import catalogStyles from '../css/catalog.module.css';
+import searchIcon from '../img/searchIcon2.svg';
 import { useLanguage } from '../components/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 
 const Catalog = () => {
+  const navigate = useNavigate();
+
   const [books, setBooks] = useState([]);
   const [filters, setFilters] = useState({ specialties: [], title: '' });
   const { language } = useLanguage();
 
-  const specialtiesList = ['IT', 'Радиоэлектроника', 'Энергетика', 'Теплоэнергетика']; // Предопределенные специальности
+  // Сопоставление казахских и русских специальностей
+  const specialtiesMapping = {
+    IT: 'IT',
+    Радиоэлектроника: 'Радиоэлектроника',
+    Энергетика: 'Энергетика',
+    Теплоэнергетика: 'Теплоэнергетика',
+    'Жылу энергетикасы': 'Теплоэнергетика', // Казахский вариант
+  };
+
+  // Список специальностей для отображения
+  const specialtiesList =
+    language === 'ru'
+      ? ['IT', 'Радиоэлектроника', 'Энергетика', 'Теплоэнергетика']
+      : ['IT', 'Радиоэлектроника', 'Энергетика', 'Жылу энергетикасы'];
 
   const fetchBooks = async () => {
     try {
@@ -27,10 +43,16 @@ const Catalog = () => {
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
+
+    // Получаем русское значение из маппинга
+    const russianValue = specialtiesMapping[value];
+
+    if (!russianValue) return; // Игнорируем значения без соответствия
+
     setFilters((prevFilters) => {
       const newSpecialties = checked
-        ? [...prevFilters.specialties, value]
-        : prevFilters.specialties.filter((specialty) => specialty !== value);
+        ? [...prevFilters.specialties, russianValue] // Добавляем русское значение
+        : prevFilters.specialties.filter((specialty) => specialty !== russianValue); // Убираем русское значение
       return { ...prevFilters, specialties: newSpecialties };
     });
   };
@@ -46,23 +68,18 @@ const Catalog = () => {
     }
   };
 
-  // const applyFilters = () => {
-  //   fetchBooks();
-  // };
-
   useEffect(() => {
     fetchBooks();
   }, [filters]); // Вызываем fetchBooks при изменении filters
-  
+
   const resetFilters = () => {
     setFilters({ specialties: [], title: '' });
   };
-  
 
   return (
     <section className={catalogStyles.section}>
       <div className={catalogStyles.section__catalog}>
-      <h1 className={catalogStyles.catalogTitle}>Каталог</h1>
+        <h1 className={catalogStyles.catalogTitle}>Каталог</h1>
         <label className={catalogStyles.catalogLabel}>
           <img src={searchIcon} alt="" />
           <input
@@ -71,33 +88,36 @@ const Catalog = () => {
             name="title"
             value={filters.title}
             onChange={handleInputChange}
-            onKeyDown={handleKeyPress} 
-            placeholder='Поиск по названию'
+            onKeyDown={handleKeyPress}
+            placeholder="Поиск по названию"
           />
         </label>
         <div className={catalogStyles.books}>
-        {books.map((book) => (
-          <div key={book.id} className={catalogStyles.book}>
-            <img 
-            className={catalogStyles.bookImg} 
-            src={book.img_url} 
-            alt={book.title} />
-            <a className={catalogStyles.bookTitle} href={`/book/${book.id}`}>
-            {book.title}
-            </a>
-          </div>
-        ))}
+          {books.map((book) => (
+            <div
+              key={book.id}
+              className={catalogStyles.book}
+              onClick={() => navigate(`/book/${book.id}`)}
+            >
+              <img
+                className={catalogStyles.bookImg}
+                src={book.img_url}
+                alt={book.title}
+              />
+              <p className={catalogStyles.bookTitle}>{book.title}</p>
+            </div>
+          ))}
         </div>
       </div>
       <div className={catalogStyles.filters}>
         <fieldset className={catalogStyles.fieldset}>
           <label className={catalogStyles.fieldsetHead}>
-          <legend className={catalogStyles.fieldsetTitle}>
-          {language === 'ru' ? 'Специальность:' : 'Мамандық:'}
-          </legend>
-          <button className={catalogStyles.btn} onClick={resetFilters}>
-          {language === 'ru'? 'Сбросить' : 'Қалпына келтіру'}
-          </button>
+            <legend className={catalogStyles.fieldsetTitle}>
+              {language === 'ru' ? 'Специальность:' : 'Мамандық:'}
+            </legend>
+            <button className={catalogStyles.btn} onClick={resetFilters}>
+              {language === 'ru' ? 'Сбросить' : 'Қалпына келтіру'}
+            </button>
           </label>
           {specialtiesList.map((specialty) => (
             <label className={catalogStyles.fieldsetLabel} key={specialty}>
@@ -105,14 +125,15 @@ const Catalog = () => {
                 className={catalogStyles.fieldsetInput}
                 type="checkbox"
                 value={specialty}
-                checked={filters.specialties.includes(specialty)}
+                checked={filters.specialties.includes(
+                  specialtiesMapping[specialty]
+                )} // Проверяем русское значение
                 onChange={handleCheckboxChange}
               />
               {specialty}
             </label>
           ))}
         </fieldset>
-        {/* <button className={`${catalogStyles.btn} ${catalogStyles.btnApply}`} onClick={applyFilters}>Применить</button> */}
       </div>
     </section>
   );
