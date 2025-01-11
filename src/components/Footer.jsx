@@ -5,7 +5,7 @@ import facebookIcon from '../img/facebookIcon.svg'
 import instagramIcon from '../img/instagramIcon.svg'
 import gitHubIcon from '../img/gitHubIcon.svg'
 import { useLanguage } from './LanguageContext'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Footer() {
@@ -18,27 +18,30 @@ function Footer() {
     <footer className={footerStyles.footer}>
         <div className={footerStyles.footer__container}>
             <div className={footerStyles.footer__item}>
-                <div className={footerStyles.footer__logo}>
-                  <img src={logoIcon} alt="" />
-                  <p className={footerStyles.footer__logoTitle}>EnergoLibrary</p>
-                </div>
-                <div className={footerStyles.footer__description}>
-                  <p className={footerStyles.footer__link}>
-                    {language === 'ru' ? 'Онлайн библиотека для вашего удобства ' : 'Сізге ыңғайлы болу үшін онлайн кітапхана'}
-                  </p>
-                </div>
-                <div className={footerStyles.socialNetworks}>
-                  <div className={footerStyles.socialNetworks__list}>
-                    <img src={twitterIcon} alt="" />
+                <div className={footerStyles.footer__list}>
+                  <div className={footerStyles.footer__logo}>
+                    <img src={logoIcon} alt="" />
+                    <Link className={footerStyles.footer__logoTitle} to="/">
+                    EnergoLibrary</Link>
                   </div>
-                  <div className={footerStyles.socialNetworks__list}>
-                    <img src={facebookIcon} alt="" />
+                  <div className={footerStyles.footer__description}>
+                    <p className={footerStyles.footer__link}>
+                      {language === 'ru' ? 'Онлайн библиотека для вашего удобства ' : 'Сізге ыңғайлы болу үшін онлайн кітапхана'}
+                    </p>
                   </div>
-                  <div className={footerStyles.socialNetworks__list}>
-                    <img src={instagramIcon} alt="" />
-                  </div>
-                  <div className={footerStyles.socialNetworks__list}>
-                    <img src={gitHubIcon} alt="" />
+                  <div className={footerStyles.socialNetworks}>
+                    <div className={footerStyles.socialNetworks__list}>
+                      <img src={twitterIcon} alt="" />
+                    </div>
+                    <div className={footerStyles.socialNetworks__list}>
+                      <img src={facebookIcon} alt="" />
+                    </div>
+                    <div className={footerStyles.socialNetworks__list}>
+                      <img src={instagramIcon} alt="" />
+                    </div>
+                    <div className={footerStyles.socialNetworks__list}>
+                      <img src={gitHubIcon} alt="" />
+                    </div>
                   </div>
                 </div>
             </div>

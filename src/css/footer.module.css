@@ -34,8 +34,10 @@
 }
 
 .footer__logoTitle {
-    color: #BFBFBF;
-    font-size: 16px;
+    color: #FFF;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .footer__description {
@@ -53,8 +55,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 28px;
-    width: 28px;
+    height: 30px;
+    width: 30px;
     background-color: #27272A;
     border-radius: 100%;
 }
@@ -72,7 +74,7 @@
 
 
 .footer__title {
-    color: #A1A1AA;
+    color: #FFF;
     font-size: 16px;
     margin-bottom: 24px;
 }

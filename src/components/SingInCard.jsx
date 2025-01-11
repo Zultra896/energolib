@@ -111,8 +111,8 @@ function SingInCard() {
                         placeholder={passwordLanguage}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        // minLength="8"
-                        // maxLength="8"
+                        minLength="8"
+                        maxLength="8"
                         required
                     />
                     <button className={singInCardStyles.btn} type="submit">

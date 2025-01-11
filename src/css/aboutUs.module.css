@@ -4,14 +4,21 @@
     gap: 20px;
     justify-items: center;
     margin-top: 85px;
+    justify-items: stretch;
+    padding: 0 20px;
   }
   
   .photoCard {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
   }
   
+.img {
+  width: 120px;
+  height: auto;
+}
+
   .photoInfo {
     display: flex;
     flex-direction: column;
