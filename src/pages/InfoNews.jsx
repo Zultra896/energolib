@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import infoStyles from "../css/infoNews.module.css"
-import styles from "../css/newsContainer.module.css";
 import userIcon from "../img/user.png"
 
 const InfoNews = () => {
@@ -25,7 +24,7 @@ const InfoNews = () => {
   return (
     <div className={infoStyles.container}>
       <div className={infoStyles.containerHead}>
-          <h1 className={styles.newsTitle}>{newsItem.title}</h1>
+          <h1 className={infoStyles.newsTitle}>{newsItem.title}</h1>
           <div className={infoStyles.containerAuthor}>
               <img className={infoStyles.authorIcon} src={userIcon} alt="" />
               <p className={infoStyles.author}>{newsItem.author_name}</p>

@@ -18,6 +18,9 @@ function SingInCard() {
     const ClickReset = () => {
         navigate('/Auth/reset');
     };
+    const ClickHome = () => {
+        navigate('/');
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,7 +74,7 @@ function SingInCard() {
 
     return (
         <div className={singInCardStyles.dev}>
-            <h1 className={singInCardStyles.title}>EnergoLib</h1>
+            <h1 className={singInCardStyles.title} onClick={ClickHome}>EnergoLib</h1>
             <div className={singInCardStyles.card}>
                 <div className={singInCardStyles.blockSing}>
                     <div 

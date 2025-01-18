@@ -56,10 +56,12 @@ function SingUpCard() {
     const ClickReset = () => {
         navigate('/Auth/reset');
     };
-
+    const ClickHome = () => {
+        navigate('/');
+    };
     return (
         <div className={styles.dev}>
-            <h1 className={styles.title}>EnergoLib</h1>
+            <h1 className={styles.title} onClick={ClickHome}>EnergoLib</h1>
             <div className={styles.card}>
                 <div className={styles.blockSing}>
                     <div 

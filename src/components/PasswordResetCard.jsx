@@ -14,6 +14,10 @@ function PasswordResetCard() {
         navigate('/Auth/register');
     };
 
+    const ClickHome = () => {
+        navigate('/');
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Логика отправки email на сервер
@@ -22,7 +26,7 @@ function PasswordResetCard() {
 
     return (
         <div className={styles.dev}>
-            <h1 className={styles.title}>EnergoLib</h1>
+            <h1 className={styles.title} onClick={ClickHome}>EnergoLib</h1>
             <div className={styles.card}>
                 <div className={styles.blockSing}>
                     <div 

@@ -25,11 +25,20 @@
     align-items: center;
 }
 
+.newsTitle {
+    font-size: 24px;
+    color: #bfbfbf;
+    text-align: left;
+    font-weight: bold;
+    align-items: center;
+}
+
 .containerAuthor {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 
 .authorIcon {
     width: 24px;
