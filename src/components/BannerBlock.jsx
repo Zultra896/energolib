@@ -6,7 +6,6 @@ import banner2 from '../img/photo1694678778-701x500.jpeg';
 import banner3 from '../img/Screenshot-2024-08-28-at-6.58.48-AM-701x500.jpg';
 import btnLeft from '../img/arrowsLeft.svg';
 import btnRight from '../img/arrowsRight.svg';
-import { useLanguage } from '../components/LanguageContext'
 import { useNavigate } from 'react-router-dom';
 
 const banners = [
@@ -49,9 +48,9 @@ function BannerSlider() {
         </div>
         <h2 className={bannerBlockStyles.title}>{banners[currentSlide].title}</h2>
         <p className={bannerBlockStyles.description}>{banners[currentSlide].description}</p>
-        <a className={bannerBlockStyles.link} onClick={()=>navigate('/catalog')}>
+        <p className={bannerBlockStyles.link} onClick={()=>navigate('/catalog')}>
           Подробнее
-        </a>
+        </p>
       </div>
       <div className={bannerBlockStyles.bannerBlock__photo}>
         <img

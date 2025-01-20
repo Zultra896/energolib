@@ -1,13 +1,17 @@
 .app {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+  min-width: 1250px; /* Минимальная ширина для ПК */
+  overflow-x: hidden; /* Убирает горизонтальную прокрутку */
+}
+
 
 .app__content {
   padding-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -16,7 +20,7 @@
 
 ::-webkit-scrollbar-thumb {
   background-color: #8A8A8E ;
-  border-radius: 10px;
+  border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: #A1A1A4;
@@ -27,3 +31,9 @@
 }
 
   
+
+@media (max-width: 1200px) {
+  .app {
+    zoom: 0.65; /* Уменьшение масштаба */
+  }
+}

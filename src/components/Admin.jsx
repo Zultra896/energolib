@@ -1,6 +1,6 @@
 import styles from '../css/admin.module.css';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 
 function Admin() {
@@ -101,7 +101,11 @@ function Admin() {
                             <h2 className={styles.h}>Список новостей</h2>
                             {currentNews.map((item) => (
                                 <div key={item.id} className={styles.itemNews}>
-                                    <p>{item.title}</p>
+                                    <p
+                                        onClick={() => navigate(`/InfoNews/${item.id}`)}
+                                        className={styles.title}
+                                    >
+                                        {item.title}</p>
                                     <p>{new Date(item.date).toLocaleString('ru-RU', {
                                         day: '2-digit',
                                         month: '2-digit',
@@ -149,7 +153,12 @@ function Admin() {
                             {currentBooks.map((book) => (
                                 <div key={book.id} className={styles.item}>
                                     <img src={book.img_url} alt={book.title} className={styles.image} />
-                                    <p>{book.title}</p>
+                                    <p 
+                                        onClick={() => navigate(`/book/${book.id}`)}
+                                        className={styles.title}
+                                    >
+                                        {book.title}
+                                    </p>
                                     <p>Специальность: {book.specialty}</p>
                                     <button className={styles.btnDel} onClick={() => deleteBook(book.id)}>Удалить</button>
                                 </div>

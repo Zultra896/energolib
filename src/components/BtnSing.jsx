@@ -16,7 +16,7 @@ function BtnSing() {
         <div className={btnSingStyles.btnSing__container}>
             <img src={singIcon} alt="" />
             <p className={btnSingStyles.text}>
-              {language == 'ru' ? 'Вход' : 'Кіру'}
+              {language === 'ru' ? 'Вход' : 'Кіру'}
             </p>
         </div>
     </div>

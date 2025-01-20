@@ -88,7 +88,7 @@ function CreateBook() {
                     autoComplete="off"
                     className={styles.form}
                 >
-                    <h2>Создание книги</h2>
+                    <h2 className={styles.title}>Создание книги</h2>
 
                     <label>
                         Название:

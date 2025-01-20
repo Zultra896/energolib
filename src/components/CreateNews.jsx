@@ -61,7 +61,7 @@ function CreateNews() {
 
         <form onSubmit={handleSubmit} autoComplete="off" 
         className={styles.form}>
-           <h2>Создание новость</h2>
+           <h2 className={styles.title}>Создание новость</h2>
         
             <label htmlFor="title">Заголовок
             <input

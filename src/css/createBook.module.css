@@ -13,6 +13,10 @@
     color: #FFF;
 }
 
+.title {
+    margin: 15px 0;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -50,6 +54,7 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
+    margin-top: 10px;
 }
 
 .button:hover {

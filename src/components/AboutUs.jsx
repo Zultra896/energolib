@@ -29,8 +29,8 @@ const photos = [
   },
   {
     src: user,
-    name: 'Kenesh Nuradil',
-    email: 'kenesh@nuradil.kz',
+    name: 'Kenes Nuradil',
+    email: 'kenes@nuradil.kz',
   },
  
 ];
