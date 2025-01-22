@@ -9,7 +9,7 @@ const Catalog = () => {
   const navigate = useNavigate();
 
   const [books, setBooks] = useState([]);
-  const [filters, setFilters] = useState({ specialties: [], title: '' });
+  const [filters, setFilters] = useState({ specialties: [], title: '', languages: [] });
   const { language } = useLanguage();
 
   // Сопоставление казахских и русских специальностей
@@ -20,6 +20,8 @@ const Catalog = () => {
     Теплоэнергетика: 'Теплоэнергетика',
     'Жылу энергетикасы': 'Теплоэнергетика', // Казахский вариант
   };
+
+  const bookLanguage = ['RU', 'KZ']
 
   // Список специальностей для отображения
   const specialtiesList =
@@ -33,6 +35,7 @@ const Catalog = () => {
         params: {
           specialty: filters.specialties.join(','), // Передаем выбранные специальности
           title: filters.title,
+          language: filters.languages.join(','),
         },
       });
       setBooks(data);
@@ -41,21 +44,24 @@ const Catalog = () => {
     }
   };
 
-  const handleCheckboxChange = (e) => {
+  const handleCheckboxChange = (e, type) => {
     const { value, checked } = e.target;
-
-    // Получаем русское значение из маппинга
-    const russianValue = specialtiesMapping[value];
-
-    if (!russianValue) return; // Игнорируем значения без соответствия
-
+  
     setFilters((prevFilters) => {
-      const newSpecialties = checked
-        ? [...prevFilters.specialties, russianValue] // Добавляем русское значение
-        : prevFilters.specialties.filter((specialty) => specialty !== russianValue); // Убираем русское значение
-      return { ...prevFilters, specialties: newSpecialties };
+      const updatedFilters = { ...prevFilters };
+      if (type === 'specialties') {
+        updatedFilters.specialties = checked
+          ? [...prevFilters.specialties, value]
+          : prevFilters.specialties.filter((specialty) => specialty !== value);
+      } else if (type === 'languages') {
+        updatedFilters.languages = checked
+          ? [...prevFilters.languages, value]
+          : prevFilters.languages.filter((language) => language !== value);
+      }
+      return updatedFilters;
     });
   };
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -73,7 +79,7 @@ const Catalog = () => {
   }, [filters]); // Вызываем fetchBooks при изменении filters
 
   const resetFilters = () => {
-    setFilters({ specialties: [], title: '' });
+    setFilters({ specialties: [], title: '', languages: [] });
   };
 
   return (
@@ -99,6 +105,9 @@ const Catalog = () => {
               className={catalogStyles.book}
               onClick={() => navigate(`/book/${book.id}`)}
             >
+              <div className={catalogStyles.blockLang} >
+                {book.language}
+              </div>
               <img
                 className={catalogStyles.bookImg}
                 src={book.img_url}
@@ -120,17 +129,33 @@ const Catalog = () => {
             </button>
           </label>
           {specialtiesList.map((specialty) => (
-            <label className={catalogStyles.fieldsetLabel} key={specialty}>
+          <label className={catalogStyles.fieldsetLabel} key={specialty}>
               <input
                 className={catalogStyles.fieldsetInput}
                 type="checkbox"
                 value={specialty}
-                checked={filters.specialties.includes(
-                  specialtiesMapping[specialty]
-                )} // Проверяем русское значение
-                onChange={handleCheckboxChange}
+                checked={filters.specialties.includes(specialty)}
+                onChange={(e) => handleCheckboxChange(e, 'specialties')}
               />
               {specialty}
+            </label>
+          ))}
+
+          <label className={catalogStyles.fieldsetHead}>
+            <legend className={catalogStyles.fieldsetTitle}>
+              {language === 'ru' ? 'Язык:' : 'Тіл:'}
+            </legend>
+          </label>
+          {bookLanguage.map((lang) => (
+            <label className={catalogStyles.fieldsetLabel} key={lang}>
+              <input
+                className={catalogStyles.fieldsetInput}
+                type="checkbox"
+                value={lang}
+                checked={filters.languages.includes(lang)}
+                onChange={(e) => handleCheckboxChange(e, 'languages')}
+              />
+              {lang}
             </label>
           ))}
         </fieldset>

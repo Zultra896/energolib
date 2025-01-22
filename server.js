@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql2');
-// const bcrypt = require('bcryptjs');
 const app = express();
 const port = 5000;
 
@@ -121,12 +120,11 @@ app.post('/Auth/register', (req, res) => {
 
 
 
-
 // Эндпоинт для фильтрации книг
 app.get('/books', (req, res) => {
-  const { specialty, title } = req.query;
+  const { specialty, title, language } = req.query;
 
-  let sql = 'SELECT id, img_url, title, specialty FROM booklib WHERE 1=1';
+  let sql = 'SELECT id, img_url, title, specialty, language FROM booklib WHERE 1=1';
   const params = [];
 
   if (specialty) {
@@ -138,6 +136,11 @@ app.get('/books', (req, res) => {
   if (title) {
     sql += ' AND title LIKE ?';
     params.push(`%${title}%`);
+  }
+
+  if (language) {
+    sql += ' AND language = ?';
+    params.push(language);
   }
 
   db.query(sql, params, (err, results) => {
@@ -168,6 +171,7 @@ app.get('/book/:id', (req, res) => {
   });
 });
 
+// Эндпоинт для удаления книги
 app.delete('/books/:id', (req, res) => {
   const { id } = req.params;
   db.query('DELETE FROM booklib WHERE id = ?', [id], (err, result) => {
@@ -179,14 +183,12 @@ app.delete('/books/:id', (req, res) => {
   });
 });
 
-
-
 // Эндпоинт для создания новой книги
 app.post('/books', (req, res) => {
-  const { title, type, year, author, description, link, specialty, img_url } = req.body;
+  const { title, type, year, author, description, link, specialty, img_url, language } = req.body;
 
   // Проверяем, что все обязательные поля заполнены
-  if (!title || !type || !year || !author || !specialty || !img_url) {
+  if (!title || !type || !year || !author || !specialty || !img_url || !language) {
     return res.status(400).json({
       success: false,
       message: 'Пожалуйста, заполните все обязательные поля',
@@ -195,10 +197,10 @@ app.post('/books', (req, res) => {
 
   // Формируем SQL-запрос для добавления книги
   const query = `
-    INSERT INTO booklib (title, type, year, author, description, link, specialty, img_url)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO booklib (title, type, year, author, description, link, specialty, img_url, language)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
-  const params = [title, type, year, author, description, link, specialty, img_url];
+  const params = [title, type, year, author, description, link, specialty, img_url, language];
 
   // Выполняем запрос к базе данных
   db.query(query, params, (err, result) => {

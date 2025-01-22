@@ -42,6 +42,7 @@
 }
 
 .link {
+    cursor: pointer;
     position: absolute;
     left: 60px;
     bottom: 30px;

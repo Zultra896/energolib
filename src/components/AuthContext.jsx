@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
 
@@ -6,9 +7,9 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    // Проверка LocalStorage при монтировании компонента
+    // Проверка Cookies при монтировании компонента
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
+        const storedUser = Cookies.get('user'); // Получаем cookie
         if (storedUser) {
             const parsedUser = JSON.parse(storedUser);
             const now = Date.now();
@@ -17,13 +18,13 @@ export function AuthProvider({ children }) {
                 setUser(parsedUser);
                 setIsAuthenticated(true);
             } else {
-                // Удаляем данные, если срок действия истёк
-                localStorage.removeItem('user');
+                // Удаляем cookie, если срок действия истёк
+                Cookies.remove('user');
             }
         }
     }, []);
 
-    // Вход пользователя и сохранение в LocalStorage
+    // Вход пользователя и сохранение в Cookies
     const login = (userData) => {
         const expirationTime = Date.now() + 24 * 60 * 60 * 1000; // 24 часа
         const dataWithExpiration = {
@@ -31,17 +32,18 @@ export function AuthProvider({ children }) {
             expiration: expirationTime,
         };
 
-        setUser(userData);
+        setUser(dataWithExpiration);
         setIsAuthenticated(true);
 
-        localStorage.setItem('user', JSON.stringify(dataWithExpiration));
+        // Устанавливаем cookie с данными
+        Cookies.set('user', JSON.stringify(dataWithExpiration), { expires: 1 }); // expires - срок жизни cookie (1 день)
     };
 
-    // Выход пользователя и очистка LocalStorage
+    // Выход пользователя и очистка Cookies
     const logout = () => {
         setUser(null);
         setIsAuthenticated(false);
-        localStorage.removeItem('user');
+        Cookies.remove('user'); // Удаляем cookie
     };
 
     return (

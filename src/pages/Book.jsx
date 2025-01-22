@@ -50,6 +50,9 @@ function Book() {
   return (
     <div className={styles.container}>
       <div className={styles.banner}></div>
+      <div className={styles.blockLang}>
+        {book.language}
+      </div>
       <div className={styles.block1}>
         <img className={styles.poster} src={book.img_url} alt={book.title} />
         <button className={styles.btn} onClick={handleButtonClick}>
@@ -59,7 +62,7 @@ function Book() {
         <div className={styles.infoBlock}>
           <div className={styles.infoP}>
             <p className={styles.argument}>
-              {language === 'ru' ? 'Тип' : 'Типі'}
+              {language === 'ru' ? 'Тип' : 'Тип'}
             </p>
             <p className={styles.value}>{book.type}</p>
           </div>

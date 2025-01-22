@@ -10,6 +10,22 @@
     background-image: url(../img/image.png);
 }
 
+.blockLang {
+    position: absolute;
+    top: 245px;
+    left: 8px;
+    font-size: 16px;
+    display: inline-flex; /* Inline-flex для текста */
+    align-items: center; /* Центрирование текста по вертикали */
+    justify-content: center; /* Центрирование текста по горизонтали */
+    border-radius: 4px;
+    background-color: orange;
+    padding: 2px 6px; /* Добавьте внутренние отступы для красоты */
+    white-space: nowrap; /* Отключает перенос текста */
+    z-index: 1;
+    user-select: none;
+}
+
 .block1 {
     position: absolute;
     top: 233px;
@@ -20,6 +36,8 @@
     width: 260px;
     height: 364px;
     border-radius: 12px;
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }
 .btn {
     width: 260px;

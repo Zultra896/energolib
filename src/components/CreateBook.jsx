@@ -14,14 +14,16 @@ function CreateBook() {
         link: "",
         specialty: "IT", // По умолчанию "IT"
         img_url: "", // Ссылка на изображение
+        language: "RU", // По умолчанию "Русский"
     });
 
-    const specialties = ["IT", "Энергетика", "Радиотехника", "Теплоэнергетика"];
+    const specialties = ["IT", "Энергетика", "Радиоэлектроника", "Теплоэнергетика"];
     const types = ["книга", "манга", "комикс", "научная работа"];
     const years = Array.from(
         { length: new Date().getFullYear() - 2000 + 1 },
         (_, i) => 2000 + i
     );
+    const languages = ["RU", "KZ"]; // Доступные языки
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -120,6 +122,23 @@ function CreateBook() {
                     </label>
 
                     <label>
+                        Язык:
+                        <select
+                            name="language"
+                            value={formData.language}
+                            onChange={handleChange}
+                            className={styles["select-field"]}
+                            required
+                        >
+                            {languages.map((language) => (
+                                <option key={language} value={language}>
+                                    {language}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <label>
                         Год:
                         <select
                             name="year"
@@ -200,7 +219,6 @@ function CreateBook() {
                             ))}
                         </select>
                     </label>
-
                     <button type="submit" className={styles.button}>
                         Создать книгу
                     </button>
