@@ -31,9 +31,16 @@
     padding: 9px 13px;
 }
 
+.btnSing__container img {
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
+}
+
 .text {
     color: #bfbfbf;
     font-size: 14px;
     font-weight: 700;
     transition: color 0.25s ease;
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }

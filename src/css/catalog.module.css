@@ -55,13 +55,13 @@
 .books {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 20px;
 }
 
 .book {
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 12px;
     cursor: pointer;
     align-items: flex-end;
     position: relative;
@@ -69,7 +69,7 @@
 
 .blockLang {
     position: absolute;
-    top: 10px;
+    top: 15px;
     left: 0;
     font-size: 12px;
     display: inline-flex; /* Inline-flex для текста */
@@ -99,6 +99,7 @@
     text-decoration: none;
     transition: color 0.25s ease;
     text-align: left;
+    padding-left: 7px;
 }
 .bookTitle:hover {
     color: #1787D8;

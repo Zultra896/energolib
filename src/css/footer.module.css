@@ -59,6 +59,8 @@
     width: 30px;
     background-color: #27272A;
     border-radius: 100%;
+     user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }
 
 .footer__list {
@@ -72,6 +74,9 @@
     cursor: pointer;
 }
 
+.footer__list .footer__link:first-child {
+    margin-top: 0;
+}
 
 .footer__title {
     color: #FFF;

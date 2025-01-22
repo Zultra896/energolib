@@ -35,6 +35,11 @@
     border: none;
     outline: none;
 }
+.search__inp img {
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
+
+}
 
 .search__suggestions {
     list-style: none;

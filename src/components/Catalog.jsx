@@ -12,16 +12,8 @@ const Catalog = () => {
   const [filters, setFilters] = useState({ specialties: [], title: '', languages: [] });
   const { language } = useLanguage();
 
-  // Сопоставление казахских и русских специальностей
-  const specialtiesMapping = {
-    IT: 'IT',
-    Радиоэлектроника: 'Радиоэлектроника',
-    Энергетика: 'Энергетика',
-    Теплоэнергетика: 'Теплоэнергетика',
-    'Жылу энергетикасы': 'Теплоэнергетика', // Казахский вариант
-  };
 
-  const bookLanguage = ['RU', 'KZ']
+  const bookLanguage = ['KZ', 'RU']
 
   // Список специальностей для отображения
   const specialtiesList =

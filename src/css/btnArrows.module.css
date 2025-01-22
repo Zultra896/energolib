@@ -15,6 +15,8 @@
 /* Стили для серой кнопки */
 .btnBanner {
     background-color: #BFBFBF;
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }
 
 .btnBanner:hover {
@@ -31,6 +33,8 @@
 /* Стили для белой кнопки */
 .btnBanner2 {
     background-color: #FFFFFF;
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }
 
 .btnBanner2:hover {
