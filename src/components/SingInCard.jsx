@@ -124,9 +124,9 @@ function SingInCard() {
                 </form>
                 <p className={singInCardStyles.text}>
                     {language === 'ru'? 'Вы забыли пароль? ' : 'Сіз парольді ұмытып қалдыңыз ба?'}
-                    <a className={singInCardStyles.link} href="#2">
+                    <span className={singInCardStyles.link} onClick={ClickReset} style={{cursor: 'pointer'}}>
                         {language === 'ru'? 'Восстановить' : 'Қалпына келтіру'}
-                    </a>
+                    </span>
                 </p>
             </div>
         </div>

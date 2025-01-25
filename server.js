@@ -327,6 +327,138 @@ app.post('/news', (req, res) => {
 
 
 
+// Эндпоинт для получения всех коллекций
+app.get('/collections', (req, res) => {
+  db.query('SELECT * FROM collections', (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+    res.json(results); // Убедитесь, что возвращается JSON
+  });
+});
+
+
+
+// Эндпоинт для создания коллекции
+app.post("/collections", async (req, res) => {
+  const { name, description, img_url } = req.body;
+
+  if (!name || !description || !img_url) {
+      return res.status(400).json({ success: false, message: "Все поля обязательны!" });
+  }
+
+  try {
+      // SQL-запрос с подготовленными выражениями
+      const query = `
+          INSERT INTO collections (name, description, img_url)
+          VALUES (?, ?, ?)
+      `;
+      
+      // Выполнение запроса с переданными значениями
+      const [results] = await db.promise().execute(query, [name, description, img_url]);
+
+      // Проверка на успешное добавление данных в базу
+      if (results.affectedRows > 0) {
+          res.json({ success: true, message: "Коллекция успешно создана!" });
+      } else {
+          res.status(500).json({ success: false, message: "Ошибка при создании коллекции!" });
+      }
+  } catch (error) {
+      console.error("Ошибка при создании коллекции:", error);
+      res.status(500).json({ success: false, message: "Ошибка сервера!" });
+  }
+});
+
+// Получение книг в коллекции
+app.get('/collections/:id/books', (req, res) => {
+  const { id } = req.params;
+  db.query(
+      'SELECT b.* FROM booklib b JOIN collection_books cb ON b.id = cb.book_id WHERE cb.collection_id = ?',
+      [id],
+      (err, results) => {
+          if (err) {
+              console.error('Ошибка запроса:', err);
+              return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+          }
+          res.json({ success: true, data: results });
+      }
+  );
+});
+
+// Получение книг, не входящих в коллекцию
+app.get('/collections/:id/available-books', (req, res) => {
+  const { id } = req.params;
+  db.query(
+      'SELECT b.* FROM booklib b WHERE b.id NOT IN (SELECT book_id FROM collection_books WHERE collection_id = ?)',
+      [id],
+      (err, results) => {
+          if (err) {
+              console.error('Ошибка запроса:', err);
+              return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+          }
+          res.json({ success: true, data: results });
+      }
+  );
+});
+
+// Добавление книги в коллекцию
+app.post('/collections/:id/add-book', (req, res) => {
+  const { id } = req.params;
+  const { bookId } = req.body;
+
+  db.query(
+      'INSERT INTO collection_books (collection_id, book_id) VALUES (?, ?)',
+      [id, bookId],
+      (err, results) => {
+          if (err) {
+              console.error('Ошибка добавления книги:', err);
+              return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+          }
+          res.json({ success: true, message: 'Книга успешно добавлена' });
+      }
+  );
+});
+
+// Удаление книги из коллекции
+app.delete('/collections/:id/remove-book', (req, res) => {
+  const { id } = req.params;
+  const { bookId } = req.body;
+
+  db.query(
+      'DELETE FROM collection_books WHERE collection_id = ? AND book_id = ?',
+      [id, bookId],
+      (err, results) => {
+          if (err) {
+              console.error('Ошибка удаления книги:', err);
+              return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+          }
+          res.json({ success: true, message: 'Книга успешно удалена' });
+      }
+  );
+});
+
+
+
+
+// Эндпоинт для удаления коллекции
+app.delete('/collections/:id', (req, res) => {
+  const { id } = req.params;
+  db.query('DELETE FROM collections WHERE id = ?', [id], (err) => {
+    if (err) {
+      console.error('Ошибка удаления коллекции:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+    res.json({ success: true, message: 'Коллекция удалена' });
+  });
+});
+
+
+
+
+
+
+
 
   
 

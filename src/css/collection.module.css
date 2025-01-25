@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.main {
+    width: 1200px;
+    color: #FFF;
+    background-color: #3A3E4A;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pageList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .pageBtn {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3e3e4f;
+    color: #bfbfbf;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .pageBtn.active {
+    background-color: #444456;
+    color: #bfbfbf;
+  }
+  
+  .pageBtn:hover:not(.active):not(:disabled) {
+    background-color: #444456;
+    color: #bfbfbf;
+  }
+  
+  .pageBtn:disabled {
+    background-color: #3e3e4f;
+    color: #666666;
+    cursor: not-allowed;
+  }

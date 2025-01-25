@@ -11,7 +11,6 @@ import About from './pages/About.jsx'
 import NewsContainer from './pages/NewsContainer.jsx'
 import InfoNews from './pages/InfoNews.jsx'
 import Feedback from './pages/Feedback.jsx';
-
 import Book from './pages/Book.jsx'
 
 import User from './pages/user.jsx'
@@ -19,6 +18,9 @@ import Admin from './pages/admin.jsx'
 
 import CreateNews from './components/CreateNews.jsx';
 import CreateBook from './components/CreateBook.jsx';
+import CreateCollection from './components/CreateCollection.jsx';
+
+import Collection from './components/Collection.jsx';
 
 import PrivateRoute from './components/PrivateRoute.jsx'
 import PrivateAdminRoute from './components/PrivateAdminRoute.jsx';
@@ -64,6 +66,22 @@ const routes = [
     element: (
       <PrivateAdminRoute>
         <CreateBook />
+      </PrivateAdminRoute>
+    ),
+  },
+  {
+    path: '/admin/collection', 
+    element: (
+      <PrivateAdminRoute>
+        <CreateCollection />
+      </PrivateAdminRoute>
+    ),
+  },
+  {
+    path: '/admin/collections/:id', 
+    element: (
+      <PrivateAdminRoute>
+        <Collection />
       </PrivateAdminRoute>
     ),
   },

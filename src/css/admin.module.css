@@ -38,7 +38,6 @@
     border: none;
     margin: 10px 0;
     display: flex;
-    align-items: flex-start;
     border-radius: 8px;
     background-color: #2d2d3a;
     display: flex;
@@ -55,7 +54,6 @@
     border: none;
     margin: 10px 0;
     display: flex;
-    align-items: flex-start;
     border-radius: 8px;
     background-color: #2d2d3a;
     display: flex;
@@ -142,9 +140,50 @@
     background-color: #d32f2f;
 }
 
+  .title {
+    text-decoration: none;
+    transition: color 0.25s ease;
+    cursor: pointer;
+  }
+
+  .title:hover {
+    color: #1787D8;
+  }
 
 
-.pageList {
+.itemCol {
+    display: flex;
+    margin: 10px 0;
+    background-color: #2d2d3a;
+    border: none;
+    border-radius: 8px;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+
+.itemCol .btnBlock {
+    margin: 0;
+}
+.itemCol .btnDel {
+    margin: 0;
+}
+
+
+.btnCol {
+    background-color: #4a4aeb;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    color: #FFF;
+    padding: 5px 10px;
+}
+.btnCol:hover {
+    background-color: #2f34d3;
+}
+
+
+  .pageList {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,14 +218,4 @@
     background-color: #3e3e4f;
     color: #666666;
     cursor: not-allowed;
-  }
-
-  .title {
-    text-decoration: none;
-    transition: color 0.25s ease;
-    cursor: pointer;
-  }
-
-  .title:hover {
-    color: #1787D8;
   }

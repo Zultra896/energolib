@@ -13,6 +13,19 @@ function Admin() {
     const newsPerPage = 6; // Количество новостей на странице
     const booksPerPage = 4; // Количество книг на странице
 
+
+    const [collections, setCollections] = useState([]);
+    const fetchCollections = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/collections');
+            setCollections(response.data);
+        } catch (error) {
+            console.error('Ошибка загрузки коллекций:', error);
+        }
+    };
+
+
+
     // Функции для загрузки данных
     const fetchBooks = async () => {
         try {
@@ -51,13 +64,31 @@ function Admin() {
         }
     };
 
+    const deleteCollection = async (id) => {
+        if (window.confirm("Вы уверены, что хотите удалить эту коллекцию?")) {
+            try {
+                await axios.delete(`http://localhost:5000/collections/${id}`);
+                alert('Коллекция успешно удалена!');
+                // Обновляем список коллекций после удаления
+                fetchCollections(); 
+            } catch (error) {
+                console.error('Ошибка при удалении коллекции:', error);
+                alert('Не удалось удалить коллекцию. Попробуйте снова.');
+            }
+        }
+    };
+    
+
+
     // Обработчик для переключения вкладок
     const handleTabChange = (tab) => {
         setActiveTab(tab);
         setCurrentNewsPage(1); // Сбрасываем страницу новостей
         setCurrentBooksPage(1); // Сбрасываем страницу книг
+
         if (tab === 'books') fetchBooks();
         if (tab === 'news') fetchNews();
+        if (tab === 'collections') fetchCollections();
     };
 
     // Пагинация новостей
@@ -93,6 +124,12 @@ function Admin() {
                     <div className={styles.btnBlock}>
                         <button className={styles.btn} onClick={() => handleTabChange('books')}>Книги</button>
                         <button className={styles.btn} onClick={() => navigate('/admin/book')}>Создать книгу</button>
+                    </div>
+                    <div className={styles.btnBlock}>
+                        <button className={styles.btn} onClick={() => handleTabChange('collections')}>Коллекции</button>
+                        <button className={styles.btn} onClick={() => navigate('/admin/collection')}>
+                                Создать коллекцию
+                        </button>
                     </div>
                 </div>
                 <div>
@@ -190,6 +227,20 @@ function Admin() {
                                     </button>
                                 </div>
                             )}
+                        </div>
+                    )}
+                    {activeTab === 'collections' && (
+                        <div>
+                            <h2>Список коллекций</h2>
+                            {collections.map((collection) => (
+                                <div className={styles.itemCol}  key={collection.id}>
+                                    <h3>{collection.name}</h3>                                    
+                                    <div className={styles.btnBlock}>
+                                        <button className={styles.btnCol} onClick={() => navigate(`/admin/collections/${collection.id}`)}>Посмотреть книги</button>
+                                        <button className={styles.btnDel} onClick={() => deleteCollection(collection.id)}>Удалить</button>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>

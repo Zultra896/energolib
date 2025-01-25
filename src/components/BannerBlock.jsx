@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import bannerBlockStyles from '../css/bannerBlock.module.css';
 import btnArrowsStyles from '../css/btnArrows.module.css';
-import banner1 from '../img/Bibliya_Piskatora.jpg';
-import banner2 from '../img/photo1694678778-701x500.jpeg';
-import banner3 from '../img/Screenshot-2024-08-28-at-6.58.48-AM-701x500.jpg';
-import btnLeft from '../img/arrowsLeft.svg';
-import btnRight from '../img/arrowsRight.svg';
 import { useNavigate } from 'react-router-dom';
-
-const banners = [
-  { img: banner1, title: 'Книжные памятники', description: 'Историческое и художественное наследие России' },
-  { img: banner2, title: 'Современные издания', description: 'Лучшие книги нашего времени' },
-  { img: banner3, title: 'Классическая литература', description: 'Произведения, которые нужно знать' },
-];
+import axios from 'axios';
+import btnRight from '../img/arrowsRight.svg'
+import btnLeft from '../img/arrowsLeft.svg'
 
 function BannerSlider() {
+  const [banners, setBanners] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/collections'); // Предположим, что сервер возвращает массив баннеров
+        setBanners(response.data);
+      } catch (error) {
+        console.error('Ошибка загрузки баннеров:', error);
+      }
+    };
+
+    fetchBanners();
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,7 +31,7 @@ function BannerSlider() {
     }, 8000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [banners]);
 
   const handleNext = () => {
     setCurrentSlide((prev) => (prev + 1) % banners.length);
@@ -34,6 +40,10 @@ function BannerSlider() {
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
   };
+
+  if (banners.length === 0) {
+    return <div>Загрузка...</div>; // Пока данные не загружены, показываем индикатор загрузки
+  }
 
   return (
     <div className={bannerBlockStyles.bannerBlock}>
@@ -46,28 +56,21 @@ function BannerSlider() {
             <img src={btnRight} alt="Next" />
           </button>
         </div>
-        <h2 className={bannerBlockStyles.title}>{banners[currentSlide].title}</h2>
+        <h2 className={bannerBlockStyles.title}>{banners[currentSlide].name}</h2>
         <p className={bannerBlockStyles.description}>{banners[currentSlide].description}</p>
-        <p className={bannerBlockStyles.link} onClick={()=>navigate('/catalog')}>
+        <p className={bannerBlockStyles.link} onClick={() => navigate('/catalog')}>
           Подробнее
         </p>
       </div>
       <div className={bannerBlockStyles.bannerBlock__photo}>
-        <img
-          className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === 0 ? bannerBlockStyles.visible : ''}`}
-          src={banners[0].img}
-          alt={banners[0].title}
-        />
-        <img
-          className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === 1 ? bannerBlockStyles.visible : ''}`}
-          src={banners[1].img}
-          alt={banners[1].title}
-        />
-        <img
-          className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === 2 ? bannerBlockStyles.visible : ''}`}
-          src={banners[2].img}
-          alt={banners[2].title}
-        />
+        {banners.map((banner, index) => (
+          <img
+            key={banner.id} // Используем уникальный идентификатор баннера
+            className={`${bannerBlockStyles.bannerBlock__photoBack} ${currentSlide === index ? bannerBlockStyles.visible : ''}`}
+            src={banner.img_url} // Ссылка на картинку из данных
+            alt={banner.title}
+          />
+        ))}
       </div>
     </div>
   );

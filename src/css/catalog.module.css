@@ -13,8 +13,7 @@
 
 .section {
     display: flex;
-    justify-content: space-between;
-    gap: 31px;
+    width: 1200px;
 }
 
 .section__catalog {
@@ -50,6 +49,7 @@
     background-color: transparent;
     color: #BFBFBF;
     font-size: 13px;
+    width: 100%;
 }
 
 .books {
@@ -106,12 +106,18 @@
 }
 
 .filters {
+    position: fixed;
+    top: 100px;
+    left: calc(50% + 195px); /* Используем calc для сложения */
+    transform: translateZ(-50%); /* Центрирование по вертикали */
     width: 405px;
     height: 400px;
     background-color: #3A3E4A;
     border-radius: 12px;
     padding: 15px;
 }
+
+
 
 .fieldset {
     border: none;
