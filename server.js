@@ -338,6 +338,26 @@ app.get('/collections', (req, res) => {
   });
 });
 
+// Эндпоинт для получения информации о конкретной коллекции
+app.get('/collections/:id', (req, res) => {
+  const { id } = req.params;
+  db.query(
+    'SELECT * FROM collections WHERE id = ?',
+    [id],
+    (err, results) => {
+      if (err) {
+        console.error('Ошибка запроса:', err);
+        return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+      }
+      if (results.length === 0) {
+        return res.status(404).json({ success: false, message: 'Коллекция не найдена' });
+      }
+      res.json({ success: true, data: results[0] });
+    }
+  );
+});
+
+
 
 
 // Эндпоинт для создания коллекции
@@ -452,6 +472,147 @@ app.delete('/collections/:id', (req, res) => {
     res.json({ success: true, message: 'Коллекция удалена' });
   });
 });
+
+
+
+// Эндпоинт для получения всех персон
+app.get('/persons', (req, res) => {
+  db.query('SELECT * FROM persons', (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса к базе данных:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+
+    res.json(results);  // Отправляем всех персон
+  });
+});
+
+
+
+
+
+// Эндпоинт для добавления новой личности
+app.post('/persons', (req, res) => {
+  const { kz_name, ru_name, birthdate, kz_quote, ru_quote, kz_description, ru_description, img_url, links } = req.body;
+
+  const query = `
+    INSERT INTO persons (kz_name, ru_name, birthdate, kz_quote, ru_quote, kz_description, ru_description, img_url, 
+                         link1, link_name1, link2, link_name2, link3, link_name3, link4, link_name4, link5, link_name5)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  // Проверяем, если ссылки нет, передаем пустые значения
+  const params = [
+    kz_name || '', 
+    ru_name || '', 
+    birthdate, 
+    kz_quote || '', 
+    ru_quote || '', 
+    kz_description || '', 
+    ru_description || '', 
+    img_url || '', 
+    links[0]?.url || '', links[0]?.name || '',
+    links[1]?.url || '', links[1]?.name || '',
+    links[2]?.url || '', links[2]?.name || '',
+    links[3]?.url || '', links[3]?.name || '',
+    links[4]?.url || '', links[4]?.name || ''
+];
+
+
+  db.query(query, params, (err, result) => {
+    if (err) {
+      console.error('Ошибка добавления личности в базу данных:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка при добавлении личности' });
+    }
+
+    res.status(201).json({
+      success: true,
+      message: 'Личность успешно добавлена',
+      personId: result.insertId, // ID созданной личности
+    });
+  });
+});
+
+// Эндпоинт для получения информации о конкретной личности
+app.get('/persons/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.query('SELECT * FROM persons WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      console.error('Ошибка запроса:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ success: false, message: 'Личность не найдена' });
+    }
+
+    res.json(results[0]); // Отправляем информацию о личности
+  });
+});
+
+// Эндпоинт для редактирования личности
+app.put('/persons/:id', (req, res) => {
+  const { id } = req.params;
+  const { kz_name, ru_name, birthdate, kz_quote, ru_quote, kz_description, ru_description, img_url, links } = req.body;
+
+  const query = `
+    UPDATE persons 
+    SET kz_name = ?, ru_name = ?, birthdate = ?, kz_quote = ?, ru_quote = ?, kz_description = ?, 
+        ru_description = ?, img_url = ?, link1 = ?, link_name1 = ?, link2 = ?, link_name2 = ?, 
+        link3 = ?, link_name3 = ?, link4 = ?, link_name4 = ?, link5 = ?, link_name5 = ?
+    WHERE id = ?
+  `;
+
+  // Проверяем, если ссылки нет, передаем пустые значения
+  const params = [
+    kz_name || '', 
+    ru_name || '', 
+    birthdate, 
+    kz_quote || '', 
+    ru_quote || '', 
+    kz_description || '', 
+    ru_description || '', 
+    img_url || '', 
+    links[0] || '', links[1] || '', links[2] || '', links[3] || '', links[4] || '',
+    links[5] || '', links[6] || '', links[7] || '', links[8] || '', 
+    id
+  ];
+
+  db.query(query, params, (err, result) => {
+    if (err) {
+      console.error('Ошибка редактирования личности в базе данных:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка при редактировании личности' });
+    }
+
+    res.json({
+      success: true,
+      message: 'Личность успешно обновлена',
+    });
+  });
+});
+
+// Эндпоинт для удаления личности
+app.delete('/persons/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.query('DELETE FROM persons WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error('Ошибка удаления личности из базы данных:', err);
+      return res.status(500).json({ success: false, message: 'Ошибка при удалении личности' });
+    }
+
+    res.json({
+      success: true,
+      message: 'Личность успешно удалена',
+    });
+  });
+});
+
+
+
+
+
 
 
 

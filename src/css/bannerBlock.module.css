@@ -56,7 +56,6 @@
     width: 50%;
     height: 100%;
 }
-
 .bannerBlock__photoBack {
     position: absolute; /* Теперь изображение будет "приклеено" к контейнеру */
     width: 100%;

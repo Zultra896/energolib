@@ -19,8 +19,14 @@ import Admin from './pages/admin.jsx'
 import CreateNews from './components/CreateNews.jsx';
 import CreateBook from './components/CreateBook.jsx';
 import CreateCollection from './components/CreateCollection.jsx';
+import CreatePerson from './components/CreatePerson.jsx';
 
-import Collection from './components/Collection.jsx';
+import EditPerson from './components/EditPerson.jsx';
+
+import Collections from './components/Collection.jsx';
+import Collection from './pages/Collection.jsx';
+
+import Persons from './pages/Persons.jsx'
 
 import PrivateRoute from './components/PrivateRoute.jsx'
 import PrivateAdminRoute from './components/PrivateAdminRoute.jsx';
@@ -81,9 +87,45 @@ const routes = [
     path: '/admin/collections/:id', 
     element: (
       <PrivateAdminRoute>
-        <Collection />
+        <Collections />
       </PrivateAdminRoute>
     ),
+  },
+  {
+    path: '/admin/person',
+    element: (
+      <PrivateAdminRoute>
+        <CreatePerson />
+      </PrivateAdminRoute>
+    ),
+  },
+  {
+    path: '/admin/edit/person/:id', 
+    element: (
+      <PrivateAdminRoute>
+        <EditPerson />
+      </PrivateAdminRoute>
+    ),
+  },
+  {
+    path: '/persons',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Persons />
+      }
+    ]
+  },
+  {
+    path: '/collection/:id',
+    element: <Layout3 />,
+    children: [
+      {
+        index: true,
+        element: <Collection />,
+      }
+    ]
   },
   {
     path: '/catalog',

@@ -58,7 +58,7 @@ function BannerSlider() {
         </div>
         <h2 className={bannerBlockStyles.title}>{banners[currentSlide].name}</h2>
         <p className={bannerBlockStyles.description}>{banners[currentSlide].description}</p>
-        <p className={bannerBlockStyles.link} onClick={() => navigate('/catalog')}>
+        <p className={bannerBlockStyles.link} onClick={() => navigate(`/collection/${banners[currentSlide].id}`)}>
           Подробнее
         </p>
       </div>

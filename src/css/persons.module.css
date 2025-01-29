@@ -1,0 +1,86 @@
+.container {
+    width: 1200px;
+    height: 500px;
+    background-color: #3A3E4A;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.Title {
+    font-size: 23px;
+    color: #BFBFBF;
+}
+
+.searchLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 100%;
+    height: 31px;
+    border: 1px solid #BFBFBF;
+    border-radius: 8px;
+    padding: 8px 16px 8px 16px;
+}
+.searchInput {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #BFBFBF;
+    font-size: 13px;
+    width: 100%;
+}
+
+.gridPersons {
+    display: grid;
+    grid-template-columns: repeat(3, 360px);
+    gap: 10px 30px;
+    color: #FFF;
+}
+
+.itemPerson {
+    width: 360px;
+    height: 225px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+    height: 190px;
+}
+
+.namePerson {
+    font-size: 22px;
+    font-weight: 600;
+    width: 340px;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    margin-top: 15px;
+    transition: color 0.25s ease;
+    cursor: pointer;
+    text-align: center;
+}
+.namePerson:hover {
+    color: #1787D8;
+}
+.itemPerson .namePerson:last-child{
+    margin: 0;
+}

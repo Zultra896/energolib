@@ -2,19 +2,27 @@ import styles from '../css/admin.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useState} from 'react';
 import axios from 'axios';
+import searchIcon from '../img/searchIcon2.svg';
 
 function Admin() {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
     const [news, setNews] = useState([]);
+    const [collections, setCollections] = useState([]);
+    const [persons, setPersons] = useState([]);
+
     const [activeTab, setActiveTab] = useState(''); // 'books' или 'news'
     const [currentNewsPage, setCurrentNewsPage] = useState(1); // Текущая страница для новостей
     const [currentBooksPage, setCurrentBooksPage] = useState(1); // Текущая страница для книг
     const newsPerPage = 6; // Количество новостей на странице
     const booksPerPage = 4; // Количество книг на странице
 
+    const [searchQuery, setSearchQuery] = useState('');
 
-    const [collections, setCollections] = useState([]);
+
+
+    
+        // Функции для загрузки данных
     const fetchCollections = async () => {
         try {
             const response = await axios.get('http://localhost:5000/collections');
@@ -24,9 +32,17 @@ function Admin() {
         }
     };
 
+    const fetchPersons = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/persons');
+            setPersons(response.data);
+        } catch (error) {
+            console.error('Ошибка загрузки персон:', error);
+        }
+    }
 
 
-    // Функции для загрузки данных
+
     const fetchBooks = async () => {
         try {
             const response = await axios.get('http://localhost:5000/books');
@@ -78,6 +94,19 @@ function Admin() {
         }
     };
     
+    const deletePerson = async (id) => {
+        if (window.confirm("Вы уверены, что хотите удалить эту личность?")) {
+            try {
+                await axios.delete(`http://localhost:5000/persons/${id}`);
+                alert('Личность успешно удалена!');
+                // Обновляем список персон после удаления
+                fetchPersons();
+            } catch (error) {
+                console.error('Ошибка при удалении личности:', error);
+                alert('Не удалось удалить личность. Попробуйте снова.');
+            }
+        } 
+    }
 
 
     // Обработчик для переключения вкладок
@@ -89,6 +118,7 @@ function Admin() {
         if (tab === 'books') fetchBooks();
         if (tab === 'news') fetchNews();
         if (tab === 'collections') fetchCollections();
+        if (tab === 'persons') fetchPersons();
     };
 
     // Пагинация новостей
@@ -109,27 +139,65 @@ function Admin() {
         setCurrentBooksPage(page);
     };
 
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+    
+
+
+    const filteredPersons = persons.filter(person => 
+        (person.kz_name?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+         person.ru_name?.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    
+
+    const filteredCollections = collections.filter(collection =>
+        collection.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    
+    // const filteredBooks = books.filter(book =>
+    //     book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    //     book.specialty.toLowerCase().includes(searchQuery.toLowerCase())
+    // );
+    
+    // const filteredNews = news.filter(item =>
+    //     item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    //     item.author_name.toLowerCase().includes(searchQuery.toLowerCase())
+    // );
+    
+
     return (
         <div className={styles.container}>
             <div className={styles.main}>
                 <button onClick={() => navigate("/user")} className={styles.logoutButton}>
                     Выйти
                 </button>
-                <h1 className={styles.h}>Административная панель</h1>
+                <h1>Административная панель</h1>
                 <div>
-                    <div className={styles.btnBlock}>
-                        <button className={styles.btn} onClick={() => handleTabChange('news')}>Новости</button>
-                        <button className={styles.btn} onClick={() => navigate('/admin/news')}>Создать новость</button>
+                    <div className={styles.Block}>
+                        <div className={styles.btnBlock}>
+                            <button className={styles.btn} onClick={() => handleTabChange('news')}>Новости</button>
+                            <button className={styles.btn} onClick={() => navigate('/admin/news')}>Создать новость</button>
+                        </div>
+                        <div className={styles.btnBlock}>
+                            <button className={styles.btn} onClick={() => handleTabChange('books')}>Книги</button>
+                            <button className={styles.btn} onClick={() => navigate('/admin/book')}>Создать книгу</button>
+                        </div>
                     </div>
-                    <div className={styles.btnBlock}>
-                        <button className={styles.btn} onClick={() => handleTabChange('books')}>Книги</button>
-                        <button className={styles.btn} onClick={() => navigate('/admin/book')}>Создать книгу</button>
-                    </div>
-                    <div className={styles.btnBlock}>
-                        <button className={styles.btn} onClick={() => handleTabChange('collections')}>Коллекции</button>
-                        <button className={styles.btn} onClick={() => navigate('/admin/collection')}>
-                                Создать коллекцию
-                        </button>
+                    <div className={styles.Block}>
+                        <div className={styles.btnBlock}>
+                            <button className={styles.btn} onClick={() => handleTabChange('collections')}>Коллекции</button>
+                            <button className={styles.btn} onClick={() => navigate('/admin/collection')}>
+                                    Создать коллекцию
+                            </button>
+                        </div>
+                        <div className={styles.btnBlock}>
+                            <button className={styles.btn} onClick={() => handleTabChange('persons')}>Persons</button>
+                            <button className={styles.btn} onClick={() => navigate('/admin/person')}>
+                                Create Person
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -232,7 +300,18 @@ function Admin() {
                     {activeTab === 'collections' && (
                         <div>
                             <h2>Список коллекций</h2>
-                            {collections.map((collection) => (
+                            <label className={styles.searchLabel}>
+                                <img src={searchIcon} alt="" />
+                                <input
+                                    className={styles.searchInput}
+                                    type="text"
+                                    name="title"
+                                    placeholder="Поиск по названию"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
+                                />
+                            </label>
+                            {filteredCollections.map((collection) => (
                                 <div className={styles.itemCol}  key={collection.id}>
                                     <h3>{collection.name}</h3>                                    
                                     <div className={styles.btnBlock}>
@@ -241,6 +320,39 @@ function Admin() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    )}
+                    {activeTab === 'persons' && (
+                        <div>
+                            <h2>Person List</h2>
+                            <label className={styles.searchLabel}>
+                                <img src={searchIcon} alt="" />
+                                <input
+                                    className={styles.searchInput}
+                                    type="text"
+                                    name="title"
+                                    placeholder="Поиск по имени"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
+                                />
+                            </label>
+                            <div className={styles.gridPersons}>
+                                {filteredPersons.map((person) => (
+                                    <div className={styles.itemPerson} key={person.id}>
+                                        <div className={styles.photo}>
+                                            <img src={person.img_url} alt="" />
+                                        </div>
+                                        <div>
+                                            <h1 className={styles.namePerson}>{person.kz_name}</h1>
+                                            <h1 className={styles.namePerson}>{person.ru_name}</h1>
+                                        </div>
+                                        <div>
+                                            <button className={styles.btnPersonEdit} onClick={() => navigate(`/admin/edit/person/${person.id}`)}>Edit</button>
+                                            <button className={styles.btnPersonDel} onClick={() => deletePerson(person.id)}>Delete</button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     )}
                 </div>

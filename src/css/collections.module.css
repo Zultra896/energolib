@@ -1,0 +1,87 @@
+.container {
+    width: 1200px;
+    height: max-content;
+    background-color: #3A3E4A;
+    color: #FFF;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.collectionInfo {
+    display: flex;
+}
+
+.collectionInfo img {
+    width: 100%;
+    max-width: 600px; /* Максимальная ширина */
+    max-height: 450px; /* Максимальная высота */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    display: block; /* Убирает лишние отступы */
+    object-fit: cover; /* Заполняет контейнер, обрезая лишнее */
+    object-position: top; /* Изображение обрезается, начиная с верхней части */
+    border-radius: 12px; /* Закруглённые углы для аккуратного вида */
+}
+
+
+.textDiv {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.colTitle {
+
+}
+
+
+.books {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(6, 175px);
+    gap: 22px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    align-items: flex-end;
+    position: relative;
+}
+
+
+.bookTitle {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    text-align: left;
+    padding-left: 7px;
+}
+.bookTitle:hover {
+    color: #1787D8;
+}
+
+.bookImg {
+    display: flex;
+    align-items: end;
+    width: 165px;
+    height: 230px;
+    border-radius: 12px;
+}
+
+.blockLang {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    font-size: 12px;
+    display: inline-flex; /* Inline-flex для текста */
+    align-items: center; /* Центрирование текста по вертикали */
+    justify-content: center; /* Центрирование текста по горизонтали */
+    border-radius: 4px;
+    background-color: orange;
+    padding: 2px 6px; /* Добавьте внутренние отступы для красоты */
+    white-space: nowrap; /* Отключает перенос текста */
+    user-select: none;
+}

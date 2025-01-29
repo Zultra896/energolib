@@ -3,16 +3,17 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import searchIcon from '../img/searchIcon2.svg';
 
 function Collection() {
-        const navigate = useNavigate();
+    const navigate = useNavigate();
     const { id } = useParams();
     const [activeTab, setActiveTab] = useState('view'); // 'view' или 'add'
     const [collectionBooks, setCollectionBooks] = useState([]);
     const [availableBooks, setAvailableBooks] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const booksPerPage = 10;
+    const booksPerPage = 5;
 
     // Загрузка книг в коллекции
     const fetchCollectionBooks = async () => {
@@ -121,13 +122,17 @@ function Collection() {
                     {activeTab === 'add' && (
                         <div>
                             <h2>Добавить книги в коллекцию</h2>
-                            <input
-                                type="text"
-                                placeholder="Поиск по названию..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className={styles.searchInput}
-                            />
+                            <label className={styles.searchLabel}>
+                                <img src={searchIcon} alt="" />
+                                <input
+                                    className={styles.searchInput}
+                                    type="text"
+                                    name="title"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Поиск по названию"
+                                />
+                            </label>
                             {currentBooks.map((book) => (
                                 <div key={book.id} className={styles.item}>
                                     <img src={book.img_url} alt={book.title} className={styles.image} />

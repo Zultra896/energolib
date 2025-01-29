@@ -87,7 +87,7 @@ const Catalog = () => {
             value={filters.title}
             onChange={handleInputChange}
             onKeyDown={handleKeyPress}
-            placeholder="Поиск по названию"
+            placeholder={language === 'ru' ? 'Поиск по названию' : 'Аты бойынша іздеу'}
           />
         </label>
         <div className={catalogStyles.books}>

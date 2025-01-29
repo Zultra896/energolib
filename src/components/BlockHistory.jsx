@@ -1,8 +1,10 @@
 import BannerBlockHistory from "./BannerBlockHistory.jsx";
 import CardAuthors from "../components/CardAuthors.jsx";
 import blockHistoryStyles from "../css/blockHistory.module.css";
+import { useNavigate } from 'react-router-dom';
 
-function blockHistory() {
+function BlockHistory() {
+    const navigate = useNavigate();
 
     const authors = [
         {
@@ -58,10 +60,10 @@ function blockHistory() {
         />
       ))}
                 </div>
-                {/* <button className={blockHistoryStyles.btn}>Все истории</button> */}
+                <button className={blockHistoryStyles.btn} onClick={() => navigate('/persons')}>Все истории</button>
             </div>
         </div>
     )
   }
   
-export default blockHistory
+export default BlockHistory

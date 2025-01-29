@@ -36,6 +36,7 @@
     text-overflow: ellipsis;
     margin-top: 15px;
     transition: color 0.25s ease;
+    cursor: pointer;
 }
 
 .description {
