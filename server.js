@@ -488,7 +488,20 @@ app.get('/persons', (req, res) => {
 });
 
 
-
+app.get('/persons/random', (req, res) => {
+  db.query(`
+      SELECT *, TIMESTAMPDIFF(YEAR, birthdate, CURDATE()) AS age
+      FROM persons 
+      ORDER BY RAND() 
+      LIMIT 4
+  `, (err, results) => {
+      if (err) {
+          console.error('Ошибка запроса к базе данных:', err);
+          return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+      }
+      res.json(results);
+  });
+});
 
 
 // Эндпоинт для добавления новой личности
@@ -551,6 +564,7 @@ app.get('/persons/:id', (req, res) => {
   });
 });
 
+
 // Эндпоинт для редактирования личности
 app.put('/persons/:id', (req, res) => {
   const { id } = req.params;
@@ -561,7 +575,7 @@ app.put('/persons/:id', (req, res) => {
     SET kz_name = ?, ru_name = ?, birthdate = ?, kz_quote = ?, ru_quote = ?, kz_description = ?, 
         ru_description = ?, img_url = ?, link1 = ?, link_name1 = ?, link2 = ?, link_name2 = ?, 
         link3 = ?, link_name3 = ?, link4 = ?, link_name4 = ?, link5 = ?, link_name5 = ?
-    WHERE id = ?
+    WHERE id = ${id}
   `;
 
   // Проверяем, если ссылки нет, передаем пустые значения
@@ -574,11 +588,12 @@ app.put('/persons/:id', (req, res) => {
     kz_description || '', 
     ru_description || '', 
     img_url || '', 
-    links[0] || '', links[1] || '', links[2] || '', links[3] || '', links[4] || '',
-    links[5] || '', links[6] || '', links[7] || '', links[8] || '', 
-    id
-  ];
-
+    links[0]?.url || '', links[0]?.name || '',
+    links[1]?.url || '', links[1]?.name || '',
+    links[2]?.url || '', links[2]?.name || '',
+    links[3]?.url || '', links[3]?.name || '',
+    links[4]?.url || '', links[4]?.name || '',
+];
   db.query(query, params, (err, result) => {
     if (err) {
       console.error('Ошибка редактирования личности в базе данных:', err);

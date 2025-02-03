@@ -1,6 +1,6 @@
 .container {
     width: 1200px;
-    height: 500px;
+    height: auto;
     background-color: #3A3E4A;
     border: none;
     border-radius: 12px;

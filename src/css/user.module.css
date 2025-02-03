@@ -78,3 +78,9 @@
 .adminButton:hover {
     background-color: #2f34d3; /* Темный красный при наведении */
 }
+
+@media (max-width: 768px) {
+    .adminButton {
+        display: none;
+    }
+}

@@ -27,6 +27,7 @@ import Collections from './components/Collection.jsx';
 import Collection from './pages/Collection.jsx';
 
 import Persons from './pages/Persons.jsx'
+import Person from './pages/Person.jsx'
 
 import PrivateRoute from './components/PrivateRoute.jsx'
 import PrivateAdminRoute from './components/PrivateAdminRoute.jsx';
@@ -114,6 +115,16 @@ const routes = [
       {
         index: true,
         element: <Persons />
+      }
+    ]
+  },
+  {
+    path: '/persons/:id',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Person />,
       }
     ]
   },
