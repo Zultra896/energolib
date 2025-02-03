@@ -106,3 +106,15 @@
 .search__noResults::-webkit-scrollbar {
     display: none; 
   }
+
+
+@media (max-width: 768px) {
+
+    .search {
+        margin-left: 55px;
+    }
+
+   .search__container {
+        width: 358px;
+    }
+}

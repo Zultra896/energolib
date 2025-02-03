@@ -1,8 +1,6 @@
 .app {
   display: flex;
   flex-direction: column;
-  min-width: 1250px; /* Минимальная ширина для ПК */
-  overflow-x: hidden; /* Убирает горизонтальную прокрутку */
 }
 
 
@@ -29,8 +27,6 @@
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
-  
 
 @media (max-width: 1200px) {
   .app {

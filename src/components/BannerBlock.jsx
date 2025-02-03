@@ -46,6 +46,7 @@ function BannerSlider() {
   }
 
   return (
+    <div className={bannerBlockStyles.wrapper}>
     <div className={bannerBlockStyles.bannerBlock}>
       <div className={bannerBlockStyles.bannerBlock__info}>
         <div className={bannerBlockStyles.btnBlock}>
@@ -72,6 +73,7 @@ function BannerSlider() {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 }
