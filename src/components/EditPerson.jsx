@@ -88,16 +88,16 @@ function EditPerson() {
             <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} required />
           </label>
           <label>Цитата (Каз):
-            <textarea name="kz_quote" value={formData.kz_quote} onChange={handleChange} />
+            <textarea name="kz_quote" value={formData.kz_quote} onChange={handleChange} spellCheck="false"/>
           </label>
           <label>Цитата (Рус):
-            <textarea name="ru_quote" value={formData.ru_quote} onChange={handleChange} />
+            <textarea name="ru_quote" value={formData.ru_quote} onChange={handleChange} spellCheck="false"/>
           </label>
           <label>Описание (Каз):
-            <textarea name="kz_description" value={formData.kz_description} onChange={handleChange} />
+            <textarea name="kz_description" value={formData.kz_description} onChange={handleChange} spellCheck="false"/>
           </label>
           <label>Описание (Рус):
-            <textarea name="ru_description" value={formData.ru_description} onChange={handleChange} />
+            <textarea name="ru_description" value={formData.ru_description} onChange={handleChange} spellCheck="false"/>
           </label>
           <label>Ссылка на изображение:
             <input type="url" name="img_url" value={formData.img_url} onChange={handleChange} />
