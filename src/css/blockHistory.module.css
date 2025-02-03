@@ -85,3 +85,10 @@
 
     color: #1473B8;
 }
+
+@media (max-width: 768px) {
+    .block {
+        display: none;
+    }
+}
+    

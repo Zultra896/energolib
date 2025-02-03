@@ -89,6 +89,11 @@
       display: none;
     }
 
+    .header__items {
+        width: 110px;
+        gap: 20px;
+    }
+
     .user_name {
         display: none;
     }

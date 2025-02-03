@@ -44,6 +44,8 @@
     margin-top: 50px;
     font-size: 19px;
     font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .link {
@@ -82,20 +84,29 @@
     }
     
     .bannerBlock__info {
-        width: 50%;
-        height: 100%;
-        padding:  18px 17px;
-        position: relative;
+        height: auto;
+        padding:  18px 17px;    
+    } 
+    
+    .title {
+        margin-top: 20px;
+        font-size: 25px;
+    } 
+    
+    .description {
+        width: 200px;
+        margin-top: 25px;
+        font-size: 16px;
     }
     
-    .btnBlock {
-        width: 82px;
-        display: flex;
-        justify-content: space-between;
+    .link {
+        left: 17px;
+        bottom: 18px;
+        font-size: 18px;
     }
 }
 
-@media (max-width: 668px) {
+@media (max-width: 668px) { 
 
     .bannerBlock {
         width: 880px;
