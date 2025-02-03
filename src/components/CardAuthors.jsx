@@ -10,7 +10,7 @@ const CardAuthors = ({ id, photo, quote, description }) => {
       <div className={cardAuthorsStyles.photo}>
         <img src={photo} alt="Author" />
       </div>
-      <h3 className={cardAuthorsStyles.title}>{quote}</h3>
+      <h3 className={cardAuthorsStyles.title} onClick={() => navigate(`/persons/${id}`)}>«{quote}»</h3>
       <p className={cardAuthorsStyles.description}>{description}</p>
     </div>
   );

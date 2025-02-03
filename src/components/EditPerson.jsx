@@ -15,38 +15,44 @@ function EditPerson() {
     kz_description: "",
     ru_description: "",
     img_url: "",
-    link1: "",
-    link_name1: "",
-    link2: "",
-    link_name2: "",
-    link3: "",
-    link_name3: "",
-    link4: "",
-    link_name4: "",
-    link5: "",
-    link_name5: ""
+    links: Array(5).fill({ url: "", name: "" })
   });
-
   const [error, setError] = useState(null);
-  const [linkCount, setLinkCount] = useState(0);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/persons/${id}`)
       .then(response => {
-        setFormData(response.data);
-        // Определяем количество уже заполненных ссылок
-        let count = 0;
-        for (let i = 1; i <= 5; i++) {
-          if (response.data[`link${i}`]) count++;
-        }
-        setLinkCount(count);
+        const { link1, link_name1, link2, link_name2, link3, link_name3, link4, link_name4, link5, link_name5, ...data } = response.data;
+        setFormData({
+          ...data,
+          links: [
+            { url: link1 || "", name: link_name1 || "" },
+            { url: link2 || "", name: link_name2 || "" },
+            { url: link3 || "", name: link_name3 || "" },
+            { url: link4 || "", name: link_name4 || "" },
+            { url: link5 || "", name: link_name5 || "" }
+          ]
+        });
       })
       .catch(() => setError("Ошибка загрузки данных"));
   }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name.startsWith("link")) {
+      const index = parseInt(name.replace(/\D/g, "")) - 1;
+      setFormData(prev => {
+        const updatedLinks = [...prev.links];
+        if (name.includes("name")) {
+          updatedLinks[index].name = value;
+        } else {
+          updatedLinks[index].url = value;
+        }
+        return { ...prev, links: updatedLinks };
+      });
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -63,13 +69,6 @@ function EditPerson() {
     }
   };
 
-  const date = new Date(formData.birthdate);
-  const fDate = date.toLocaleDateString("ru-RU", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric"
-  });
-
   if (error) return <p className={styles.error}>{error}</p>;
 
   return (
@@ -85,7 +84,7 @@ function EditPerson() {
           <label>Имя (Рус):
             <input type="text" name="ru_name" value={formData.ru_name} onChange={handleChange} required />
           </label>
-          <label>Дата рождения:{fDate}
+          <label>Дата рождения:
             <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} required />
           </label>
           <label>Цитата (Каз):
@@ -104,54 +103,17 @@ function EditPerson() {
             <input type="url" name="img_url" value={formData.img_url} onChange={handleChange} />
           </label>
 
-          <label>Ссылка 1:
-            <input type="url" name="link1" value={formData.link1} onChange={handleChange} required />
-          </label>
-          <label>Название ссылки 1:
-            <input type="text" name="link_name1" value={formData.link_name1} onChange={handleChange} required />
-          </label>
-        
-      
-      
-        
-          <label>Ссылка 2:
-            <input type="url" name="link2" value={formData.link2} onChange={handleChange} required />
-          </label>
-          <label>Название ссылки 2:
-            <input type="text" name="link_name2" value={formData.link_name2} onChange={handleChange} required />
-          </label>
-        
-      
-      
-        
-          <label>Ссылка 3:
-            <input type="url" name="link3" value={formData.link3} onChange={handleChange} required />
-          </label>
-          <label>Название ссылки 3:
-            <input type="text" name="link_name3" value={formData.link_name3} onChange={handleChange} required />
-          </label>
-        
-      
-      
-        
-          <label>Ссылка 4:
-            <input type="url" name="link4" value={formData.link4} onChange={handleChange} required />
-          </label>
-          <label>Название ссылки 4:
-            <input type="text" name="link_name4" value={formData.link_name4} onChange={handleChange} required />
-          </label>
-        
-      
-      
-        
-          <label>Ссылка 5:
-            <input type="url" name="link5" value={formData.link5} onChange={handleChange} required />
-          </label>
-          <label>Название ссылки 5:
-            <input type="text" name="link_name5" value={formData.link_name5} onChange={handleChange} required />
-          </label>
-            
-          
+          {formData.links.map((link, index) => (
+            <div key={index}>
+              <label>Ссылка {index + 1}:
+                <input type="url" name={`link${index + 1}`} value={link.url} onChange={handleChange} />
+              </label>
+              <label>Название ссылки {index + 1}:
+                <input type="text" name={`link_name${index + 1}`} value={link.name} onChange={handleChange} />
+              </label>
+            </div>
+          ))}
+
           <button type="submit" className={styles.button}>Сохранить</button>
         </form>
       </div>
