@@ -3,6 +3,12 @@
     src: url(../fonts/League_Spartan.zip);
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .bannerBlock {
     width: 1200px;
     height: 470px;
@@ -14,12 +20,11 @@
 .bannerBlock__info {
     width: 50%;
     height: 470px;
-    padding:  0 60px 0 60px;
+    padding:  30px 60px;
     position: relative;
 }
 
 .btnBlock {
-    margin-top: 30px;
     width: 82px;
     display: flex;
     justify-content: space-between;
@@ -66,4 +71,42 @@
 
 .visible {
     opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+
+    .bannerBlock {
+        width: 980px;
+        height: 297px;
+    }
+    
+    .bannerBlock__info {
+        width: 50%;
+        height: 100%;
+        padding:  18px 17px;
+        position: relative;
+    }
+    
+    .btnBlock {
+        width: 82px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 668px) {
+
+    .bannerBlock {
+        width: 880px;
+        height: 297px;
+    }
+}
+
+@media (max-width: 568px) {
+ 
+     .bannerBlock {
+         width: 710px;
+         height: 297px;
+     }
 }

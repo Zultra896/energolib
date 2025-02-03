@@ -13,7 +13,7 @@
 
 .newsContainer {
     width: 720px;
-    height: 730px;
+    height: auto;
     margin: 0 auto;
     background-color: #3a3e4a;
     border-radius: 8px;
@@ -22,10 +22,9 @@
   }
   
   .newsTitle {
-      font-size: 24px;
-      color: #bfbfbf;
-      text-align: left;
-    margin-bottom: 15px;
+    font-size: 24px;
+    color: #bfbfbf;
+    text-align: left;
     font-weight: bold;
     padding-left: 10px;
   }
@@ -36,9 +35,10 @@
     padding-top: 15px;
   }
   
-  .headerBlock {
+.headerBlock {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
   }
   
   .newsList {

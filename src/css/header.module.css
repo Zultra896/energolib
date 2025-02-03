@@ -46,14 +46,11 @@
 }
 
 .user {
-    position: absolute;
-    right: 62px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 56px;
     cursor: pointer;
-    
 }
 
 .user_name {
@@ -79,3 +76,24 @@
     width: 100%;
     height: 100%;
 }
+
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 14px 60px;
+    }
+    
+
+    .header__logoTitle {
+      display: none;
+    }
+
+    .user_name {
+        display: none;
+    }
+    .avatar {
+        margin-left: 20px;
+    }
+  }
+  

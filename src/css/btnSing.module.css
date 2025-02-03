@@ -44,3 +44,18 @@
     user-select: none; /* Отключает выделение */
     -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }
+
+@media (max-width: 768px) {
+
+    .btnSing {
+        margin-left: 18px;
+    }
+    .btnSing__container {
+        width: 52px;
+
+    }
+    .text {
+      display: none;
+    }
+  }
+  
