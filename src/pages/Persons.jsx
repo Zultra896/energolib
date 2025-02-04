@@ -52,7 +52,7 @@ function Persons() {
                 <div className={styles.photo}>
                     <img src={person.img_url} alt="" />
                 </div>
-                <div>
+                <div onClick={() => navigate(`/persons/${person.id}`)}>
                     <h1 className={styles.namePerson}>{person.kz_name}</h1>
                     <h1 className={styles.namePerson}>{person.ru_name}</h1>
                 </div>

@@ -1,0 +1,48 @@
+
+.historyBlock {
+    width: 1200px;
+    height: 780px;
+    color: #FFFFFF;
+    position: relative;
+    padding: 15px;
+}
+
+.title {
+    font-size: 44px;
+}
+
+.blockTitle {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 30px;
+}
+
+.cardBlock {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 360px);
+    gap: 10px 30px;
+    color: #FFF;
+}
+
+.btn {
+    width: 350px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 2px solid #1787D8;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1787D8;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.btn:hover {
+
+    color: #1473B8;
+}
