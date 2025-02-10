@@ -503,6 +503,22 @@ app.get('/persons/random', (req, res) => {
   });
 });
 
+app.get('/persons/random6', (req, res) => {
+  db.query(`
+      SELECT *, TIMESTAMPDIFF(YEAR, birthdate, CURDATE()) AS age
+      FROM persons 
+      ORDER BY RAND() 
+      LIMIT 6
+  `, (err, results) => {
+      if (err) {
+          console.error('Ошибка запроса к базе данных:', err);
+          return res.status(500).json({ success: false, message: 'Ошибка сервера' });
+      }
+      res.json(results);
+  });
+});
+
+
 
 // Эндпоинт для добавления новой личности
 app.post('/persons', (req, res) => {

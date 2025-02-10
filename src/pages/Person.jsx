@@ -8,7 +8,7 @@ function Person() {
   const { id } = useParams(); 
   const [person, setPerson] = useState(null);
   const { language } = useLanguage();
-  const [localLanguage, setLocalLanguage] = useState('ru');
+  const [localLanguage, setLocalLanguage] = useState(language === 'ru' ? 'ru' : 'kz');
 
   // Загружаем данные о личности
   useEffect(() => {
