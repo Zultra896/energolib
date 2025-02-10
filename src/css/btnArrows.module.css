@@ -60,3 +60,21 @@
 .btnBanner2:hover img {
     filter: brightness(1.2); /* Увеличение яркости */
 }
+
+@media (max-width: 768px) {
+    .btnBanner,
+    .btnBanner2 {
+    height: 26px;
+    width: 26px;
+    
+}
+}
+
+@media (max-width: 478px) {
+    .btnBanner,
+    .btnBanner2 {
+    height: 24px;
+    width: 24px;
+    
+}
+}

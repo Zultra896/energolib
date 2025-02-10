@@ -1,14 +1,4 @@
-@font-face {
-    font-family: League, sans-serif;
-    src: url(../fonts/League_Spartan.zip);
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "League", sans-serif;
-}
 
 .feedback {
     flex: 1; /* Занимает оставшуюся высоту в .app__content */

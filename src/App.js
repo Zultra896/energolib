@@ -31,6 +31,8 @@ import Person from './pages/Person.jsx'
 
 import PrivateRoute from './components/PrivateRoute.jsx'
 import PrivateAdminRoute from './components/PrivateAdminRoute.jsx';
+import styles from './css/global.module.css';
+
 
 
 const routes = [

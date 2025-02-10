@@ -28,8 +28,3 @@
   background: transparent;
 }
 
-@media (max-width: 1200px) {
-  .app {
-    zoom: 0.65; /* Уменьшение масштаба */
-  }
-}

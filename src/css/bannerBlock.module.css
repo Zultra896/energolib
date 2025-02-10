@@ -1,7 +1,3 @@
-@font-face {
-    font-family: League, sans-serif;
-    src: url(../fonts/League_Spartan.zip);
-}
 
 .wrapper {
     display: flex;
@@ -75,23 +71,35 @@
     opacity: 1;
 }
 
-
-@media (max-width: 768px) {
-
+@media (max-width: 1200px) {
     .bannerBlock {
-        width: 980px;
-        height: 297px;
+        width: 96vw; 
+        height: calc(96vw * (470 / 1200));
     }
     
     .bannerBlock__info {
-        height: auto;
+        height: calc(96vw * (470 / 1200));
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        margin-top: 15px;
+        font-size: 25px;
+    } 
+}
+    
+
+@media (max-width: 768px) {
+    .bannerBlock__info {
         padding:  18px 17px;    
     } 
     
-    .title {
-        margin-top: 20px;
-        font-size: 25px;
-    } 
+    .btnBlock {
+        width: 62px;
+        display: flex;
+        justify-content: space-between;
+    }
     
     .description {
         width: 200px;
@@ -108,16 +116,43 @@
 
 @media (max-width: 668px) { 
 
-    .bannerBlock {
-        width: 880px;
-        height: 297px;
+    .title {
+        margin-top: 15px;
+        font-size: 20px;
+    } 
+
+    .description {
+        width: 200px;
+        margin-top: 25px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .link {
+        font-size: 16px;
     }
 }
 
-@media (max-width: 568px) {
- 
-     .bannerBlock {
-         width: 710px;
-         height: 297px;
-     }
+@media (max-width: 478px) {
+
+    .btnBlock {
+        width: 52px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+   .title {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .description {
+        display: none;
+    }
+
+    .link {
+        font-size: 14px;
+    }
 }
