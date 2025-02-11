@@ -7,7 +7,7 @@ export default function Main() {
   return (
     <div>
         <BannerBlock />
-        <BlockHistory />
+        {/* <BlockHistory /> */}
         <BlockHistory2 />
         {/* <SlideBannerBlock /> */}
     </div>

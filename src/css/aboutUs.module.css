@@ -36,9 +36,26 @@
   }
   
 
-  @media (max-width: 968px) {
+  @media (max-width: 768px) {
     .containerPhoto {
       width: 96%;
       grid-template-columns: repeat(1, 1fr);
     }
   }
+
+    @media (max-width: 568px) {
+      .img {
+        width: 50px;
+        height: auto;
+}
+
+      .name {
+        font-size: 20px;
+}
+
+      .email {
+        font-size: 18px;
+}
+
+
+    }
