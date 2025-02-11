@@ -41,6 +41,11 @@ const BurgerMenu = () => {
       {isOpen && (
         <div className={styles.menu}>
           <ul className={styles.menuList}>
+          <Link className={styles.menuLink} to="/Auth/">
+              <li className={styles.menuItem}>
+                {language === "ru" ? "Вход" : "Кіру"}
+              </li>
+            </Link>
             <Link className={styles.menuLink} to="/catalog">
               <li className={styles.menuItem}>
                 {language === "ru" ? "Каталог" : "Каталог"}

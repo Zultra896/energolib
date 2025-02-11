@@ -1,29 +1,16 @@
-@font-face {
-    font-family: League, sans-serif;
-    src: url(../fonts/League_Spartan.zip);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "League", sans-serif;
-}
 
 .footer {
     width: 100%;
-    height: 280px;
+    height: 100%;
     background-color: #3A3E4A;
     margin-top: 100px;
-    padding: 10px 115px;
+    padding: 15px 80px;
 }
 
 .footer__container {
     display: flex;
-    justify-content: space-between;
     align-items: start;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #E4E4E7;
+    gap: 80px;
 }
 
 .footer__logo {
@@ -31,6 +18,13 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 27px;
+}
+
+.footer__block {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .footer__logoTitle {
@@ -48,7 +42,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 41px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #E4E4E7;
 }
 
 .socialNetworks__list {
@@ -61,10 +56,6 @@
     border-radius: 100%;
      user-select: none; /* Отключает выделение */
     -webkit-user-drag: none; /* Отключает перетаскивание изображения */
-}
-
-.footer__list {
-    padding-top: 18px;
 }
 
 .footer__link {
@@ -118,4 +109,74 @@
     color: #FFF;
     margin-top: 10px;
     font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+    .footer {
+        padding: 15px 30px;
+    }
+
+    .footer__list {
+        padding: 0;
+    }
+
+    .footer__description {
+        display: none;
+    }
+
+    .footer__title {
+        font-size: 14px;
+        margin-bottom: 13px;
+    }
+
+    .footer__inp {
+        width: 110px;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+
+    .footer__btn {
+        width: 76px;
+        border-radius: 6px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 678px) {
+
+    .footer__container {
+        gap: 20px;
+    }
+    
+    .footer__logo {
+        margin-bottom: 0;
+    }
+
+    .footer__container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 378px) {
+
+    .footer__title {
+        padding-top: 5px;
+        width: 50%;
+        border-top: 1px solid #E4E4E7;
+    }
+
+    .footer__block {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .socialNetworks {
+        margin-top: 20px;
+    }
+
+    .footer__rights {
+        font-size: 12px;
+    }
 }

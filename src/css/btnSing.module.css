@@ -1,14 +1,3 @@
-@font-face {
-    font-family: League, sans-serif;
-    src: url(../fonts/League_Spartan.zip);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "League", sans-serif;
-}
 
 .btnSing:hover .text {
     color: #FFF;
@@ -45,7 +34,13 @@
     -webkit-user-drag: none; /* Отключает перетаскивание изображения */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 678px) {
+    .btnSing__container {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
 
     .btnSing {
         margin-left: 18px;

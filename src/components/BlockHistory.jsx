@@ -16,6 +16,7 @@ function BlockHistory() {
     }, []);
 
     return (
+        <div className={blockHistoryStyles.wrapper}>
         <div className={blockHistoryStyles.block}>
             <div className={blockHistoryStyles.blog}>
                 <div className={blockHistoryStyles.blockTitle}>
@@ -37,8 +38,9 @@ function BlockHistory() {
                         />
                     ))}
                 </div>
-                <button className={blockHistoryStyles.btn} onClick={() => navigate('/persons')}>Все истории</button>
+                {/* <button className={blockHistoryStyles.btn} onClick={() => navigate('/persons')}>Все истории</button> */}
             </div>
+        </div>
         </div>
     );
 }

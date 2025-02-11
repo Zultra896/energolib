@@ -58,3 +58,8 @@
     background: linear-gradient(to bottom, rgba(44, 48, 53, 0) 0%, #2C3035 100%);
     pointer-events: none;
 }
+
+@media (max-width: 1200px) {
+    
+
+}

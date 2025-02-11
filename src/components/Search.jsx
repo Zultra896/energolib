@@ -58,6 +58,7 @@ function Search() {
           onBlur={() => setTimeout(() => setIsFocused(false), 200)} // Скрываем подсказки с задержкой
         />
         <img
+          className={searchStyles.search__icon}
           src={searchIcon}
           alt={language === "ru" ? "Иконка поиска" : "Іздеу белгішесі"}
         />

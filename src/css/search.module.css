@@ -1,14 +1,4 @@
-@font-face {
-    font-family: League, sans-serif;
-    src: url(../fonts/League_Spartan.zip);
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "League", sans-serif;
-}
 
 .search {
     position: relative; 
@@ -35,10 +25,10 @@
     border: none;
     outline: none;
 }
-.search__inp img {
+.search__icon {
     user-select: none; /* Отключает выделение */
     -webkit-user-drag: none; /* Отключает перетаскивание изображения */
-
+    margin-left: 10px;
 }
 
 .search__suggestions {
@@ -95,7 +85,6 @@
     overflow: auto; 
     -ms-overflow-style: none; 
     scrollbar-width: none; 
-
     z-index: 10; 
     padding: 12px 22px;
     font-size: 14px;
@@ -107,14 +96,45 @@
     display: none; 
   }
 
-
-@media (max-width: 768px) {
-
-    .search {
-        margin-left: 55px;
-    }
+@media (max-width: 1200px) {
 
    .search__container {
         width: 358px;
+    }  
+}
+
+
+@media (max-width: 768px) {
+
+   .search__container {
+        width: 358px;
+    }
+}
+
+@media (max-width: 568px) {
+    .search__container {
+        width: 300px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 478px) {
+    .search__container {
+        width: 250px;
+        height: 46px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 428px) {
+    .search__container {
+        width: 200px;
+        height: 40px;
+        border-radius: 8px;
+    }
+
+    .search__icon {
+        width: 18px;
+        height: 18px;       
     }
 }
