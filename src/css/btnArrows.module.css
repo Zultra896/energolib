@@ -66,15 +66,24 @@
     .btnBanner2 {
     height: 26px;
     width: 26px;
+    }
     
-}
+    .btnBanner img,
+    .btnBanner2 img {
+        width: 12px;
+        height: 12px;
+    }
 }
 
 @media (max-width: 478px) {
     .btnBanner,
     .btnBanner2 {
     height: 24px;
-    width: 24px;
-    
-}
+    width: 24px;   
+    }
+    .btnBanner img,
+    .btnBanner2 img {
+        width: 10px;
+        height: 10px;
+    }
 }
