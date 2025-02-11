@@ -124,3 +124,11 @@
     color: #526CFE;
     text-decoration: none;
 }
+
+@media (max-width: 480px) {
+    .card {
+        width: 380px;
+        height: 352px;
+        padding: 15px 20px;
+    }
+}

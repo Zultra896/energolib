@@ -142,7 +142,7 @@ const routes = [
   },
   {
     path: '/catalog',
-    element: <Layout2 />,
+    element: <Layout />,
     children: [
       {
         index: true,

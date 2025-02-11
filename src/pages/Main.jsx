@@ -1,5 +1,5 @@
 import BannerBlock from '../components/BannerBlock.jsx'
-import BlockHistory from '../components/BlockHistory.jsx'
+// import BlockHistory from '../components/BlockHistory.jsx'
 import BlockHistory2 from '../components/BlockHistory2.jsx'
 // import SlideBannerBlock from '../components/SlideBannerBlock.jsx'
 
