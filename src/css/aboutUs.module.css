@@ -26,12 +26,19 @@
   }
   
   .name {
-    font-size: 30px;
+    font-size: 28px;
     color: white;
   }
   
   .email {
-    font-size: 26px;
+    font-size: 22px;
     color: white;
   }
   
+
+  @media (max-width: 968px) {
+    .containerPhoto {
+      width: 96%;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }

@@ -23,9 +23,17 @@ const Catalog = () => {
 
   const fetchBooks = async () => {
     try {
+      // Маппинг специальностей, если выбрано "Жылу энергетикасы", то отправляем "Теплоэнергетика"
+      const mappedSpecialties = filters.specialties.map((specialty) => {
+        if (specialty === 'Жылу энергетикасы') {
+            return 'Теплоэнергетика';
+        }
+        return specialty;
+      });
+
       const { data } = await axios.get('http://localhost:5000/books', {
         params: {
-          specialty: filters.specialties.join(','), // Передаем выбранные специальности
+          specialty: mappedSpecialties.join(','), // Передаем маппинг специальностей
           title: filters.title,
           language: filters.languages.join(','),
         },

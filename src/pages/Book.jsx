@@ -64,7 +64,9 @@ function Book() {
             <p className={styles.argument}>
               {language === 'ru' ? 'Тип' : 'Тип'}
             </p>
-            <p className={styles.value}>{book.type}</p>
+            <p className={styles.value}>
+              {book.type === 'книга' ? (language === 'ru' ? 'книга' : 'кітап') : book.type}
+            </p>
           </div>
           <div className={styles.infoP}>
             <p className={styles.argument}>

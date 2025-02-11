@@ -1,10 +1,15 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .historyBlock {
     width: 1200px;
     height: 780px;
     color: #FFFFFF;
     position: relative;
-    padding: 15px;
+    margin-top: 80px;
 }
 
 .title {
@@ -24,6 +29,7 @@
     grid-template-columns: repeat(3, 360px);
     gap: 10px 30px;
     color: #FFF;
+    padding: 0px 30px;
 }
 
 .btn {
@@ -45,4 +51,18 @@
 .btn:hover {
 
     color: #1473B8;
+}
+
+@media (max-width: 1208px) {
+    
+    .historyBlock {
+        width: 810px;
+        height: auto;
+        padding-bottom: 90px;
+    }
+
+    .cardBlock {
+        grid-template-columns: repeat(2, 360px);
+    }
+    
 }

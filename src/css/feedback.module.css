@@ -44,3 +44,10 @@
 b {
     color: #526CFE;
 }
+
+
+@media (max-width: 728px) {
+    .section {
+        width: 96%;
+    }
+}

@@ -32,3 +32,13 @@
     padding-top: 35px;
   }
   
+
+@media (max-width: 1024px) {
+  .aboutTtl {
+    font-size: 36px;
+  }
+  .description {
+    font-size: 20px;
+  }
+  
+}

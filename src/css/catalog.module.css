@@ -54,7 +54,7 @@
 
 .books {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 168.5px);
     gap: 20px;
 }
 
@@ -182,4 +182,184 @@
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
     border-radius: 12px;
+}
+
+@media (max-width: 1200px) {
+    .section {
+        width: 1024px
+    }
+
+    .section__catalog {
+        width: 724px;
+        padding: 10px;
+    }
+
+    .catalogLabel {
+        margin: 10px 0;
+    }
+
+    .filters {
+        left: calc(50% + 224px);
+        width: 290px;
+        height: 300px;
+        padding: 10px;
+    }
+
+    .books {
+        gap: 10px
+    }
+}
+
+@media (max-width: 1032px) {
+    .section {
+        width: 960px;
+    }
+
+    .section__catalog {
+        width: 665px;
+        padding: 5px;
+    }
+
+    .filters {
+        left: calc(50% + 190px);
+    }
+        
+    .books {
+        grid-template-columns: repeat(4, 160px);
+        gap: 15px 5px;
+    }
+
+    .book {
+        gap: 8px;
+    }
+
+    .bookImg {
+        display: flex;
+        align-items: end;
+        width: 153px;
+        height: 215px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 968px) {
+    .section {
+        width: 900px;
+    }
+    .section__catalog {
+        width: 605px;
+    }
+    .filters {
+        left: calc(50% + 160px);
+    }
+    .books {
+        grid-template-columns: repeat(4, 145px);
+    }
+    .book {
+        gap: 5px;
+    }
+    .bookTitle {
+        padding-left: 5px;
+    }
+    .bookImg {
+        display: flex;
+        align-items: end;
+        width: 140px;
+        height: 196px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 908px) {
+    .section {
+        width: 830px;
+    }
+    .section__catalog {
+        width: 565px;
+    }
+    .filters {
+        width: 260px;
+        padding: 10px 5px 10px 10px;
+        left: calc(50% + 155px);
+    }
+    .fieldsetTitle, .catalogTitle {
+        font-size: 20px;
+    }
+    .books {
+        grid-template-columns: repeat(4, 135px);
+    }
+    .bookImg {
+        width: 130px;
+        height: 182px;
+    }
+}
+@media (max-width: 838px) {
+    .section {
+        width: 690px;
+    }
+    .section__catalog {
+        width: 440px;
+    }
+    .filters {
+        width: 245px;
+        padding: 10px 5px 10px 10px;
+        left: calc(50% + 100px);
+    }
+    .fieldsetTitle, .catalogTitle {
+        font-size: 18px;
+    }
+    .fieldsetLabel {
+        font-size: 14px;
+    }
+    .books {
+        grid-template-columns: repeat(3, 140px);
+    }
+    .bookImg {
+        width: 135px;
+        height: 189px;
+    }
+}
+
+@media (max-width: 700px) {
+    .section {
+        width: 660px;
+    }
+    .section__catalog {
+        border-radius: 12px 0 0 12px;
+        padding: 10px 5px;
+    }
+    .filters {
+        left: calc(50% + 110px);
+        width: 220px;
+        height: 280px;
+        border-radius: 0 12px 12px 0;
+    }
+    .catalogTitle, .fieldsetTitle {
+        font-size: 16px;
+    }
+    .books {
+        grid-template-columns: repeat(4, 100px);
+        gap: 10px;
+    }
+    .bookImg {
+        width: 95px;
+        height: 133px;
+    }
+
+    .btn {
+        padding: 0 7px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    
+    .bookTitle {
+        font-size: 12px;
+        text-align: left;
+        padding-left: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
 }

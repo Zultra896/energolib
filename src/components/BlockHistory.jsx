@@ -22,6 +22,7 @@ function BlockHistory() {
                     <h1 className={blockHistoryStyles.title}>Блог</h1>
                 </div>
                 <BannerBlockHistory />
+                <button className={blockHistoryStyles.btn} onClick={() => navigate('/persons')}>Читать дальше</button>
             </div>
             <div className={blockHistoryStyles.historyBlock}>
                 <h1 className={blockHistoryStyles.title}>История писателей</h1>

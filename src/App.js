@@ -120,7 +120,7 @@ const routes = [
   },
   {
     path: '/persons/:id',
-    element: <Layout />,
+    element: <Layout3 />,
     children: [
       {
         index: true,
@@ -140,7 +140,7 @@ const routes = [
   },
   {
     path: '/catalog',
-    element: <Layout />,
+    element: <Layout2 />,
     children: [
       {
         index: true,
