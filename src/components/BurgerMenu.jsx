@@ -52,7 +52,7 @@ const BurgerMenu = () => {
               </Link>
               ) : (
               <Link className={styles.menuLink} to="/Auth/">
-                <li className={styles.menuItem}>
+                <li className={styles.menuSing}>
                   {language === "ru" ? "Вход" : "Кіру"}
                 </li>
               </Link>
