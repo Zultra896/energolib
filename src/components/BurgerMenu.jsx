@@ -46,6 +46,11 @@ const BurgerMenu = () => {
                 {language === "ru" ? "Вход" : "Кіру"}
               </li>
             </Link>
+            <Link className={styles.menuLink} to="/">
+              <li className={styles.menuItem}>
+                {language === "ru" ? "Главная" : "Басты бет"}
+              </li>
+            </Link>
             <Link className={styles.menuLink} to="/catalog">
               <li className={styles.menuItem}>
                 {language === "ru" ? "Каталог" : "Каталог"}

@@ -138,3 +138,31 @@
         height: 18px;       
     }
 }
+
+@media (max-width: 378px) {
+
+    .search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 30px 15px 30px;
+    }
+
+    .search__container {
+        width: 96vw;
+        height: 50px;
+        border-radius: 8px;
+    }
+
+    .search__suggestions {
+        margin: 0;
+        left: 10%;
+        width: 80%; 
+    }
+    
+    .search__noResults {
+        margin: 0;
+        left: 10%;
+        width: 80%;  
+    }
+}
