@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import styles from "../css/burgerMenu.module.css";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useLanguage } from "../components/LanguageContext";
 import { AuthContext } from './AuthContext.jsx';
-import avatar from '../img/user.png';
-import headerStyles from '../css/header.module.css';
 
 const BurgerMenu = () => {
   const { isAuthenticated, user } = useContext(AuthContext);
@@ -31,6 +29,7 @@ const BurgerMenu = () => {
     };
   }, []);
 
+
   return (
     <div className={styles.burgerMenuContainer} ref={menuRef}>
       <div
@@ -45,18 +44,20 @@ const BurgerMenu = () => {
       {isOpen && (
         <div className={styles.menu}>
           <ul className={styles.menuList}>
-          <Link className={styles.menuLink} to="/Auth/">
             {isAuthenticated && user ? (
-              <div className={headerStyles.avatar}>
-              <img src={avatar} alt="User Avatar" className={headerStyles.avatarImg} />
-            </div>
-            ) : (
-              <li className={styles.menuItem}>
-                {language === "ru" ? "Вход" : "Кіру"}
-              </li>
-            )
-          }
-            </Link>
+              <Link className={styles.menuLink} to="/user">
+                <li className={styles.menuSing}>
+                  {language === "ru" ? "Личный кабинет" : "Жеке кабинет"}
+                </li>
+              </Link>
+              ) : (
+              <Link className={styles.menuLink} to="/Auth/">
+                <li className={styles.menuItem}>
+                  {language === "ru" ? "Вход" : "Кіру"}
+                </li>
+              </Link>
+              )
+            }
             <Link className={styles.menuLink} to="/">
               <li className={styles.menuItem}>
                 {language === "ru" ? "Главная" : "Басты бет"}

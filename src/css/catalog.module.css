@@ -53,6 +53,7 @@
     cursor: pointer;
     align-items: flex-end;
     position: relative;
+    width: 168.5px;
 }
 
 .blockLang {
@@ -172,6 +173,17 @@
     border-radius: 12px;
 }
 
+.B {
+    display: flex;
+    justify-content: center;
+}
+.filters2 {
+    display: none;
+}
+.fTitle {
+    display: none;
+}
+
 @media (max-width: 1200px) {
     .section {
         width: 1024px
@@ -219,6 +231,7 @@
 
     .book {
         gap: 8px;
+        width: 160px;
     }
 
     .bookImg {
@@ -244,6 +257,7 @@
         grid-template-columns: repeat(4, 145px);
     }
     .book {
+        width: 145px;
         gap: 5px;
     }
     .bookTitle {
@@ -273,6 +287,9 @@
     .fieldsetTitle, .catalogTitle {
         font-size: 20px;
     }
+    .book {
+        width: 135px;
+    }
     .books {
         grid-template-columns: repeat(4, 135px);
     }
@@ -299,6 +316,9 @@
     .fieldsetLabel {
         font-size: 14px;
     }
+    .book{
+        width: 140px;
+    }
     .books {
         grid-template-columns: repeat(3, 140px);
     }
@@ -310,36 +330,33 @@
 
 @media (max-width: 700px) {
     .section {
-        width: 660px;
+        width: 96vw;
     }
+
     .section__catalog {
-        border-radius: 12px 0 0 12px;
-        padding: 10px 5px;
+        width: 100%;
     }
-    .filters {
-        left: calc(50% + 110px);
-        width: 220px;
-        height: 280px;
-        border-radius: 0 12px 12px 0;
-    }
-    .catalogTitle, .fieldsetTitle {
+    .catalogTitle {
         font-size: 16px;
     }
+
+    .filters {
+        display: none;
+    }
+   
     .books {
-        grid-template-columns: repeat(4, 100px);
-        gap: 10px;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
+
+    .book {
+        width: 120px;
+    }
+
     .bookImg {
-        width: 95px;
-        height: 133px;
+        width: 115px;
+        height: 161px;
     }
-
-    .btn {
-        padding: 0 7px;
-        height: 20px;
-        font-size: 12px;
-    }
-
     
     .bookTitle {
         font-size: 12px;
@@ -349,5 +366,60 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
+    .titles {
+        display: flex;
+        justify-content: space-between;
+    }
+    .fTitle {
+        display: flex;
+        color: #BFBFBF;
+        font-size: 16px;
+        cursor: pointer;
+        &:hover {
+            color: #FFF;
+        }
+    }
+    .filters2 {
+        display: flex;
+        font-size: 16px;
+        color: #BFBFBF;
+        position: absolute;
+        top: 170px; 
+        right: 12px;
+        width: 253px;
+        padding: 10px;
+        background-color: #3A3E4A;
+        border-radius: 10px;
+        border: 1px solid #bfbfbf;
+        z-index: 1;
+    }
+    .div {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+        position: relative;
+    }
+    .icon {
+        width: 15px;
+        height: 15px;
+    }
+    .fieldset {
+        width: 100%;
+    }
+    .fieldsetHead {
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .btn {
+        padding: 2px 6px;
+        width: max-content;
+        height: auto;
+        background-color: #434653;
+        border: none;
+        border-radius: 8px;
+        color: #BFBFBF;
+        font-size: 14px;
+        cursor: pointer;
+    }
 }

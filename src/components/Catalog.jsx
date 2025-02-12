@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import catalogStyles from '../css/catalog.module.css';
 import searchIcon from '../img/searchIcon2.svg';
 import { useLanguage } from '../components/LanguageContext';
 import { useNavigate } from 'react-router-dom';
+import filterIcon from '../img/filter.svg'
 
 const Catalog = () => {
   const navigate = useNavigate();
@@ -82,10 +83,85 @@ const Catalog = () => {
     setFilters({ specialties: [], title: '', languages: [] });
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null); 
+
+  
+    // Функция переключения состояния меню
+    const toggleMenu = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    // Закрытие меню при клике вне его области
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+          setIsOpen(false); // Закрываем меню
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
+  
+
   return (
     <section className={catalogStyles.section}>
       <div className={catalogStyles.section__catalog}>
-        <h1 className={catalogStyles.catalogTitle}>Каталог</h1>
+        <div className={catalogStyles.titles}>
+          <h1 className={catalogStyles.catalogTitle}>Каталог</h1>
+          <div className={catalogStyles.div} onClick={toggleMenu}>
+            <h1 className={catalogStyles.fTitle}>Фильтры</h1>
+            <img className={catalogStyles.icon} src={filterIcon} alt="" />
+          </div>
+          {isOpen && (
+       <div className={catalogStyles.filters2}>
+        <fieldset className={catalogStyles.fieldset}>
+          <label className={catalogStyles.fieldsetHead}>
+            <legend className={catalogStyles.fieldsetTitle}>
+              {language === 'ru' ? 'Специальность:' : 'Мамандық:'}
+            </legend>
+            <button className={catalogStyles.btn} onClick={resetFilters}>
+              {language === 'ru' ? 'Сбросить' : 'Қалпына келтіру'}
+            </button>
+          </label>
+          {specialtiesList.map((specialty) => (
+          <label className={catalogStyles.fieldsetLabel} key={specialty}>
+              <input
+                className={catalogStyles.fieldsetInput}
+                type="checkbox"
+                value={specialty}
+                checked={filters.specialties.includes(specialty)}
+                onChange={(e) => handleCheckboxChange(e, 'specialties')}
+              />
+              {specialty}
+            </label>
+          ))}
+
+          <label className={catalogStyles.fieldsetHead}>
+            <legend className={catalogStyles.fieldsetTitle}>
+              {language === 'ru' ? 'Язык:' : 'Тіл:'}
+            </legend>
+          </label>
+          {bookLanguage.map((lang) => (
+            <label className={catalogStyles.fieldsetLabel} key={lang}>
+              <input
+                className={catalogStyles.fieldsetInput}
+                type="checkbox"
+                value={lang}
+                checked={filters.languages.includes(lang)}
+                onChange={(e) => handleCheckboxChange(e, 'languages')}
+              />
+              {lang}
+            </label>
+          ))}
+        </fieldset>
+      </div> 
+      )}
+          
+        </div>
         <label className={catalogStyles.catalogLabel}>
           <img src={searchIcon} alt="" />
           <input
@@ -100,20 +176,22 @@ const Catalog = () => {
         </label>
         <div className={catalogStyles.books}>
           {books.map((book) => (
-            <div
-              key={book.id}
-              className={catalogStyles.book}
-              onClick={() => navigate(`/book/${book.id}`)}
-            >
-              <div className={catalogStyles.blockLang} >
-                {book.language}
+            <div className={catalogStyles.B}>
+              <div
+                key={book.id}
+                className={catalogStyles.book}
+                onClick={() => navigate(`/book/${book.id}`)}
+              >
+                <div className={catalogStyles.blockLang} >
+                  {book.language}
+                </div>
+                <img
+                  className={catalogStyles.bookImg}
+                  src={book.img_url}
+                  alt={book.title}
+                />
+                <p className={catalogStyles.bookTitle}>{book.title}</p>
               </div>
-              <img
-                className={catalogStyles.bookImg}
-                src={book.img_url}
-                alt={book.title}
-              />
-              <p className={catalogStyles.bookTitle}>{book.title}</p>
             </div>
           ))}
         </div>
