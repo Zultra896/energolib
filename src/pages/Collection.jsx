@@ -54,7 +54,7 @@ function Collections() {
                 </div>
             )}
 
-            <h2 className={styles.title}>Книги в коллекции</h2>
+            <h2 className={styles.colTitle}>Книги в коллекции</h2>
 
             {!loading && !error && collectionBooks.length === 0 && (
                 <p className={styles.noBooks}>В этой коллекции пока нет книг.</p>
@@ -63,19 +63,21 @@ function Collections() {
             {!loading && !error && collectionBooks.length > 0 && (
                 <div className={styles.books}>
                     {collectionBooks.map((book) => (
-                        <div
-                            key={book.id}
-                            className={styles.book}
-                            onClick={() => navigate(`/book/${book.id}`)}
-                        >
-                            <div className={styles.blockLang}>{book.language}</div>
-                            <img
-                                className={styles.bookImg}
-                                src={book.img_url}
-                                alt={book.title}
-                            />
-                            <p className={styles.bookTitle}>{book.title}</p>
-                        </div>
+                        <div className={styles.B}>
+                            <div
+                                key={book.id}
+                                className={styles.book}
+                                onClick={() => navigate(`/book/${book.id}`)}
+                            >
+                                <div className={styles.blockLang}>{book.language}</div>
+                                <img
+                                    className={styles.bookImg}
+                                    src={book.img_url}
+                                    alt={book.title}
+                                />
+                                <p className={styles.bookTitle}>{book.title}</p>
+                            </div>
+                        </div> 
                     ))}
                 </div>
             )}

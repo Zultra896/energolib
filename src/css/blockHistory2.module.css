@@ -49,7 +49,6 @@
 }
 
 .btn:hover {
-
     color: #1473B8;
 }
 
@@ -81,6 +80,15 @@
     }
 
     .title {
-        font-size: 32px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cardBlock {
+        grid-template-columns: repeat(1, 300px);
+    }
+    .btn {
+        width: 300px;
     }
 }

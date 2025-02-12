@@ -3,8 +3,11 @@ import searchIcon from '../img/searchIcon2.svg';
 import { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useLanguage } from "../components/LanguageContext";
 function Persons() {
   const navigate = useNavigate();
+
+  const { language } = useLanguage();
 
   const [persons, setPersons] = useState([]);
 
@@ -33,19 +36,21 @@ function Persons() {
   })
   return (
     <div className={styles.container}>
-      <h1 className={styles.Title}>История писателей</h1>
-      <label className={styles.searchLabel}>
-        <img src={searchIcon} alt="" />
-        <input
-          className={styles.searchInput}
-          type="text"
-          name="title"
-          placeholder="Поиск по имени"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          autocomplete="off"
-        />
-      </label>
+      <div className={styles.head}>
+        <h1 className={styles.Title}>{language === 'ru' ? "Великие личности" : "Ұлы тұлғалар"}</h1>
+        <label className={styles.searchLabel}>
+          <img src={searchIcon} alt="" />
+          <input
+            className={styles.searchInput}
+            type="text"
+            name="title"
+            placeholder="Поиск по имени"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            autocomplete="off"
+          />
+        </label>
+      </div>
       <div className={styles.gridPersons}>
         {filteredPersons.map((person) => (
             <div className={styles.itemPerson} key={person.id}>

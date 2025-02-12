@@ -52,7 +52,7 @@ function Person() {
           <img src={person.img_url} alt={name} className={styles.img} />
         </div>
         <div className={styles.head_title}>
-          <h1>{name}</h1>
+          <h1 className={styles.name}>{name}</h1>
           <p>{fDate}</p>
           <blockquote className={styles.quote}>«{quote}»</blockquote>
         </div>

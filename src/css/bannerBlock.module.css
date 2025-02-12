@@ -144,6 +144,9 @@
 }
 
 @media (max-width: 478px) {
+    .bannerBlock__info {
+        padding:  12px 17px;
+    }
 
     .btnBlock {
         width: 52px;
@@ -162,5 +165,6 @@
 
     .link {
         font-size: 14px;
+        bottom: 12px;
     }
 }

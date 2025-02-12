@@ -14,7 +14,7 @@
 
 .card {
     width: 420px;
-    height: 500px;
+    height: 488px;
     margin-top: 10px;
     padding: 30px 40px;
     border-radius: 12px;
@@ -26,15 +26,15 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 52px;
-    width: 340px;
+    margin-bottom: 40px;
+    width: 100%;
     height: 45px;
 }
 
 .rectangle {
     position: absolute;
     bottom: 0;
-    width: 340px;    
+    width: 100%;    
     height: 1px;
     background-color: #8A8A8E;
     border: none;
@@ -85,7 +85,7 @@
     color: #000;
 }
 .btn {
-    width: 340px;
+    width: 100%;
     height: 40px;
     background-color: #526CFE;
     color: #FFFFFF;
@@ -116,7 +116,7 @@
 
 
 .inp {
-    width: 340px;
+    width: 100%;
     height: 40px;
     margin-top: 20px;
     border: 0.5px solid #8A8A8E;
@@ -131,4 +131,33 @@
 }
 .inp:first-of-type {
     margin-top: 40px;
+}
+
+
+@media (max-width: 480px) {
+    .card {
+        width: 340px;
+        height: 458px;
+        padding: 15px 20px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .card {
+        width: 300px;
+        padding: 10px;
+    }
+
+    .sing:first-child {
+        width: 80px;
+    }
+    .inp {
+        font-weight: 700;
+        
+        &:last-of-type {
+            font-weight: 500;
+        }
+    }
+
 }

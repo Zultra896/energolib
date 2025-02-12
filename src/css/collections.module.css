@@ -13,7 +13,7 @@
 
 .collectionInfo img {
     width: 600px; /* Максимальная ширина */
-    height: 450px; /* Максимальная высота */
+    height: 470px; /* Максимальная высота */
     display: block; /* Убирает лишние отступы */
     object-fit: cover; /* Заполняет контейнер, обрезая лишнее */
     object-position: top; /* Изображение обрезается, начиная с верхней части */
@@ -27,7 +27,7 @@
     padding-left: 10px;
 }
 .colTitle {
-
+    font-size: 32px;
 }
 
 
@@ -39,6 +39,7 @@
 }
 
 .book {
+    width: 175px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -82,4 +83,52 @@
     padding: 2px 6px; /* Добавьте внутренние отступы для красоты */
     white-space: nowrap; /* Отключает перенос текста */
     user-select: none;
+}
+
+.B {
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 1208px) {
+    .container {
+        width: 98vw;
+    }
+
+    .collectionInfo img {
+        height: calc(98vw * (470 / 1200));
+    }
+
+        
+    .books {
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    }
+}
+@media (max-width: 500px) {
+    .container {
+        padding: 5px;
+    }
+    .colTitle {
+        font-size: 22px;
+    }
+    .textDiv {
+        padding-left: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .books {
+        width: 100%;
+        grid-template-columns: repeat(2, 140px);
+        justify-content: center;
+    }
+    .bookImg {
+        width: 135px;
+        height: 189px;
+    }
+    .bookTitle {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

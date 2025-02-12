@@ -51,3 +51,13 @@
     text-align: center;
     word-wrap: break-word;
 }
+
+@media (max-width: 400px) {
+    .card {
+        width: 300px;
+        height: 300px;
+    }
+    .title, .description {
+        width: 300px;
+    }
+}
