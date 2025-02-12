@@ -19,7 +19,12 @@
     object-position: top; /* Изображение обрезается, начиная с верхней части */
     border-radius: 12px; /* Закруглённые углы для аккуратного вида */
 }
-
+.collectionDescription {
+    word-wrap: break-word; /* Разбивать длинные слова */
+    overflow-wrap: break-word; /* Альтернативное свойство для лучшей поддержки */
+    white-space: normal; /* Перенос строк */
+    max-width: 100%;
+}
 
 .textDiv {
     display: flex;
@@ -28,6 +33,7 @@
 }
 .colTitle {
     font-size: 32px;
+    margin-top: 15px;
 }
 
 

@@ -158,9 +158,8 @@
 @media (max-width: 750px) {
     .block1 {
         display: grid;
-        width: 96vw;
-        padding-right: 25px;
-        grid-template-columns: 170px 1fr;
+        width: calc(96vw - 15px);
+        grid-template-columns: 170px calc(96vw - 205px);
         grid-template-rows: auto auto; 
         gap: 10px; 
         align-items: center;
@@ -175,7 +174,7 @@
 
     .block11 {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Две колонки */
+        grid-template-columns: auto auto; /* Две колонки */
         grid-template-rows: auto auto; /* Две строки */
         gap: 10px; /* Отступ между элементами */
         align-items: center;
@@ -197,7 +196,7 @@
     .block2 {
         left: 15px;
         top: 500px;
-        width: 92vw;
+        width: calc(96vw - 25px);
     }
 
     .title {

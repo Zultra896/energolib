@@ -87,12 +87,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 678px) {
-  .menu {
-    width: 200px;
-    padding: 15px;
-  }
-
+@media (max-width: 700px) {
   .menuSing {
     display: flex;
     margin: 15px 0;
@@ -103,6 +98,13 @@
     &:hover {
       color: #1787D8;
     }
+  }
+}
+
+@media (max-width: 678px) {
+  .menu {
+    width: 200px;
+    padding: 15px;
   }
 }
 

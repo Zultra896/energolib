@@ -193,9 +193,9 @@ function Admin() {
                             </button>
                         </div>
                         <div className={styles.btnBlock}>
-                            <button className={styles.btn} onClick={() => handleTabChange('persons')}>Persons</button>
+                            <button className={styles.btn} onClick={() => handleTabChange('persons')}>Персоны</button>
                             <button className={styles.btn} onClick={() => navigate('/admin/person')}>
-                                Create Person
+                                Создать персону
                             </button>
                         </div>
                     </div>
@@ -347,8 +347,8 @@ function Admin() {
                                             <h1 className={styles.namePerson}>{person.ru_name}</h1>
                                         </div>
                                         <div>
-                                            <button className={styles.btnPersonEdit} onClick={() => navigate(`/admin/edit/person/${person.id}`)}>Edit</button>
-                                            <button className={styles.btnPersonDel} onClick={() => deletePerson(person.id)}>Delete</button>
+                                            <button className={styles.btnPersonEdit} onClick={() => navigate(`/admin/edit/person/${person.id}`)}>Изменить</button>
+                                            <button className={styles.btnPersonDel} onClick={() => deletePerson(person.id)}>Удалить</button>
                                         </div>
                                     </div>
                                 ))}

@@ -17,7 +17,7 @@ function CreateBook() {
         language: "RU", // По умолчанию "Русский"
     });
 
-    const specialties = ["IT", "Энергетика", "Радиоэлектроника", "Теплоэнергетика"];
+    const specialties = ["IT", "Энергетика", "Радиоэлектроника", "Теплоэнергетика", "Предметы"];
     const types = ["книга", "манга", "комикс", "научная работа"];
     const years = Array.from(
         { length: new Date().getFullYear() - 2000 + 1 },

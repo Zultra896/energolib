@@ -72,8 +72,9 @@
     flex: 1;
 }
 
-.item .image {
-    max-height: 140px;
+.image  {
+    width: 100px;
+    height: 140px;
     border-radius: 8px 0 0 8px;
     margin-right: 20px;
 }

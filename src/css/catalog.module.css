@@ -177,12 +177,10 @@
     display: flex;
     justify-content: center;
 }
-.filters2 {
+.filters2, .div, .fTitle {
     display: none;
 }
-.fTitle {
-    display: none;
-}
+
 
 @media (max-width: 1200px) {
     .section {
@@ -205,6 +203,9 @@
         padding: 10px;
     }
 
+    .fieldsetTitle:last-child {
+        margin-top: 0;
+    }
     .books {
         gap: 10px
     }
