@@ -156,7 +156,7 @@
 
    .title {
         margin-top: 10px;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .description {
@@ -164,7 +164,7 @@
     }
 
     .link {
-        font-size: 14px;
         bottom: 12px;
+        font-size: 12px;
     }
 }

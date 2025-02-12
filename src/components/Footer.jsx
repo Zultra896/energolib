@@ -72,7 +72,7 @@ function Footer() {
                     </div>
                   </div>
             <p className={footerStyles.footer__rights}>
-                © Copyright 2024, All Rights Reserved by Energo
+                © Copyright 2025, All Rights Reserved by Energo
             </p>
     </footer>
   )

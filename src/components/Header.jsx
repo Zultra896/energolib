@@ -7,8 +7,22 @@ import BurgerMenu from './BurgerMenu.jsx';
 import { AuthContext } from './AuthContext.jsx';
 import avatar from '../img/user.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 function Header() {
+
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 378);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 378);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  
   const { isAuthenticated, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -22,7 +36,7 @@ function Header() {
           <p className={headerStyles.header__logoTitle}>EnergoLib</p>
         </Link>
 
-        <Search />
+         {!isSmallScreen && <Search />}
 
         <div className={headerStyles.header__items}>
           {isAuthenticated && user ? (
