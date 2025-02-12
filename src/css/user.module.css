@@ -14,8 +14,8 @@
     height: 250px;
 }
 .avatar {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -27,8 +27,8 @@
     position: absolute;
     bottom: 6px;
     right: 0;
-    width: 35px;
-    height: 35px;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
 }
 .avatarUpdate img {
@@ -39,8 +39,6 @@
 .info {
     margin-left: 25px;
 }
-
-
 
 
 .logoutButton {
@@ -79,8 +77,42 @@
     background-color: #2f34d3; /* Темный красный при наведении */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .adminButton {
         display: none;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .main {
+        width: 96vw;
+    }
+
+    .avatarContainer {
+        width: calc(96vw * (250 / 1200));
+        height: calc(96vw * (250 / 1200));
+        min-height: 95px;
+        min-width: 95px;
+    }
+
+    .avatarUpdate {
+        width: calc(96vw * (35 / 1200));
+        height: calc(96vw * (35 / 1200));
+    }
+}
+
+@media (max-width: 378px) {
+
+    .main {
+        padding-bottom: 10px;
+        min-height: 120px;
+    }
+    .logoutButton {
+        padding: 6px 15px;
+        font-size: 14px;
+        height: calc(96vw * (40 / 1200));
+        min-height: 30px;
     }
 }

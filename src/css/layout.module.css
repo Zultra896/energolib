@@ -27,3 +27,9 @@
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+}

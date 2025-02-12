@@ -54,20 +54,19 @@
     color: #fff;
     text-decoration: none !important;
   }
-  
-  .menuItem {
+  .menuItem{
     margin: 15px 0;
-  }
-  
-  .menuItem a {
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s;
+    &:hover {
+      color: #1787D8;
+    }
   }
-  
-  .menuItem a:hover {
-    color: #1787D8;
+
+  .menuSing {
+    display: none;
   }
 
 .languageSwitcher {
@@ -92,6 +91,18 @@
   .menu {
     width: 200px;
     padding: 15px;
+  }
+
+  .menuSing {
+    display: flex;
+    margin: 15px 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    &:hover {
+      color: #1787D8;
+    }
   }
 }
 
