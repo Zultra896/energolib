@@ -55,6 +55,7 @@ function Book() {
       </div>
       <div className={styles.block1}>
         <img className={styles.poster} src={book.img_url} alt={book.title} />
+        <div className={styles.block11}>
         <button className={styles.btn} onClick={handleButtonClick}>
           {language === 'ru' ? 'Начать читать' : 'Оқып бастау'}
         </button>
@@ -79,6 +80,7 @@ function Book() {
             <p className={styles.value}>{book.author}</p>
           </div>
         </div>
+        </div>
       </div>
       <div className={styles.block2}>
         <h1 className={styles.title}>{book.title}</h1>
@@ -87,7 +89,6 @@ function Book() {
             {language === 'ru' ? 'Информация' : 'Мәлімет'}
           </h2>
           <div className={styles.resp}></div>
-          {/* <div className={styles.respP}></div> */}
         </div>
         <p className={styles.description}>{book.description}</p>
       </div>

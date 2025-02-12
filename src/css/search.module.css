@@ -145,7 +145,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 30px 15px 30px;
+        padding-bottom: 15px; 
     }
 
     .search__container {
@@ -156,13 +156,13 @@
 
     .search__suggestions {
         margin: 0;
-        left: 10%;
-        width: 80%; 
+        left: 0;
+        width: 100%; 
     }
     
     .search__noResults {
         margin: 0;
-        left: 10%;
-        width: 80%;  
+        left: 0;
+        width: 100%;  
     }
 }
