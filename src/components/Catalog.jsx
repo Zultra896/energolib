@@ -29,6 +29,9 @@ const Catalog = () => {
         if (specialty === 'Жылу энергетикасы') {
             return 'Теплоэнергетика';
         }
+        if (specialty === 'Пәндер') {
+          return 'Предметы';
+      }
         return specialty;
       });
 
