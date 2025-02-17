@@ -4,6 +4,7 @@ import Layout from './components/Layout.jsx';
 import Layout2 from './components/Layout2.jsx';
 import Layout3 from './components/Layout3.jsx';
 
+
 import Main from './pages/Main.jsx';
 import Auth from './pages/Auth.jsx';
 import Catalog from './pages/Catalog.jsx';
